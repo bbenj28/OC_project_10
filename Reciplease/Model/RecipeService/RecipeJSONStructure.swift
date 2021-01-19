@@ -35,7 +35,7 @@ struct RecipeDetailsJSONStructure {
     let yield: Int
     let calories: Float
     let totalWeight: Float
-    let ingredients: [IngredientJSONStructure]
+    let ingredients: [String]
 }
 extension RecipeDetailsJSONStructure: Decodable {
     enum CodingKeys: String, CodingKey {
@@ -44,7 +44,7 @@ extension RecipeDetailsJSONStructure: Decodable {
         case yield = "yield"
         case calories = "calories"
         case totalWeight = "totalWeight"
-        case ingredients = "ingredients"
+        case ingredients = "ingredientLines"
     }
 }
 struct IngredientJSONStructure {
