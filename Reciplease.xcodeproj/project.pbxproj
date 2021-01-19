@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,7 @@
 		03AFE25E25B73286009B8904 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03AFE25D25B73286009B8904 /* Assets.xcassets */; };
 		03AFE26125B73286009B8904 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03AFE25F25B73286009B8904 /* LaunchScreen.storyboard */; };
 		03AFE26C25B73286009B8904 /* RecipleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFE26B25B73286009B8904 /* RecipleaseTests.swift */; };
+		03AFE29925B73826009B8904 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFE29825B73826009B8904 /* CoreDataStack.swift */; };
 		A60386D0017BAEFFC3794EC5 /* Pods_RecipleaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEEB1495122E3BC46FD0C5E8 /* Pods_RecipleaseTests.framework */; };
 		BB839727CBCEA40F44747E3C /* Pods_Reciplease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 141471DF52140CA076E656DA /* Pods_Reciplease.framework */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		03AFE26725B73286009B8904 /* RecipleaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03AFE26B25B73286009B8904 /* RecipleaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseTests.swift; sourceTree = "<group>"; };
 		03AFE26D25B73286009B8904 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03AFE29825B73826009B8904 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		141471DF52140CA076E656DA /* Pods_Reciplease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reciplease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A034A918DAD03A21D04B6585 /* Pods-Reciplease.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.release.xcconfig"; path = "Target Support Files/Pods-Reciplease/Pods-Reciplease.release.xcconfig"; sourceTree = "<group>"; };
 		AEEB1495122E3BC46FD0C5E8 /* Pods_RecipleaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipleaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				03AFE25A25B73285009B8904 /* Reciplease.xcdatamodeld */,
+				03AFE29825B73826009B8904 /* CoreDataStack.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -170,7 +173,6 @@
 				CF6AA09C2E74104A5118FBD5 /* Pods-RecipleaseTests.debug.xcconfig */,
 				B6C150B6FF216A26C52DDB82 /* Pods-RecipleaseTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -350,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03AFE29925B73826009B8904 /* CoreDataStack.swift in Sources */,
 				03AFE25C25B73285009B8904 /* Reciplease.xcdatamodeld in Sources */,
 				03AFE25625B73285009B8904 /* ViewController.swift in Sources */,
 				03AFE25225B73285009B8904 /* AppDelegate.swift in Sources */,
