@@ -40,8 +40,6 @@
 		03AFE26725B73286009B8904 /* RecipleaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03AFE26B25B73286009B8904 /* RecipleaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseTests.swift; sourceTree = "<group>"; };
 		03AFE26D25B73286009B8904 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		03AFE27625B73286009B8904 /* RecipleaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseUITests.swift; sourceTree = "<group>"; };
-		03AFE27825B73286009B8904 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +65,6 @@
 			children = (
 				03AFE25025B73285009B8904 /* Reciplease */,
 				03AFE26A25B73286009B8904 /* RecipleaseTests */,
-				03AFE27525B73286009B8904 /* RecipleaseUITests */,
 				03AFE24F25B73285009B8904 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,15 +97,6 @@
 				03AFE26D25B73286009B8904 /* Info.plist */,
 			);
 			path = RecipleaseTests;
-			sourceTree = "<group>";
-		};
-		03AFE27525B73286009B8904 /* RecipleaseUITests */ = {
-			isa = PBXGroup;
-			children = (
-				03AFE27625B73286009B8904 /* RecipleaseUITests.swift */,
-				03AFE27825B73286009B8904 /* Info.plist */,
-			);
-			path = RecipleaseUITests;
 			sourceTree = "<group>";
 		};
 		03AFE28925B7348F009B8904 /* Model */ = {
