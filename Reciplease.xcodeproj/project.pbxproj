@@ -24,6 +24,9 @@
 		03CE0E2725B808320097BEA6 /* ApplicationErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE0E2625B808320097BEA6 /* ApplicationErrors.swift */; };
 		03CE0E2B25B811CC0097BEA6 /* Error+userMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE0E2A25B811CC0097BEA6 /* Error+userMessage.swift */; };
 		03CE0E2F25B8121D0097BEA6 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE0E2E25B8121D0097BEA6 /* UIViewController+Alert.swift */; };
+		03CE0E3425B81E560097BEA6 /* IngredientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE0E3325B81E560097BEA6 /* IngredientTableViewCell.swift */; };
+		03CE0E3B25B81E6D0097BEA6 /* IngredientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE0E3A25B81E6D0097BEA6 /* IngredientsTableViewController.swift */; };
+		03CE0E4125B81E810097BEA6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE0E4025B81E810097BEA6 /* SearchViewController.swift */; };
 		A60386D0017BAEFFC3794EC5 /* Pods_RecipleaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEEB1495122E3BC46FD0C5E8 /* Pods_RecipleaseTests.framework */; };
 		BB839727CBCEA40F44747E3C /* Pods_Reciplease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 141471DF52140CA076E656DA /* Pods_Reciplease.framework */; };
 /* End PBXBuildFile section */
@@ -60,6 +63,9 @@
 		03CE0E2625B808320097BEA6 /* ApplicationErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationErrors.swift; sourceTree = "<group>"; };
 		03CE0E2A25B811CC0097BEA6 /* Error+userMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+userMessage.swift"; sourceTree = "<group>"; };
 		03CE0E2E25B8121D0097BEA6 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		03CE0E3325B81E560097BEA6 /* IngredientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientTableViewCell.swift; sourceTree = "<group>"; };
+		03CE0E3A25B81E6D0097BEA6 /* IngredientsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsTableViewController.swift; sourceTree = "<group>"; };
+		03CE0E4025B81E810097BEA6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		141471DF52140CA076E656DA /* Pods_Reciplease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reciplease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A034A918DAD03A21D04B6585 /* Pods-Reciplease.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.release.xcconfig"; path = "Target Support Files/Pods-Reciplease/Pods-Reciplease.release.xcconfig"; sourceTree = "<group>"; };
 		AEEB1495122E3BC46FD0C5E8 /* Pods_RecipleaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipleaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +157,7 @@
 		03AFE28B25B73496009B8904 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				03CE0E3225B81E430097BEA6 /* Search */,
 				03AFE25525B73285009B8904 /* ViewController.swift */,
 			);
 			path = Controller;
@@ -203,6 +210,16 @@
 				03AFE2BB25B740D1009B8904 /* RecipeService.swift */,
 			);
 			path = RecipeService;
+			sourceTree = "<group>";
+		};
+		03CE0E3225B81E430097BEA6 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				03CE0E3325B81E560097BEA6 /* IngredientTableViewCell.swift */,
+				03CE0E3A25B81E6D0097BEA6 /* IngredientsTableViewController.swift */,
+				03CE0E4025B81E810097BEA6 /* SearchViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		2A6E6E98AA82DE074A5E56B5 /* Pods */ = {
@@ -394,6 +411,7 @@
 			files = (
 				03CE0E2325B807E80097BEA6 /* JSONStructureDecoder.swift in Sources */,
 				03AFE29D25B738AB009B8904 /* CoreDataManager.swift in Sources */,
+				03CE0E3425B81E560097BEA6 /* IngredientTableViewCell.swift in Sources */,
 				03AFE29925B73826009B8904 /* CoreDataStack.swift in Sources */,
 				03CE0E2F25B8121D0097BEA6 /* UIViewController+Alert.swift in Sources */,
 				03AFE2A625B739EE009B8904 /* APIKeys.swift in Sources */,
@@ -401,9 +419,11 @@
 				03AFE2BC25B740D1009B8904 /* RecipeService.swift in Sources */,
 				03CE0E2725B808320097BEA6 /* ApplicationErrors.swift in Sources */,
 				03CE0E2B25B811CC0097BEA6 /* Error+userMessage.swift in Sources */,
+				03CE0E4125B81E810097BEA6 /* SearchViewController.swift in Sources */,
 				03AFE2B825B73C99009B8904 /* RecipeJSONStructure.swift in Sources */,
 				03AFE25625B73285009B8904 /* ViewController.swift in Sources */,
 				03AFE25225B73285009B8904 /* AppDelegate.swift in Sources */,
+				03CE0E3B25B81E6D0097BEA6 /* IngredientsTableViewController.swift in Sources */,
 				03AFE25425B73285009B8904 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
