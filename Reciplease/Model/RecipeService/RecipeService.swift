@@ -21,11 +21,22 @@ class RecipeService {
                     return
                 }
                 let hits = recipes.hits
-                for hit in hits {
-                    let recipe = hit.recipe
-                    finalRecipes.append(Recipe(title: recipe.title, pictureURL: recipe.imageURL, ingredients: recipe.ingredients, service: self))
+                for index in 0...hits.count - 1 {
+                    let recipe = hits[index].recipe
+                    if let url = URL(string: recipe.imageURL) {
+                        self.getPictureData(url: url) { (data) in
+                            finalRecipes.append(Recipe(title: recipe.title, pictureData: data, ingredients: recipe.ingredients))
+                            if index == hits.count - 1 {
+                                completionHandler(.success(finalRecipes))
+                            }
+                        }
+                    } else {
+                        finalRecipes.append(Recipe(title: recipe.title, pictureData: nil, ingredients: recipe.ingredients))
+                        if index == hits.count - 1 {
+                            completionHandler(.success(finalRecipes))
+                        }
+                    }
                 }
-                completionHandler(.success(finalRecipes))
             case .failure(let error):
                 completionHandler(.failure(error))
             }
