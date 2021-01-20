@@ -20,6 +20,7 @@
 		03AFE2A625B739EE009B8904 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFE2A525B739EE009B8904 /* APIKeys.swift */; };
 		03AFE2B825B73C99009B8904 /* RecipeJSONStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFE2B725B73C99009B8904 /* RecipeJSONStructure.swift */; };
 		03AFE2BC25B740D1009B8904 /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFE2BB25B740D1009B8904 /* RecipeService.swift */; };
+		03CE0E2325B807E80097BEA6 /* JSONStructureDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE0E2225B807E80097BEA6 /* JSONStructureDecoder.swift */; };
 		A60386D0017BAEFFC3794EC5 /* Pods_RecipleaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEEB1495122E3BC46FD0C5E8 /* Pods_RecipleaseTests.framework */; };
 		BB839727CBCEA40F44747E3C /* Pods_Reciplease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 141471DF52140CA076E656DA /* Pods_Reciplease.framework */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,7 @@
 		03AFE2A525B739EE009B8904 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		03AFE2B725B73C99009B8904 /* RecipeJSONStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeJSONStructure.swift; sourceTree = "<group>"; };
 		03AFE2BB25B740D1009B8904 /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
+		03CE0E2225B807E80097BEA6 /* JSONStructureDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStructureDecoder.swift; sourceTree = "<group>"; };
 		141471DF52140CA076E656DA /* Pods_Reciplease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reciplease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A034A918DAD03A21D04B6585 /* Pods-Reciplease.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.release.xcconfig"; path = "Target Support Files/Pods-Reciplease/Pods-Reciplease.release.xcconfig"; sourceTree = "<group>"; };
 		AEEB1495122E3BC46FD0C5E8 /* Pods_RecipleaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipleaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				03AFE2A525B739EE009B8904 /* APIKeys.swift */,
+				03CE0E2225B807E80097BEA6 /* JSONStructureDecoder.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03CE0E2325B807E80097BEA6 /* JSONStructureDecoder.swift in Sources */,
 				03AFE29D25B738AB009B8904 /* CoreDataManager.swift in Sources */,
 				03AFE29925B73826009B8904 /* CoreDataStack.swift in Sources */,
 				03AFE2A625B739EE009B8904 /* APIKeys.swift in Sources */,
