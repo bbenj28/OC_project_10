@@ -21,13 +21,13 @@ enum ApplicationErrors: Error, CustomStringConvertible, Equatable {
         switch self {
         // network call
         case .ncNoData:
-            return "La réponse ne retourne aucune data [Model/General/JSONStructureDecoder]"
+            return "La réponse ne retourne aucune data [Model/General/JSONStructureDecoder]."
         case .ncNoResponse:
-            return "La réponse retourne nil [Model/General/JSONStructureDecoder]"
+            return "La réponse retourne nil [Model/General/JSONStructureDecoder]."
         case .ncBadCode(_):
-            return "La réponse retourne un code HTTP invalide \(codeMeaning)"
+            return "La réponse retourne un code HTTP invalide \(codeMeaning) [Model/General/JSONStructureDecoder]."
         case .ncDataConformityLess:
-            return "data non conforme"
+            return "Les data ne sont pas conformes à la JSONStructure  [Model/General/JSONStructureDecoder]."
         }
     }
 }
