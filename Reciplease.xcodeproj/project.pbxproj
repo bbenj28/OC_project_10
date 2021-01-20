@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		03AFE25225B73285009B8904 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFE25125B73285009B8904 /* AppDelegate.swift */; };
 		03AFE25425B73285009B8904 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFE25325B73285009B8904 /* SceneDelegate.swift */; };
-		03AFE25625B73285009B8904 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFE25525B73285009B8904 /* ViewController.swift */; };
 		03AFE25925B73285009B8904 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03AFE25725B73285009B8904 /* Main.storyboard */; };
 		03AFE25C25B73285009B8904 /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03AFE25A25B73285009B8904 /* Reciplease.xcdatamodeld */; };
 		03AFE25E25B73286009B8904 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03AFE25D25B73286009B8904 /* Assets.xcassets */; };
@@ -28,6 +27,8 @@
 		03CE0E5425B83E4A0097BEA6 /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE0E5325B83E4A0097BEA6 /* ResultsTableViewController.swift */; };
 		03CE0E5A25B83E5B0097BEA6 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE0E5925B83E5B0097BEA6 /* ResultTableViewCell.swift */; };
 		03CE0E5E25B84B6D0097BEA6 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE0E5D25B84B6D0097BEA6 /* Recipe.swift */; };
+		03CE0E6525B873610097BEA6 /* AlamofireSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE0E6425B873610097BEA6 /* AlamofireSession.swift */; };
+		03CE0E6925B873720097BEA6 /* RecipeSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE0E6825B873720097BEA6 /* RecipeSession.swift */; };
 		A60386D0017BAEFFC3794EC5 /* Pods_RecipleaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEEB1495122E3BC46FD0C5E8 /* Pods_RecipleaseTests.framework */; };
 		BB839727CBCEA40F44747E3C /* Pods_Reciplease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 141471DF52140CA076E656DA /* Pods_Reciplease.framework */; };
 /* End PBXBuildFile section */
@@ -46,7 +47,6 @@
 		03AFE24E25B73285009B8904 /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03AFE25125B73285009B8904 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03AFE25325B73285009B8904 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		03AFE25525B73285009B8904 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		03AFE25825B73285009B8904 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		03AFE25B25B73285009B8904 /* Reciplease.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reciplease.xcdatamodel; sourceTree = "<group>"; };
 		03AFE25D25B73286009B8904 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,6 +68,8 @@
 		03CE0E5325B83E4A0097BEA6 /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
 		03CE0E5925B83E5B0097BEA6 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		03CE0E5D25B84B6D0097BEA6 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		03CE0E6425B873610097BEA6 /* AlamofireSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireSession.swift; sourceTree = "<group>"; };
+		03CE0E6825B873720097BEA6 /* RecipeSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSession.swift; sourceTree = "<group>"; };
 		141471DF52140CA076E656DA /* Pods_Reciplease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reciplease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A034A918DAD03A21D04B6585 /* Pods-Reciplease.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.release.xcconfig"; path = "Target Support Files/Pods-Reciplease/Pods-Reciplease.release.xcconfig"; sourceTree = "<group>"; };
 		AEEB1495122E3BC46FD0C5E8 /* Pods_RecipleaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipleaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,6 +142,7 @@
 		03AFE28925B7348F009B8904 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				03CE0E6325B872F40097BEA6 /* AlamoSession */,
 				03AFE2B625B73C8D009B8904 /* RecipeService */,
 				03AFE2A025B739B9009B8904 /* General */,
 				03AFE28E25B734B8009B8904 /* CoreData */,
@@ -160,7 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				03CE0E3225B81E430097BEA6 /* Search */,
-				03AFE25525B73285009B8904 /* ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -211,6 +213,7 @@
 				03AFE2B725B73C99009B8904 /* RecipeJSONStructure.swift */,
 				03CE0E5D25B84B6D0097BEA6 /* Recipe.swift */,
 				03AFE2BB25B740D1009B8904 /* RecipeService.swift */,
+				03CE0E6825B873720097BEA6 /* RecipeSession.swift */,
 			);
 			path = RecipeService;
 			sourceTree = "<group>";
@@ -231,6 +234,14 @@
 				03CE0E5925B83E5B0097BEA6 /* ResultTableViewCell.swift */,
 			);
 			path = Results;
+			sourceTree = "<group>";
+		};
+		03CE0E6325B872F40097BEA6 /* AlamoSession */ = {
+			isa = PBXGroup;
+			children = (
+				03CE0E6425B873610097BEA6 /* AlamofireSession.swift */,
+			);
+			path = AlamoSession;
 			sourceTree = "<group>";
 		};
 		2A6E6E98AA82DE074A5E56B5 /* Pods */ = {
@@ -420,9 +431,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03CE0E6925B873720097BEA6 /* RecipeSession.swift in Sources */,
 				03CE0E2325B807E80097BEA6 /* JSONStructureDecoder.swift in Sources */,
 				03AFE29D25B738AB009B8904 /* CoreDataManager.swift in Sources */,
 				03AFE29925B73826009B8904 /* CoreDataStack.swift in Sources */,
+				03CE0E6525B873610097BEA6 /* AlamofireSession.swift in Sources */,
 				03CE0E2F25B8121D0097BEA6 /* UIViewController+Alert.swift in Sources */,
 				03AFE2A625B739EE009B8904 /* APIKeys.swift in Sources */,
 				03CE0E5E25B84B6D0097BEA6 /* Recipe.swift in Sources */,
@@ -434,7 +447,6 @@
 				03CE0E5425B83E4A0097BEA6 /* ResultsTableViewController.swift in Sources */,
 				03CE0E4125B81E810097BEA6 /* SearchViewController.swift in Sources */,
 				03AFE2B825B73C99009B8904 /* RecipeJSONStructure.swift in Sources */,
-				03AFE25625B73285009B8904 /* ViewController.swift in Sources */,
 				03AFE25225B73285009B8904 /* AppDelegate.swift in Sources */,
 				03AFE25425B73285009B8904 /* SceneDelegate.swift in Sources */,
 			);
