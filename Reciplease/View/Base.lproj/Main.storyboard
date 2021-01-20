@@ -214,25 +214,27 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oho-sj-8tn">
-                                            <rect key="frame" x="16" y="19" width="288" height="212.5"/>
+                                            <rect key="frame" x="16" y="12.5" width="288" height="225"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QbC-Yo-RfC">
-                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="212.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="225"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWn-EH-BxP">
-                                                            <rect key="frame" x="0.0" y="0.0" width="288" height="42.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWn-EH-BxP">
+                                                            <rect key="frame" x="0.0" y="0.0" width="288" height="56.5"/>
+                                                            <string key="text">Label
+labem</string>
                                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1ho-YI-6Ww">
-                                                            <rect key="frame" x="0.0" y="42.5" width="288" height="170"/>
+                                                            <rect key="frame" x="0.0" y="56.5" width="288" height="168.5"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qVL-qZ-21L">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="139" height="170"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="139" height="168.5"/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R93-R3-H3F">
-                                                                    <rect key="frame" x="149" y="0.0" width="139" height="170"/>
+                                                                    <rect key="frame" x="149" y="0.0" width="139" height="168.5"/>
                                                                     <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -245,7 +247,7 @@
                                                         </stackView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="1ho-YI-6Ww" firstAttribute="height" secondItem="QbC-Yo-RfC" secondAttribute="height" multiplier="0.8" id="yin-Ww-7Kq"/>
+                                                        <constraint firstItem="1ho-YI-6Ww" firstAttribute="height" secondItem="QbC-Yo-RfC" secondAttribute="height" multiplier="0.75" id="yin-Ww-7Kq"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
@@ -260,7 +262,7 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstItem="oho-sj-8tn" firstAttribute="height" secondItem="bm8-k7-SF6" secondAttribute="height" multiplier="0.85" id="bDl-Wu-5cG"/>
+                                        <constraint firstItem="oho-sj-8tn" firstAttribute="height" secondItem="bm8-k7-SF6" secondAttribute="height" multiplier="0.9" id="bDl-Wu-5cG"/>
                                         <constraint firstItem="oho-sj-8tn" firstAttribute="centerY" secondItem="bm8-k7-SF6" secondAttribute="centerY" id="oUx-7O-MOk"/>
                                         <constraint firstItem="oho-sj-8tn" firstAttribute="width" secondItem="bm8-k7-SF6" secondAttribute="width" multiplier="0.9" id="utu-nW-Ysi"/>
                                         <constraint firstItem="oho-sj-8tn" firstAttribute="centerX" secondItem="bm8-k7-SF6" secondAttribute="centerX" id="wej-ru-6TV"/>

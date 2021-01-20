@@ -15,16 +15,7 @@ class ResultTableViewCell: UITableViewCell {
     @IBOutlet weak var resultIngredientsLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        /*
-        let maskPath = UIBezierPath(roundedRect: resultView.bounds,
-                                    byRoundingCorners: [.bottomLeft, .bottomRight, .topLeft, .topRight],
-                    cornerRadii: CGSize(width: 10.0, height: 10.0))
-
-        let shape = CAShapeLayer()
-        shape.path = maskPath.cgPath
-        resultView.layer.mask = shape
- */
-        // Initialization code
+        resultView.layer.cornerRadius = 10
     }
 
     func setCell(title: String, image: UIImage?, ingredients: String) {
