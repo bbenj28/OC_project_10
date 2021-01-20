@@ -28,10 +28,12 @@ class SearchViewController: UIViewController {
         clearIngredients()
     }
     @IBAction func search(_ sender: Any) {
+        /*
         guard ingredients.count > 0 else {
             showAlert(title: "No ingredients", message: "You have to write at least one ingredient.", style: .alert, yesNoActions: false)
             return
         }
+ */
         performSegue(withIdentifier: "ResultsSegue", sender: self)
     }
     

@@ -11,12 +11,13 @@ class ResultsTableViewController: UITableViewController {
     var choosenIngredients: [String] = []
     var recipes: [Recipe] = []
     var isSearching: Bool = false
-    let service = RecipeService()
+    let service = RecipeService(session: FakeResponse.correctResponseWithData("RecipeJson").fakeSession)
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(choosenIngredients)
+        print(recipes)
         tableView.tableFooterView = UIView()
-        if choosenIngredients.count > 0 {
+        
+        //if choosenIngredients.count > 0 {
             isSearching = true
             tableView.reloadData()
             service.searchRecipe(for: choosenIngredients) { (result) in
@@ -25,6 +26,7 @@ class ResultsTableViewController: UITableViewController {
                     switch result {
                     case .success(let recipes):
                         self.recipes = recipes
+                        print(recipes)
                         self.tableView.reloadData()
                     case .failure(let error):
                         self.showAlert(error: error)
@@ -32,7 +34,7 @@ class ResultsTableViewController: UITableViewController {
                     }
                 }
             }
-        }
+        //}
     }
 
     // MARK: - Table view data source

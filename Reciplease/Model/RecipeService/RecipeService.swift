@@ -10,11 +10,11 @@ import Alamofire
 class RecipeService {
     let decoder = JSONStructureDecoder()
     let session: AlamofireSession
-    
     init(session: AlamofireSession = RecipeSession()) {
         self.session = session
     }
     func searchRecipe(for ingredients: [String], completionHandler: @escaping (Result<[Recipe], Error>) -> Void) {
+        // get recipes from a network call
         getRecipes(for: ingredients) { (result) in
             switch result {
             case .success(let recipes):
@@ -23,20 +23,31 @@ class RecipeService {
                     completionHandler(.success(finalRecipes))
                     return
                 }
+                // get hits
                 let hits = recipes.hits
+                // get pictures from each hit
                 for index in 0...hits.count - 1 {
                     let recipe = hits[index].recipe
-                    if let url = URL(string: recipe.imageURL) {
-                        self.getPictureData(url: url) { (data) in
+                    // check if the session is a fake
+                    if let fakeSession = self.session as? FakeAlamofireSession {
+                        // if is a fake session, get picture from session
+                        finalRecipes.append(Recipe(title: recipe.title, pictureData: fakeSession.pictureData, ingredients: recipe.ingredients))
+                        if index == hits.count - 1 {
+                            completionHandler(.success(finalRecipes))
+                        }
+                    } else {
+                        // otherwise, get picture with the url
+                        if let url = URL(string: recipe.imageURL) {
+                            let data = try? Data(contentsOf: url)
                             finalRecipes.append(Recipe(title: recipe.title, pictureData: data, ingredients: recipe.ingredients))
                             if index == hits.count - 1 {
                                 completionHandler(.success(finalRecipes))
                             }
-                        }
-                    } else {
-                        finalRecipes.append(Recipe(title: recipe.title, pictureData: nil, ingredients: recipe.ingredients))
-                        if index == hits.count - 1 {
-                            completionHandler(.success(finalRecipes))
+                        } else {
+                            finalRecipes.append(Recipe(title: recipe.title, pictureData: nil, ingredients: recipe.ingredients))
+                            if index == hits.count - 1 {
+                                completionHandler(.success(finalRecipes))
+                            }
                         }
                     }
                 }
@@ -50,16 +61,6 @@ class RecipeService {
         guard let url = URL(string: "https://api.edamam.com/search") else { return }
         performNetworkCall(for: ingredients, with: url) { (response) in
             self.decoder.decode(response, completionHandler: completionHandler)
-        }
-    }
-    
-    func getPictureData(url: URL, completionHandler: @escaping (Data?) -> Void) {
-        AF.request(url).response { (response) in
-            if let data = response.data {
-                completionHandler(data)
-            } else {
-                completionHandler(nil)
-            }
         }
     }
     

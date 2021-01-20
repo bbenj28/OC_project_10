@@ -201,7 +201,7 @@
         <scene sceneID="f2V-Xg-DPb">
             <objects>
                 <tableViewController id="u1M-1P-ydb" customClass="ResultsTableViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="t9C-gZ-3vE">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="250" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="t9C-gZ-3vE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -238,6 +238,10 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="qVL-qZ-21L" firstAttribute="width" secondItem="1ho-YI-6Ww" secondAttribute="width" multiplier="0.482639" id="FBG-FH-uyt"/>
+                                                                <constraint firstItem="qVL-qZ-21L" firstAttribute="height" secondItem="1ho-YI-6Ww" secondAttribute="height" id="mWH-tb-bWq"/>
+                                                            </constraints>
                                                         </stackView>
                                                     </subviews>
                                                     <constraints>
