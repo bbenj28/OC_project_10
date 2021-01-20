@@ -25,6 +25,9 @@
 		03CE0E2B25B811CC0097BEA6 /* Error+userMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE0E2A25B811CC0097BEA6 /* Error+userMessage.swift */; };
 		03CE0E2F25B8121D0097BEA6 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE0E2E25B8121D0097BEA6 /* UIViewController+Alert.swift */; };
 		03CE0E4125B81E810097BEA6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE0E4025B81E810097BEA6 /* SearchViewController.swift */; };
+		03CE0E5425B83E4A0097BEA6 /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE0E5325B83E4A0097BEA6 /* ResultsTableViewController.swift */; };
+		03CE0E5A25B83E5B0097BEA6 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE0E5925B83E5B0097BEA6 /* ResultTableViewCell.swift */; };
+		03CE0E5E25B84B6D0097BEA6 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE0E5D25B84B6D0097BEA6 /* Recipe.swift */; };
 		A60386D0017BAEFFC3794EC5 /* Pods_RecipleaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEEB1495122E3BC46FD0C5E8 /* Pods_RecipleaseTests.framework */; };
 		BB839727CBCEA40F44747E3C /* Pods_Reciplease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 141471DF52140CA076E656DA /* Pods_Reciplease.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +65,9 @@
 		03CE0E2A25B811CC0097BEA6 /* Error+userMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+userMessage.swift"; sourceTree = "<group>"; };
 		03CE0E2E25B8121D0097BEA6 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		03CE0E4025B81E810097BEA6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		03CE0E5325B83E4A0097BEA6 /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
+		03CE0E5925B83E5B0097BEA6 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
+		03CE0E5D25B84B6D0097BEA6 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		141471DF52140CA076E656DA /* Pods_Reciplease.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reciplease.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A034A918DAD03A21D04B6585 /* Pods-Reciplease.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.release.xcconfig"; path = "Target Support Files/Pods-Reciplease/Pods-Reciplease.release.xcconfig"; sourceTree = "<group>"; };
 		AEEB1495122E3BC46FD0C5E8 /* Pods_RecipleaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipleaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				03AFE2B725B73C99009B8904 /* RecipeJSONStructure.swift */,
+				03CE0E5D25B84B6D0097BEA6 /* Recipe.swift */,
 				03AFE2BB25B740D1009B8904 /* RecipeService.swift */,
 			);
 			path = RecipeService;
@@ -212,8 +219,18 @@
 			isa = PBXGroup;
 			children = (
 				03CE0E4025B81E810097BEA6 /* SearchViewController.swift */,
+				03CE0E5225B83E330097BEA6 /* Results */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		03CE0E5225B83E330097BEA6 /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				03CE0E5325B83E4A0097BEA6 /* ResultsTableViewController.swift */,
+				03CE0E5925B83E5B0097BEA6 /* ResultTableViewCell.swift */,
+			);
+			path = Results;
 			sourceTree = "<group>";
 		};
 		2A6E6E98AA82DE074A5E56B5 /* Pods */ = {
@@ -408,10 +425,13 @@
 				03AFE29925B73826009B8904 /* CoreDataStack.swift in Sources */,
 				03CE0E2F25B8121D0097BEA6 /* UIViewController+Alert.swift in Sources */,
 				03AFE2A625B739EE009B8904 /* APIKeys.swift in Sources */,
+				03CE0E5E25B84B6D0097BEA6 /* Recipe.swift in Sources */,
 				03AFE25C25B73285009B8904 /* Reciplease.xcdatamodeld in Sources */,
+				03CE0E5A25B83E5B0097BEA6 /* ResultTableViewCell.swift in Sources */,
 				03AFE2BC25B740D1009B8904 /* RecipeService.swift in Sources */,
 				03CE0E2725B808320097BEA6 /* ApplicationErrors.swift in Sources */,
 				03CE0E2B25B811CC0097BEA6 /* Error+userMessage.swift in Sources */,
+				03CE0E5425B83E4A0097BEA6 /* ResultsTableViewController.swift in Sources */,
 				03CE0E4125B81E810097BEA6 /* SearchViewController.swift in Sources */,
 				03AFE2B825B73C99009B8904 /* RecipeJSONStructure.swift in Sources */,
 				03AFE25625B73285009B8904 /* ViewController.swift in Sources */,

@@ -11,10 +11,44 @@ class RecipeService {
     let decoder = JSONStructureDecoder()
     init() {
     }
+    func searchRecipe(for ingredients: [String], completionHandler: @escaping (Result<[Recipe], Error>) -> Void) {
+        getRecipes(for: ingredients) { (result) in
+            switch result {
+            case .success(let recipes):
+                var finalRecipes: [Recipe] = []
+                guard recipes.count > 0 else {
+                    completionHandler(.success(finalRecipes))
+                    return
+                }
+                let hits = recipes.hits
+                for hit in hits {
+                    let recipe = hit.recipe
+                    finalRecipes.append(Recipe(title: recipe.title, pictureURL: recipe.imageURL, ingredients: recipe.ingredients, service: self))
+                }
+                completionHandler(.success(finalRecipes))
+            case .failure(let error):
+                completionHandler(.failure(error))
+            }
+        }
+    }
     
-    func searchRecipe(for ingredients: [String], completionHandler: @escaping (Result<RecipeJSONStructure, Error>) -> Void) {
+    func getRecipes(for ingredients: [String], completionHandler: @escaping (Result<RecipeJSONStructure, Error>) -> Void) {
         performNetworkCall(for: ingredients) { (response) in
             self.decoder.decode(response, completionHandler: completionHandler)
+        }
+    }
+    
+    func recipesAnalyzer() {
+        
+    }
+    
+    func getPictureData(url: URL, completionHandler: @escaping (Data?) -> Void) {
+        AF.request(url).response { (response) in
+            if let data = response.data {
+                completionHandler(data)
+            } else {
+                completionHandler(nil)
+            }
         }
     }
     
