@@ -35,6 +35,7 @@ struct RecipeDetailsJSONStructure {
     let yield: Int
     let calories: Float
     let totalWeight: Float
+    let totalTime: Float
     let ingredients: [String]
 }
 extension RecipeDetailsJSONStructure: Decodable {
@@ -45,6 +46,7 @@ extension RecipeDetailsJSONStructure: Decodable {
         case calories = "calories"
         case totalWeight = "totalWeight"
         case ingredients = "ingredientLines"
+        case totalTime = "totalTime"
     }
 }
 struct IngredientJSONStructure {

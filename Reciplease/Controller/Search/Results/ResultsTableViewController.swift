@@ -11,7 +11,8 @@ class ResultsTableViewController: UITableViewController {
     var choosenIngredients: [String] = []
     var recipes: [Recipe] = []
     var isSearching: Bool = false
-    let service = RecipeService(session: FakeResponse.correctResponseWithData("RecipeJson").fakeSession)
+    let service = RecipeService()
+    //let service = RecipeService(session: FakeResponse.correctResponseWithData("RecipeJson").fakeSession)
     override func viewDidLoad() {
         super.viewDidLoad()
         print(recipes)
@@ -64,11 +65,11 @@ class ResultsTableViewController: UITableViewController {
         guard let resultCell = cell as? ResultTableViewCell else { return cell }
         let result = recipes[indexPath.row]
         guard let data = result.pictureData, let image = UIImage(data: data) else {
-            resultCell.setCell(title: result.title, image: nil, ingredients: result.ingredients)
+            resultCell.setCell(title: result.title, image: nil, persons: result.persons, time: result.time)
             return resultCell
         }
         // Configure the cell...
-        resultCell.setCell(title: result.title, image: image, ingredients: result.ingredients)
+        resultCell.setCell(title: result.title, image: image, persons: result.persons, time: result.time)
         return resultCell
     }
     

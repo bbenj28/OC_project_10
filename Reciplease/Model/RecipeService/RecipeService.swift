@@ -31,7 +31,7 @@ class RecipeService {
                     // check if the session is a fake
                     if let fakeSession = self.session as? FakeAlamofireSession {
                         // if is a fake session, get picture from session
-                        finalRecipes.append(Recipe(title: recipe.title, pictureData: fakeSession.pictureData, ingredients: recipe.ingredients))
+                        finalRecipes.append(Recipe(title: recipe.title, pictureData: fakeSession.pictureData, ingredients: recipe.ingredients, time: recipe.totalTime, persons: recipe.yield))
                         if index == hits.count - 1 {
                             completionHandler(.success(finalRecipes))
                         }
@@ -39,12 +39,12 @@ class RecipeService {
                         // otherwise, get picture with the url
                         if let url = URL(string: recipe.imageURL) {
                             let data = try? Data(contentsOf: url)
-                            finalRecipes.append(Recipe(title: recipe.title, pictureData: data, ingredients: recipe.ingredients))
+                            finalRecipes.append(Recipe(title: recipe.title, pictureData: data, ingredients: recipe.ingredients, time: recipe.totalTime, persons: recipe.yield))
                             if index == hits.count - 1 {
                                 completionHandler(.success(finalRecipes))
                             }
                         } else {
-                            finalRecipes.append(Recipe(title: recipe.title, pictureData: nil, ingredients: recipe.ingredients))
+                            finalRecipes.append(Recipe(title: recipe.title, pictureData: nil, ingredients: recipe.ingredients, time: recipe.totalTime, persons: recipe.yield))
                             if index == hits.count - 1 {
                                 completionHandler(.success(finalRecipes))
                             }
