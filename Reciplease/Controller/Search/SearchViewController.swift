@@ -9,7 +9,7 @@ import UIKit
 
 class SearchViewController: UIViewController {
     var ingredients: [String] = []
-    var useFakeSession: Bool = true
+    var useFakeSession: Bool = false
     @IBOutlet weak var ingredientTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {

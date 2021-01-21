@@ -29,7 +29,7 @@ extension HitJSONStructure: Decodable {
         case recipe = "recipe"
     }
 }
-struct RecipeDetailsJSONStructure {
+struct RecipeDetailsJSONStructure: Recipe {
     let title: String
     let imageURL: String
     let yield: Int
@@ -37,6 +37,7 @@ struct RecipeDetailsJSONStructure {
     let totalWeight: Float
     let totalTime: Float
     let ingredients: [String]
+    let healthLabels: [String]
     let digest: [DigestJSONStructure]
 }
 extension RecipeDetailsJSONStructure: Decodable {
@@ -48,6 +49,7 @@ extension RecipeDetailsJSONStructure: Decodable {
         case totalWeight = "totalWeight"
         case ingredients = "ingredientLines"
         case totalTime = "totalTime"
+        case healthLabels = "healthLabels"
         case digest = "digest"
     }
 }
