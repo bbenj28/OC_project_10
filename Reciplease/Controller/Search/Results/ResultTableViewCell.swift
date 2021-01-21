@@ -17,6 +17,8 @@ class ResultTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         resultView.layer.cornerRadius = 10
+        resultPictureView.layer.cornerRadius = 10
+        resultPictureView.layer.maskedCorners = [.layerMinXMaxYCorner]
     }
 
     func setCell(title: String, image: UIImage?, persons: Int, time: Int) {

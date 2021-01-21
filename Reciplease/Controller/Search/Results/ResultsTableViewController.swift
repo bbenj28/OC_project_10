@@ -11,8 +11,8 @@ class ResultsTableViewController: UITableViewController {
     var choosenIngredients: [String] = []
     var recipes: [Recipe] = []
     var isSearching: Bool = false
-    let service = RecipeService()
-    //let service = RecipeService(session: FakeResponse.correctResponseWithData("RecipeJson").fakeSession)
+    //let service = RecipeService()
+    let service = RecipeService(session: FakeResponse.correctResponseWithData("RecipeJson").fakeSession)
     override func viewDidLoad() {
         super.viewDidLoad()
         print(recipes)
