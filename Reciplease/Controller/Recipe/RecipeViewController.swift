@@ -11,9 +11,13 @@ import SafariServices
 class RecipeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var recipe: RecipeService.RecipeDetails?
-    var digests: [(DigestJSONStructure, Bool)] = []
     var lineTypes: [LineType] = [.title, .picture]
     var numberOfLines: Int = 0
+    var isFavourite: Bool = false {
+        didSet {
+            setFavouriteButton()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -24,8 +28,19 @@ class RecipeViewController: UIViewController {
             if recipe.healthLabels.count > 0 { lineTypes.append(.health) }
             if recipe.cautions.count > 0 { lineTypes.append(.cautions) }
         }
+        setFavouriteButton()
+        
     }
-    
+    private func setFavouriteButton() {
+        let imageName = isFavourite ? "star.added" : "star.add"
+        guard let image = UIImage(named: imageName) else { return }
+        let button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(favouriteButtonHasBeenHitten))
+        navigationItem.rightBarButtonItems = [button]
+    }
+    @objc
+    private func favouriteButtonHasBeenHitten() {
+        isFavourite.toggle()
+    }
     @IBAction func getDirections(_ sender: Any) {
         if let recipe = recipe?.0, let url = URL(string: recipe.url) {
             let config = SFSafariViewController.Configuration()
