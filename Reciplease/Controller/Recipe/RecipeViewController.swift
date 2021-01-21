@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class RecipeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -26,6 +27,12 @@ class RecipeViewController: UIViewController {
     }
     
     @IBAction func getDirections(_ sender: Any) {
+        if let recipe = recipe?.0, let url = URL(string: recipe.url) {
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = true
+            let vc = SFSafariViewController(url: url, configuration: config)
+            present(vc, animated: true)
+        }
     }
     
     

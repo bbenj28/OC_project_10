@@ -31,6 +31,7 @@ extension HitJSONStructure: Decodable {
 }
 struct RecipeDetailsJSONStructure: Recipe {
     let title: String
+    let url: String
     let imageURL: String
     let yield: Int
     let calories: Float
@@ -39,11 +40,11 @@ struct RecipeDetailsJSONStructure: Recipe {
     let ingredients: [String]
     let healthLabels: [String]
     let cautions: [String]
-    let digest: [DigestJSONStructure]
 }
 extension RecipeDetailsJSONStructure: Decodable {
     enum CodingKeys: String, CodingKey {
         case title = "label"
+        case url = "url"
         case imageURL = "image"
         case yield = "yield"
         case calories = "calories"
@@ -52,7 +53,6 @@ extension RecipeDetailsJSONStructure: Decodable {
         case totalTime = "totalTime"
         case healthLabels = "healthLabels"
         case cautions = "cautions"
-        case digest = "digest"
     }
 }
 struct IngredientJSONStructure {
@@ -75,24 +75,7 @@ extension IngredientJSONStructure: Decodable {
  "unit": "g",
  "sub": [
  */
-struct DigestJSONStructure {
-    let label: String
-    let tag: String
-    let total: Double
-    let daily: Double
-    let unit: String
-    let sub: [DigestJSONStructure]?
-}
-extension DigestJSONStructure: Decodable {
-    enum CodingKeys: String, CodingKey {
-        case label = "label"
-        case tag = "tag"
-        case total = "total"
-        case daily = "daily"
-        case unit = "unit"
-        case sub = "sub"
-    }
-}
+
 
 /*
  "q": "chicken, rice",
