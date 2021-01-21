@@ -21,15 +21,13 @@ final class FakeAlamofireSession: AlamofireSession {
     var response: HTTPURLResponse?
     var data: Data?
     var error: Error?
-    var pictureData: Data?
 
     // MARK: - Initializer
 
-    init(response: HTTPURLResponse?, data: Data?, error: Error?, pictureData: Data?) {
+    init(response: HTTPURLResponse?, data: Data?, error: Error?) {
         self.response = response
         self.data = data
         self.error = error
-        self.pictureData = pictureData
     }
 
     // MARK: - Methods
@@ -41,11 +39,6 @@ final class FakeAlamofireSession: AlamofireSession {
 }
 enum FakeResponse {
     case correctResponseWithData(String), correctResponseWithoutData, incorrectResponse, error
-    var pictureData: Data {
-        guard let image = UIImage(named: "meal") else { fatalError() }
-        guard let data = image.pngData() else { fatalError() }
-        return data
-    }
     var fakeSession: FakeAlamofireSession {
         switch self {
         case .correctResponseWithData(let dataName):
@@ -55,21 +48,21 @@ enum FakeResponse {
             let bundle = Bundle(for: FakeAlamofireSession.self)
             let url = bundle.url(forResource: dataName, withExtension: "json")!
             let data = try! Data(contentsOf: url)
-            return FakeAlamofireSession(response: response, data: data, error: nil, pictureData: pictureData)
+            return FakeAlamofireSession(response: response, data: data, error: nil)
         case .correctResponseWithoutData:
             let response = HTTPURLResponse(
                 url: URL(string: "https://openclassrooms.com")!,
                 statusCode: 200, httpVersion: nil, headerFields: [:])!
-            return FakeAlamofireSession(response: response, data: nil, error: nil, pictureData: nil)
+            return FakeAlamofireSession(response: response, data: nil, error: nil)
         case .incorrectResponse:
             let response = HTTPURLResponse(
                 url: URL(string: "https://openclassrooms.com")!,
                 statusCode: 500, httpVersion: nil, headerFields: [:])!
-            return FakeAlamofireSession(response: response, data: nil, error: nil, pictureData: nil)
+            return FakeAlamofireSession(response: response, data: nil, error: nil)
         case .error:
             class FakeError: Error {}
             let error = FakeError()
-            return FakeAlamofireSession(response: nil, data: nil, error: error, pictureData: nil)
+            return FakeAlamofireSession(response: nil, data: nil, error: error)
         }
     }
 }

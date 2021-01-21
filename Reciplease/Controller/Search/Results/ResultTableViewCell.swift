@@ -9,6 +9,8 @@ import UIKit
 
 class ResultTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var timeStack: UIStackView!
+    @IBOutlet weak var ingredientsLabel: UILabel!
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var resultTitleLabel: UILabel!
     @IBOutlet weak var resultPictureView: UIImageView!
@@ -16,19 +18,22 @@ class ResultTableViewCell: UITableViewCell {
     @IBOutlet weak var personsLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        resultView.layer.cornerRadius = 10
-        resultPictureView.layer.cornerRadius = 10
-        resultPictureView.layer.maskedCorners = [.layerMinXMaxYCorner]
+        resultView.layer.cornerRadius = 20
+        //resultView.layer.shadowRadius = 10
+        resultView.layer.shadowColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        resultView.layer.shadowOpacity = 0.5
+        resultPictureView.layer.cornerRadius = resultView.layer.cornerRadius
+        resultPictureView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
     }
 
-    func setCell(title: String, image: UIImage?, persons: Int, time: Int) {
-        resultTitleLabel.text = title
-        resultPictureView.isHidden = image == nil
-        if let image = image {
-            resultPictureView.image = image
-        }
-        personsLabel.text = "\(persons)"
-        timeLabel.text = "\(time)"
+    func setCell(recipe: RecipeDetailsJSONStructure, image: UIImage) {
+        resultTitleLabel.text = recipe.title
+        resultPictureView.image = image
+        personsLabel.text = "\(recipe.yield)"
+        timeLabel.text = "\(Int(recipe.totalTime)) min."
+        timeStack.isHidden = recipe.totalTime == 0
+        
+        ingredientsLabel.text = recipe.ingredients.joined(separator: ", ")
     }
 
 }

@@ -37,6 +37,7 @@ struct RecipeDetailsJSONStructure {
     let totalWeight: Float
     let totalTime: Float
     let ingredients: [String]
+    let digest: [DigestJSONStructure]
 }
 extension RecipeDetailsJSONStructure: Decodable {
     enum CodingKeys: String, CodingKey {
@@ -47,6 +48,7 @@ extension RecipeDetailsJSONStructure: Decodable {
         case totalWeight = "totalWeight"
         case ingredients = "ingredientLines"
         case totalTime = "totalTime"
+        case digest = "digest"
     }
 }
 struct IngredientJSONStructure {
@@ -57,6 +59,32 @@ extension IngredientJSONStructure: Decodable {
     enum CodingKeys: String, CodingKey {
         case title = "text"
         case imageURL = "image"
+    }
+}
+/*
+ "label": "Carbs",
+ "tag": "CHOCDF",
+ "schemaOrgTag": "carbohydrateContent",
+ "total": 279.14610302734985,
+ "hasRDI": true,
+ "daily": 93.04870100911661,
+ "unit": "g",
+ "sub": [
+ */
+struct DigestJSONStructure {
+    let label: String
+    let total: Double
+    let daily: Double
+    let unit: String
+    let sub: [DigestJSONStructure]?
+}
+extension DigestJSONStructure: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case label = "label"
+        case total = "total"
+        case daily = "daily"
+        case unit = "unit"
+        case sub = "sub"
     }
 }
 

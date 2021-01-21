@@ -9,6 +9,7 @@ import UIKit
 
 class SearchViewController: UIViewController {
     var ingredients: [String] = []
+    var useFakeSession: Bool = true
     @IBOutlet weak var ingredientTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -28,18 +29,19 @@ class SearchViewController: UIViewController {
         clearIngredients()
     }
     @IBAction func search(_ sender: Any) {
-        /*
-        guard ingredients.count > 0 else {
-            showAlert(title: "No ingredients", message: "You have to write at least one ingredient.", style: .alert, yesNoActions: false)
-            return
+        if !useFakeSession {
+            guard ingredients.count > 0 else {
+                showAlert(title: "No ingredients", message: "You have to write at least one ingredient.", style: .alert, yesNoActions: false)
+                return
+            }
         }
- */
         performSegue(withIdentifier: "ResultsSegue", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ResultsSegue", let controller = segue.destination as? ResultsTableViewController {
             controller.choosenIngredients = ingredients
+            controller.useFakeSession = useFakeSession
         }
     }
     

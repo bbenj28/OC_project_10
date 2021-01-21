@@ -8,46 +8,35 @@
 import Foundation
 import Alamofire
 class RecipeService {
+    typealias RecipeDetails = (RecipeDetailsJSONStructure, PictureData)
+    typealias PictureData = Data?
     let decoder = JSONStructureDecoder()
     let session: AlamofireSession
     init(session: AlamofireSession = RecipeSession()) {
         self.session = session
     }
-    func searchRecipe(for ingredients: [String], completionHandler: @escaping (Result<[Recipe], Error>) -> Void) {
+    
+    func searchRecipe(for ingredients: [String], completionHandler: @escaping (Result<[RecipeDetails], Error>) -> Void) {
         // get recipes from a network call
         getRecipes(for: ingredients) { (result) in
             switch result {
-            case .success(let recipes):
-                var finalRecipes: [Recipe] = []
-                guard recipes.count > 0 else {
+            case .success(let response):
+                // in case of success, prepare the recipes to return
+                var finalRecipes: [RecipeDetails] = []
+                guard response.count > 0 else {
+                    // no result case : return empty array
                     completionHandler(.success(finalRecipes))
                     return
                 }
                 // get hits
-                let hits = recipes.hits
-                // get pictures from each hit
+                let hits = response.hits
+                // get picture and recipe from each hit
                 for index in 0...hits.count - 1 {
                     let recipe = hits[index].recipe
-                    // check if the session is a fake
-                    if let fakeSession = self.session as? FakeAlamofireSession {
-                        // if is a fake session, get picture from session
-                        finalRecipes.append(Recipe(title: recipe.title, pictureData: fakeSession.pictureData, ingredients: recipe.ingredients, time: recipe.totalTime, persons: recipe.yield))
+                    self.getPictureData(recipe.imageURL) { (pictureData) in
+                        finalRecipes.append((recipe, pictureData))
                         if index == hits.count - 1 {
                             completionHandler(.success(finalRecipes))
-                        }
-                    } else {
-                        // otherwise, get picture with the url
-                        if let url = URL(string: recipe.imageURL) {
-                            let data = try? Data(contentsOf: url)
-                            finalRecipes.append(Recipe(title: recipe.title, pictureData: data, ingredients: recipe.ingredients, time: recipe.totalTime, persons: recipe.yield))
-                            if index == hits.count - 1 {
-                                completionHandler(.success(finalRecipes))
-                            }
-                        } else {
-                            finalRecipes.append(Recipe(title: recipe.title, pictureData: nil, ingredients: recipe.ingredients, time: recipe.totalTime, persons: recipe.yield))
-                            if index == hits.count - 1 {
-                                completionHandler(.success(finalRecipes))
-                            }
                         }
                     }
                 }
@@ -57,12 +46,27 @@ class RecipeService {
         }
     }
     
-    func getRecipes(for ingredients: [String], completionHandler: @escaping (Result<RecipeJSONStructure, Error>) -> Void) {
+    private func getRecipes(for ingredients: [String], completionHandler: @escaping (Result<RecipeJSONStructure, Error>) -> Void) {
         guard let url = URL(string: "https://api.edamam.com/search") else { return }
         performNetworkCall(for: ingredients, with: url) { (response) in
             self.decoder.decode(response, completionHandler: completionHandler)
         }
     }
+    private func getPictureData(_ url: String, completionHandler: (PictureData) -> Void) {
+        if session is FakeAlamofireSession {
+            // if a fakesession is used, get default picture
+            completionHandler(nil)
+        } else {
+            // otherwise, get picture with the url
+            if let url = URL(string: url) {
+                let data = try? Data(contentsOf: url)
+                completionHandler(data)
+            } else {
+                completionHandler(nil)
+            }
+        }
+    }
+    
     
     private func performNetworkCall(for ingredients: [String], with url: URL, completionHandler: @escaping (AFDataResponse<Any>) -> Void) {
         let ingredientsRequest = ingredients.joined(separator: ", ")
