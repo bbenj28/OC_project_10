@@ -17,14 +17,15 @@ class ResultsTableViewController: UITableViewController {
         }
     }
     var useFakeSession: Bool = false
-    let indicator = UIActivityIndicatorView(style: .white)
+    let indicator = RecipeActivityIndicator()
     var service: RecipeService {
         return useFakeSession ? RecipeService(session: FakeResponse.correctResponseWithData("RecipeJson").fakeSession) : RecipeService()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        indicator.startAnimating()
+        indicator.frame.size = CGSize(width: 150, height: 150)
+        indicator.animate()
         indicator.center = CGPoint(x: view.frame.width / 2, y: view.frame.height / 2)
         view.addSubview(indicator)
         
@@ -33,12 +34,13 @@ class ResultsTableViewController: UITableViewController {
             tableView.reloadData()
             service.searchRecipe(for: choosenIngredients) { (result) in
                 DispatchQueue.main.async {
-                    self.isSearching = false
                     switch result {
                     case .success(let recipes):
                         self.recipes = recipes
                         self.tableView.reloadData()
+                        self.isSearching = false
                     case .failure(let error):
+                        self.isSearching = false
                         self.showAlert(error: error)
                         self.recipes = []
                     }
