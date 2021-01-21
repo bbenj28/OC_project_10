@@ -38,6 +38,7 @@ struct RecipeDetailsJSONStructure: Recipe {
     let totalTime: Float
     let ingredients: [String]
     let healthLabels: [String]
+    let cautions: [String]
     let digest: [DigestJSONStructure]
 }
 extension RecipeDetailsJSONStructure: Decodable {
@@ -50,6 +51,7 @@ extension RecipeDetailsJSONStructure: Decodable {
         case ingredients = "ingredientLines"
         case totalTime = "totalTime"
         case healthLabels = "healthLabels"
+        case cautions = "cautions"
         case digest = "digest"
     }
 }
@@ -75,6 +77,7 @@ extension IngredientJSONStructure: Decodable {
  */
 struct DigestJSONStructure {
     let label: String
+    let tag: String
     let total: Double
     let daily: Double
     let unit: String
@@ -83,6 +86,7 @@ struct DigestJSONStructure {
 extension DigestJSONStructure: Decodable {
     enum CodingKeys: String, CodingKey {
         case label = "label"
+        case tag = "tag"
         case total = "total"
         case daily = "daily"
         case unit = "unit"

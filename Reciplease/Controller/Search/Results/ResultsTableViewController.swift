@@ -90,7 +90,7 @@ class ResultsTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let controller = segue.destination as? RecipeTableViewController, let recipe = selectedRecipe {
+        if let controller = segue.destination as? RecipeViewController, let recipe = selectedRecipe {
             controller.recipe = recipe
         }
     }
