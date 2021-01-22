@@ -161,8 +161,8 @@
 		03AFE28925B7348F009B8904 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				03C5755025BB55DB0031C075 /* Recipe */,
 				03CE0E6325B872F40097BEA6 /* AlamoSession */,
-				03AFE2B625B73C8D009B8904 /* RecipeService */,
 				03AFE2A025B739B9009B8904 /* General */,
 				03AFE28E25B734B8009B8904 /* CoreData */,
 			);
@@ -214,7 +214,6 @@
 				03AFE25A25B73285009B8904 /* Reciplease.xcdatamodeld */,
 				03AFE29825B73826009B8904 /* CoreDataStack.swift */,
 				03AFE29C25B738AB009B8904 /* CoreDataManager.swift */,
-				03DB291925BB268D002F8CA5 /* RecipeData.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -235,9 +234,34 @@
 				03AFE2B725B73C99009B8904 /* RecipeJSONStructure.swift */,
 				03AFE2BB25B740D1009B8904 /* RecipeService.swift */,
 				03CE0E6825B873720097BEA6 /* RecipeSession.swift */,
-				033F776125B991E7009DD04F /* Recipe.swift */,
 			);
 			path = RecipeService;
+			sourceTree = "<group>";
+		};
+		03C5755025BB55DB0031C075 /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				03C5755225BB55F10031C075 /* RecipeData */,
+				03AFE2B625B73C8D009B8904 /* RecipeService */,
+				03C5755125BB55DF0031C075 /* Protocol */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
+		03C5755125BB55DF0031C075 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				033F776125B991E7009DD04F /* Recipe.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		03C5755225BB55F10031C075 /* RecipeData */ = {
+			isa = PBXGroup;
+			children = (
+				03DB291925BB268D002F8CA5 /* RecipeData.swift */,
+			);
+			path = RecipeData;
 			sourceTree = "<group>";
 		};
 		03CE0E3225B81E430097BEA6 /* Search */ = {

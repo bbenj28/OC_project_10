@@ -12,5 +12,6 @@ class CoreDataManager {
     init(_ stack: CoreDataStack) {
         self.stack = stack
     }
+
     
 }
