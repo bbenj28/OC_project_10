@@ -20,7 +20,7 @@ class ResultTableViewCell: UITableViewCell {
         super.awakeFromNib()
         resultView.layer.cornerRadius = 20
         //resultView.layer.shadowRadius = 10
-        resultView.layer.shadowColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        resultView.layer.shadowColor = #colorLiteral(red: 0.6704671637, green: 0.6704671637, blue: 0.6704671637, alpha: 1)
         resultView.layer.shadowOpacity = 0.5
         resultPictureView.layer.cornerRadius = resultView.layer.cornerRadius
         resultPictureView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]

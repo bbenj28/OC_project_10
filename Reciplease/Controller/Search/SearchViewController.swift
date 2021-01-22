@@ -8,14 +8,23 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-    var ingredients: [String] = []
-    var useFakeSession: Bool = true
+    @IBOutlet weak var searchButton: UIButton!
+    var ingredients: [String] = [] {
+        didSet {
+            searchButton.isHidden = ingredients.count == 0 && !useFakeSession
+        }
+    }
+    var useFakeSession: Bool = false
     @IBOutlet weak var ingredientTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        searchButton.isHidden = ingredients.count == 0 && !useFakeSession
     }
     
 
@@ -99,7 +108,7 @@ extension SearchViewController:  UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let label = UILabel()
         label.text = ingredients.count == 0 ?"you have no ingredient so far" : ""
-        label.font = UIFont.systemFont(ofSize: 17, weight: .light)
+        label.font = UIFont(name: "Chalkduster", size: 17)
         label.textAlignment = .center
         label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         return label

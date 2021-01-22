@@ -160,8 +160,10 @@
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BO3-JK-Pof">
                                         <rect key="frame" x="0.0" y="360" width="280" height="40"/>
+                                        <color key="backgroundColor" red="0.67046716370000004" green="0.67046716370000004" blue="0.67046716370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="checkmark">
+                                        <state key="normal" title="   search for recipes" image="checkmark">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
                                         </state>
                                         <connections>
@@ -189,6 +191,7 @@
                     <navigationItem key="navigationItem" title="Search" id="qR6-3x-EFo"/>
                     <connections>
                         <outlet property="ingredientTextField" destination="Eib-KT-2AW" id="seG-7e-ROY"/>
+                        <outlet property="searchButton" destination="BO3-JK-Pof" id="gBY-8B-4eV"/>
                         <outlet property="tableView" destination="lcU-b4-fNQ" id="MsF-sS-Rhi"/>
                         <segue destination="u1M-1P-ydb" kind="show" identifier="ResultsSegue" id="KQv-Kj-0s4"/>
                     </connections>
@@ -214,13 +217,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oho-sj-8tn">
-                                            <rect key="frame" x="16" y="12.5" width="288" height="225"/>
+                                            <rect key="frame" x="16" y="6.5" width="288" height="237.5"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QbC-Yo-RfC">
-                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="225"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="237.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWn-EH-BxP">
-                                                            <rect key="frame" x="0.0" y="0.0" width="288" height="46.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="288" height="49"/>
                                                             <string key="text">Label
 labem</string>
                                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
@@ -228,7 +231,7 @@ labem</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5d0-HW-XRf">
-                                                            <rect key="frame" x="0.0" y="51.5" width="288" height="33.5"/>
+                                                            <rect key="frame" x="0.0" y="54" width="288" height="36"/>
                                                             <string key="text">Label
 label</string>
                                                             <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="14"/>
@@ -236,23 +239,23 @@ label</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1ho-YI-6Ww">
-                                                            <rect key="frame" x="0.0" y="90" width="288" height="135"/>
+                                                            <rect key="frame" x="0.0" y="95" width="288" height="142.5"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qVL-qZ-21L">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="173" height="135"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="173" height="142.5"/>
                                                                 </imageView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="0go-tA-Uuo">
-                                                                    <rect key="frame" x="183" y="0.0" width="105" height="135"/>
+                                                                    <rect key="frame" x="183" y="0.0" width="105" height="142.5"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="bvm-CX-gny">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="105" height="67.5"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="105" height="71"/>
                                                                             <subviews>
                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="Lqs-bc-qGo">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="31.5" height="67.5"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="31.5" height="71"/>
                                                                                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 </imageView>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uk7-2J-Xtt">
-                                                                                    <rect key="frame" x="34.5" y="0.0" width="70.5" height="67.5"/>
+                                                                                    <rect key="frame" x="34.5" y="0.0" width="70.5" height="71"/>
                                                                                     <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="25"/>
                                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     <nil key="highlightedColor"/>
@@ -263,14 +266,14 @@ label</string>
                                                                             </constraints>
                                                                         </stackView>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Ffr-ML-d8p">
-                                                                            <rect key="frame" x="0.0" y="67.5" width="105" height="67.5"/>
+                                                                            <rect key="frame" x="0.0" y="71" width="105" height="71.5"/>
                                                                             <subviews>
                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timer" translatesAutoresizingMaskIntoConstraints="NO" id="uV0-3v-D7y">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="31.5" height="67.5"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="31.5" height="71.5"/>
                                                                                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 </imageView>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999 min." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDf-dj-Dqa">
-                                                                                    <rect key="frame" x="34.5" y="0.0" width="70.5" height="67.5"/>
+                                                                                    <rect key="frame" x="34.5" y="0.0" width="70.5" height="71.5"/>
                                                                                     <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="20"/>
                                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     <nil key="highlightedColor"/>
@@ -306,7 +309,7 @@ label</string>
                                     </subviews>
                                     <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstItem="oho-sj-8tn" firstAttribute="height" secondItem="bm8-k7-SF6" secondAttribute="height" multiplier="0.9" id="bDl-Wu-5cG"/>
+                                        <constraint firstItem="oho-sj-8tn" firstAttribute="height" secondItem="bm8-k7-SF6" secondAttribute="height" multiplier="0.95" id="bDl-Wu-5cG"/>
                                         <constraint firstItem="oho-sj-8tn" firstAttribute="centerY" secondItem="bm8-k7-SF6" secondAttribute="centerY" id="oUx-7O-MOk"/>
                                         <constraint firstItem="oho-sj-8tn" firstAttribute="width" secondItem="bm8-k7-SF6" secondAttribute="width" multiplier="0.9" id="utu-nW-Ysi"/>
                                         <constraint firstItem="oho-sj-8tn" firstAttribute="centerX" secondItem="bm8-k7-SF6" secondAttribute="centerX" id="wej-ru-6TV"/>
