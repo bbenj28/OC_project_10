@@ -14,7 +14,7 @@ class SearchViewController: UIViewController {
             searchButton.isHidden = ingredients.count == 0 && !useFakeSession
         }
     }
-    var useFakeSession: Bool = false
+    var useFakeSession: Bool = true
     @IBOutlet weak var ingredientTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {

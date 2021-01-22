@@ -130,21 +130,12 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let lineType = lineTypes[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: lineType.cellIdentifier, for: indexPath)
-        if let recipe = recipe {
-            cell.textLabel?.text = lineType.getTitle(recipe)
-            cell.detailTextLabel?.text = lineType.getDetails(recipe)
-            if let cell = cell as? PictureCellTableViewCell {
-                let details = recipe.0
-                let pictureData = recipe.1
-                guard let data = pictureData, let image = UIImage(data: data) else {
-                    guard let image = UIImage(named: "meal") else { fatalError() }
-                    cell.setCell(details: details, picture: image)
-                    return cell
-                }
-                cell.setCell(details: details, picture: image)
-            }
-        }
-        return cell
+        guard let recipe = recipe else { return cell }
+        cell.textLabel?.text = lineType.getTitle(recipe)
+        cell.detailTextLabel?.text = lineType.getDetails(recipe)
+        guard let pictureCell = cell as? PictureCellTableViewCell else { return cell }
+        pictureCell.setCell(details: recipe.0, imageData: recipe.1)
+        return pictureCell
     }
 
     

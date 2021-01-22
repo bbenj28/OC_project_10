@@ -26,14 +26,17 @@ class ResultTableViewCell: UITableViewCell {
         resultPictureView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
     }
 
-    func setCell(recipe: RecipeDetailsJSONStructure, image: UIImage) {
+    func setCell(recipe: RecipeDetailsJSONStructure, imageData: Data?) {
         resultTitleLabel.text = recipe.title
-        resultPictureView.image = image
         personsLabel.text = "\(recipe.yield)"
         timeLabel.text = "\(Int(recipe.totalTime)) min."
         timeStack.isHidden = recipe.totalTime == 0
-        
         ingredientsLabel.text = recipe.ingredients.joined(separator: ", ")
+        guard let data = imageData, let image = UIImage(data: data) else {
+            resultPictureView.image = UIImage(named: "default1")
+            return
+        }
+        resultPictureView.image = image
     }
 
 }

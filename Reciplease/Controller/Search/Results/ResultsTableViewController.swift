@@ -75,13 +75,7 @@ class ResultsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath)
         guard let resultCell = cell as? ResultTableViewCell else { return cell }
         let result = recipes[indexPath.row]
-        guard let data = result.1, let image = UIImage(data: data) else {
-            guard let image = UIImage(named: "meal") else { fatalError() }
-            resultCell.setCell(recipe: result.0, image: image)
-            return resultCell
-        }
-        // Configure the cell...
-        resultCell.setCell(recipe: result.0, image: image)
+        resultCell.setCell(recipe: result.0, imageData: result.1)
         return resultCell
     }
     
