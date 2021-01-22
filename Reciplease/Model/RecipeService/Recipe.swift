@@ -6,4 +6,15 @@
 //
 
 import Foundation
-protocol Recipe { }
+protocol Recipe {
+    var title: String { get }
+    var url: String { get }
+    var imageURL: String { get }
+    var yield: Int { get }
+    var calories: Float { get }
+    var totalWeight: Float { get }
+    var totalTime: Float { get }
+    var ingredients: [String] { get }
+    var healthLabels: [String] { get }
+    var cautions: [String] { get }
+}

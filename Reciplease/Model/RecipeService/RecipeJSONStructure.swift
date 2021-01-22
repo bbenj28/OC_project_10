@@ -30,16 +30,16 @@ extension HitJSONStructure: Decodable {
     }
 }
 struct RecipeDetailsJSONStructure: Recipe {
-    let title: String
-    let url: String
-    let imageURL: String
-    let yield: Int
-    let calories: Float
-    let totalWeight: Float
-    let totalTime: Float
-    let ingredients: [String]
-    let healthLabels: [String]
-    let cautions: [String]
+    var title: String
+    var url: String
+    var imageURL: String
+    var yield: Int
+    var calories: Float
+    var totalWeight: Float
+    var totalTime: Float
+    var ingredients: [String]
+    var healthLabels: [String]
+    var cautions: [String]
 }
 extension RecipeDetailsJSONStructure: Decodable {
     enum CodingKeys: String, CodingKey {

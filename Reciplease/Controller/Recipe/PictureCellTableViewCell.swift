@@ -25,7 +25,7 @@ class PictureCellTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setCell(details: RecipeDetailsJSONStructure, imageData: Data?) {
+    func setCell(details: Recipe, imageData: Data?) {
         personsLabel.text = "\(details.yield)"
         timeStack.isHidden = details.totalTime == 0
         timeLabel.text = "\(Int(details.totalTime)) min."

@@ -26,7 +26,7 @@ class ResultTableViewCell: UITableViewCell {
         resultPictureView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
     }
 
-    func setCell(recipe: RecipeDetailsJSONStructure, imageData: Data?) {
+    func setCell(recipe: Recipe, imageData: Data?) {
         resultTitleLabel.text = recipe.title
         personsLabel.text = "\(recipe.yield)"
         timeLabel.text = "\(Int(recipe.totalTime)) min."

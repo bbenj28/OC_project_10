@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 class RecipeService {
-    typealias RecipeDetails = (RecipeDetailsJSONStructure, PictureData)
+    typealias RecipeDetails = (Recipe, PictureData)
     typealias PictureData = Data?
     let decoder = JSONStructureDecoder()
     let session: AlamofireSession
