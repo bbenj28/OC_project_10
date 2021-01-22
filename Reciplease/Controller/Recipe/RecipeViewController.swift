@@ -25,6 +25,8 @@ class RecipeViewController: UIViewController {
         tableView.tableFooterView = UIView()
         if let recipe = recipe?.0 {
             if recipe.ingredients.count > 0 { lineTypes.append(.ingredients) }
+            if recipe.calories > 0 { lineTypes.append(.calories) }
+            if recipe.totalWeight > 0 { lineTypes.append(.weight) }
             if recipe.healthLabels.count > 0 { lineTypes.append(.health) }
             if recipe.cautions.count > 0 { lineTypes.append(.cautions) }
         }
@@ -55,7 +57,7 @@ class RecipeViewController: UIViewController {
 extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
     
     enum LineType {
-        case title, picture, ingredients, health, cautions
+        case title, picture, ingredients, health, cautions, calories, weight
         var cellIdentifier: String {
             switch self {
             case .title:
@@ -64,7 +66,53 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
                 return "PictureCell"
             case .ingredients, .health, .cautions:
                 return "TextCell"
+            case .calories, .weight:
+                return "DetailCell"
             }
+        }
+        func getTitle(_ recipe: RecipeService.RecipeDetails) -> String {
+            switch self {
+            case .title:
+                return recipe.0.title
+            case .ingredients:
+                return "Ingredients:"
+            case .health:
+                return "Health indications:"
+            case .cautions:
+                return "Contains:"
+            case .calories:
+                return "Calories:"
+            case .weight:
+                return "Weight:"
+            default:
+                return ""
+            }
+        }
+        func getDetails(_ recipe: RecipeService.RecipeDetails) -> String {
+            switch self {
+            case .ingredients:
+                return mapDetails(recipe.0.ingredients)
+            case .health:
+                return mapDetails(recipe.0.healthLabels)
+            case .cautions:
+                return mapDetails(recipe.0.cautions)
+            case .calories:
+                return formatNumber(NSNumber(value: recipe.0.calories))
+            case .weight:
+                return formatNumber(NSNumber(value: recipe.0.totalWeight))
+            default:
+                return ""
+            }
+        }
+        private func mapDetails(_ details: [String]) -> String {
+            return details.map({ "- \($0)" }).joined(separator: "\n")
+        }
+        private func formatNumber(_ number: NSNumber) -> String {
+            let formatter = NumberFormatter()
+            formatter.maximumFractionDigits = 2
+            formatter.minimumFractionDigits = 2
+            guard let number = formatter.string(from: number) else { return "" }
+            return number
         }
     }
 
@@ -83,34 +131,17 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
         let lineType = lineTypes[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: lineType.cellIdentifier, for: indexPath)
         if let recipe = recipe {
-            switch lineType {
-            case .title:
-                cell.textLabel?.text = recipe.0.title
-                return cell
-            case .picture:
-                if indexPath.row == 1, let cell = cell as? PictureCellTableViewCell {
-                    let details = recipe.0
-                    let pictureData = recipe.1
-                    guard let data = pictureData, let image = UIImage(data: data) else {
-                        guard let image = UIImage(named: "meal") else { fatalError() }
-                        cell.setCell(details: details, picture: image)
-                        return cell
-                    }
+            cell.textLabel?.text = lineType.getTitle(recipe)
+            cell.detailTextLabel?.text = lineType.getDetails(recipe)
+            if let cell = cell as? PictureCellTableViewCell {
+                let details = recipe.0
+                let pictureData = recipe.1
+                guard let data = pictureData, let image = UIImage(data: data) else {
+                    guard let image = UIImage(named: "meal") else { fatalError() }
                     cell.setCell(details: details, picture: image)
                     return cell
                 }
-            case .ingredients:
-                cell.textLabel?.text = "Ingredients:"
-                cell.detailTextLabel?.text = recipe.0.ingredients.map({"- \($0)"}).joined(separator: "\n")
-                return cell
-            case .health:
-                cell.textLabel?.text = "Health indications:"
-                cell.detailTextLabel?.text = recipe.0.healthLabels.map({"- \($0)"}).joined(separator: "\n")
-                return cell
-            case .cautions:
-                cell.textLabel?.text = "Contains:"
-                cell.detailTextLabel?.text = recipe.0.cautions.map({"- \($0)"}).joined(separator: "\n")
-                return cell
+                cell.setCell(details: details, picture: image)
             }
         }
         return cell

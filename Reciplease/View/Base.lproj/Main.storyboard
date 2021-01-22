@@ -472,129 +472,30 @@ label</string>
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DigestTitleCell" textLabel="hnQ-On-2vh" style="IBUITableViewCellStyleDefault" id="DHo-Dw-wxa">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailCell" textLabel="s7d-Dl-vIG" detailTextLabel="SnJ-wK-e7F" style="IBUITableViewCellStyleValue1" id="oOO-Sk-CeN">
                                                 <rect key="frame" x="0.0" y="295" width="320" height="51.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DHo-Dw-wxa" id="P1j-d5-V6O">
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oOO-Sk-CeN" id="GEx-F5-1Kt">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hnQ-On-2vh">
-                                                            <rect key="frame" x="16" y="0.0" width="288" height="51.5"/>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s7d-Dl-vIG">
+                                                            <rect key="frame" x="16" y="13" width="53" height="25.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="20"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SnJ-wK-e7F">
+                                                            <rect key="frame" x="258.5" y="19" width="45.5" height="19"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
+                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                 </tableViewCellContentView>
-                                                <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DigestCell" id="nA7-4s-qaP" customClass="DigestCellTableViewCell" customModule="Reciplease" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="346.5" width="320" height="26"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nA7-4s-qaP" id="pp5-1W-RDt">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="26"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="g3e-dg-YGh">
-                                                            <rect key="frame" x="35" y="5" width="280" height="16"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqF-Ac-L4D">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="66.5" height="16"/>
-                                                                    <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="14"/>
-                                                                    <color key="textColor" red="0.67046716370000004" green="0.67046716370000004" blue="0.67046716370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doy-Q9-A07">
-                                                                    <rect key="frame" x="71.5" y="0.0" width="66" height="16"/>
-                                                                    <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="14"/>
-                                                                    <color key="textColor" red="0.67046716370000004" green="0.67046716370000004" blue="0.67046716370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdD-UY-oVS">
-                                                                    <rect key="frame" x="142.5" y="0.0" width="66.5" height="16"/>
-                                                                    <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="14"/>
-                                                                    <color key="textColor" red="0.67046716370000004" green="0.67046716370000004" blue="0.67046716370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inB-Hf-oJy">
-                                                                    <rect key="frame" x="214" y="0.0" width="66" height="16"/>
-                                                                    <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="14"/>
-                                                                    <color key="textColor" red="0.67046716370000004" green="0.67046716370000004" blue="0.67046716370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstItem="g3e-dg-YGh" firstAttribute="top" secondItem="pp5-1W-RDt" secondAttribute="top" constant="5" id="8Bb-9p-Ojl"/>
-                                                        <constraint firstAttribute="trailing" secondItem="g3e-dg-YGh" secondAttribute="trailing" constant="5" id="pKp-MD-oaU"/>
-                                                        <constraint firstItem="g3e-dg-YGh" firstAttribute="leading" secondItem="pp5-1W-RDt" secondAttribute="leading" constant="35" id="u0v-0K-ztt"/>
-                                                        <constraint firstAttribute="bottom" secondItem="g3e-dg-YGh" secondAttribute="bottom" constant="5" id="x05-QN-2Vq"/>
-                                                    </constraints>
-                                                </tableViewCellContentView>
-                                                <connections>
-                                                    <outlet property="stack" destination="g3e-dg-YGh" id="l47-SS-HrL"/>
-                                                    <outletCollection property="cellLabels" destination="cqF-Ac-L4D" collectionClass="NSMutableArray" id="AoC-8h-VPB"/>
-                                                    <outletCollection property="cellLabels" destination="doy-Q9-A07" collectionClass="NSMutableArray" id="Rxw-SC-JXL"/>
-                                                    <outletCollection property="cellLabels" destination="jdD-UY-oVS" collectionClass="NSMutableArray" id="DV9-ZO-UWN"/>
-                                                    <outletCollection property="cellLabels" destination="inB-Hf-oJy" collectionClass="NSMutableArray" id="cxN-c2-WDa"/>
-                                                </connections>
-                                            </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DigestSubCell" id="dgo-ph-Yv1" customClass="DigestSubCellTableViewCell" customModule="Reciplease" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="372.5" width="320" height="26"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dgo-ph-Yv1" id="ajw-dZ-9hR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="26"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8Er-lc-1wo">
-                                                            <rect key="frame" x="55" y="5" width="260" height="16"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZv-qc-Ll9">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="61.5" height="16"/>
-                                                                    <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="14"/>
-                                                                    <color key="textColor" red="0.67046716370000004" green="0.67046716370000004" blue="0.67046716370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mrf-D7-Odo">
-                                                                    <rect key="frame" x="66.5" y="0.0" width="61" height="16"/>
-                                                                    <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="14"/>
-                                                                    <color key="textColor" red="0.67046716370000004" green="0.67046716370000004" blue="0.67046716370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1O-72-g6c">
-                                                                    <rect key="frame" x="132.5" y="0.0" width="61.5" height="16"/>
-                                                                    <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="14"/>
-                                                                    <color key="textColor" red="0.67046716370000004" green="0.67046716370000004" blue="0.67046716370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glI-yd-hig">
-                                                                    <rect key="frame" x="199" y="0.0" width="61" height="16"/>
-                                                                    <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="14"/>
-                                                                    <color key="textColor" red="0.67046716370000004" green="0.67046716370000004" blue="0.67046716370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="8Er-lc-1wo" secondAttribute="trailing" constant="5" id="DDF-AC-Xqi"/>
-                                                        <constraint firstItem="8Er-lc-1wo" firstAttribute="leading" secondItem="ajw-dZ-9hR" secondAttribute="leading" constant="55" id="b9c-80-yC1"/>
-                                                        <constraint firstAttribute="bottom" secondItem="8Er-lc-1wo" secondAttribute="bottom" constant="5" id="sbu-oQ-qzD"/>
-                                                        <constraint firstItem="8Er-lc-1wo" firstAttribute="top" secondItem="ajw-dZ-9hR" secondAttribute="top" constant="5" id="uYM-fg-qLj"/>
-                                                    </constraints>
-                                                </tableViewCellContentView>
-                                                <connections>
-                                                    <outlet property="stack" destination="8Er-lc-1wo" id="mW4-Sz-Izd"/>
-                                                    <outletCollection property="cellLabels" destination="QZv-qc-Ll9" collectionClass="NSMutableArray" id="ygl-Kc-7KM"/>
-                                                    <outletCollection property="cellLabels" destination="Mrf-D7-Odo" collectionClass="NSMutableArray" id="Ety-xN-uGm"/>
-                                                    <outletCollection property="cellLabels" destination="l1O-72-g6c" collectionClass="NSMutableArray" id="NQY-5n-Hta"/>
-                                                    <outletCollection property="cellLabels" destination="glI-yd-hig" collectionClass="NSMutableArray" id="JJL-Va-vM3"/>
-                                                </connections>
+                                                <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
