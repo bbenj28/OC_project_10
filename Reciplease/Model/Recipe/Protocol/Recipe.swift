@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 protocol Recipe {
     var title: String { get }
     var url: String { get }
@@ -18,3 +19,10 @@ protocol Recipe {
     var healthLabels: [String] { get }
     var cautions: [String] { get }
 }
+protocol RecipePart {
+    var name: String? { get set }
+    var recipes: NSSet? { get set }
+}
+open class Ingredient: NSManagedObject, RecipePart { }
+open class HealthLabel: NSManagedObject, RecipePart { }
+open class Caution: NSManagedObject, RecipePart { }

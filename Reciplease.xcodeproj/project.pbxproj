@@ -18,10 +18,10 @@
 		03AFE26125B73286009B8904 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03AFE25F25B73286009B8904 /* LaunchScreen.storyboard */; };
 		03AFE26C25B73286009B8904 /* RecipleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFE26B25B73286009B8904 /* RecipleaseTests.swift */; };
 		03AFE29925B73826009B8904 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFE29825B73826009B8904 /* CoreDataStack.swift */; };
-		03AFE29D25B738AB009B8904 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFE29C25B738AB009B8904 /* CoreDataManager.swift */; };
 		03AFE2A625B739EE009B8904 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFE2A525B739EE009B8904 /* APIKeys.swift */; };
 		03AFE2B825B73C99009B8904 /* RecipeJSONStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFE2B725B73C99009B8904 /* RecipeJSONStructure.swift */; };
 		03AFE2BC25B740D1009B8904 /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFE2BB25B740D1009B8904 /* RecipeService.swift */; };
+		03C5755625BB578B0031C075 /* RecipeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C5755525BB578B0031C075 /* RecipeDataManager.swift */; };
 		03CE0E2325B807E80097BEA6 /* JSONStructureDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE0E2225B807E80097BEA6 /* JSONStructureDecoder.swift */; };
 		03CE0E2725B808320097BEA6 /* ApplicationErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE0E2625B808320097BEA6 /* ApplicationErrors.swift */; };
 		03CE0E2B25B811CC0097BEA6 /* Error+userMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE0E2A25B811CC0097BEA6 /* Error+userMessage.swift */; };
@@ -64,10 +64,10 @@
 		03AFE26B25B73286009B8904 /* RecipleaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseTests.swift; sourceTree = "<group>"; };
 		03AFE26D25B73286009B8904 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03AFE29825B73826009B8904 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		03AFE29C25B738AB009B8904 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		03AFE2A525B739EE009B8904 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		03AFE2B725B73C99009B8904 /* RecipeJSONStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeJSONStructure.swift; sourceTree = "<group>"; };
 		03AFE2BB25B740D1009B8904 /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
+		03C5755525BB578B0031C075 /* RecipeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDataManager.swift; sourceTree = "<group>"; };
 		03CE0E2225B807E80097BEA6 /* JSONStructureDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONStructureDecoder.swift; sourceTree = "<group>"; };
 		03CE0E2625B808320097BEA6 /* ApplicationErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationErrors.swift; sourceTree = "<group>"; };
 		03CE0E2A25B811CC0097BEA6 /* Error+userMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+userMessage.swift"; sourceTree = "<group>"; };
@@ -213,7 +213,6 @@
 			children = (
 				03AFE25A25B73285009B8904 /* Reciplease.xcdatamodeld */,
 				03AFE29825B73826009B8904 /* CoreDataStack.swift */,
-				03AFE29C25B738AB009B8904 /* CoreDataManager.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -260,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				03DB291925BB268D002F8CA5 /* RecipeData.swift */,
+				03C5755525BB578B0031C075 /* RecipeDataManager.swift */,
 			);
 			path = RecipeData;
 			sourceTree = "<group>";
@@ -489,12 +489,12 @@
 			files = (
 				03CE0E6925B873720097BEA6 /* RecipeSession.swift in Sources */,
 				03CE0E2325B807E80097BEA6 /* JSONStructureDecoder.swift in Sources */,
-				03AFE29D25B738AB009B8904 /* CoreDataManager.swift in Sources */,
 				03AFE29925B73826009B8904 /* CoreDataStack.swift in Sources */,
 				03CE0E6525B873610097BEA6 /* AlamofireSession.swift in Sources */,
 				03CE0E2F25B8121D0097BEA6 /* UIViewController+Alert.swift in Sources */,
 				03AFE2A625B739EE009B8904 /* APIKeys.swift in Sources */,
 				03AFE25C25B73285009B8904 /* Reciplease.xcdatamodeld in Sources */,
+				03C5755625BB578B0031C075 /* RecipeDataManager.swift in Sources */,
 				03CE0E5A25B83E5B0097BEA6 /* ResultTableViewCell.swift in Sources */,
 				033F775A25B98A9C009DD04F /* RecipeViewController.swift in Sources */,
 				03AFE2BC25B740D1009B8904 /* RecipeService.swift in Sources */,

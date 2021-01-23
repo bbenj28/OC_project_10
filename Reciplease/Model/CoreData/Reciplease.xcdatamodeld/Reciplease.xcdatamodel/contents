@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Caution" representedClassName=".Caution" syncable="YES" codeGenerationType="class">
+    <entity name="Caution" representedClassName=".Caution" syncable="YES" codeGenerationType="category">
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="recipes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecipeData" inverseName="optionalCautions" inverseEntity="RecipeData"/>
     </entity>
-    <entity name="HealthLabel" representedClassName=".HealthLabel" syncable="YES" codeGenerationType="class">
+    <entity name="HealthLabel" representedClassName=".HealthLabel" syncable="YES" codeGenerationType="category">
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="recipes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecipeData" inverseName="optionalHealthLabels" inverseEntity="RecipeData"/>
     </entity>
-    <entity name="Ingredient" representedClassName=".Ingredient" syncable="YES" codeGenerationType="class">
+    <entity name="Ingredient" representedClassName=".Ingredient" syncable="YES" codeGenerationType="category">
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="recipes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecipeData" inverseName="optionalIngredients" inverseEntity="RecipeData"/>
     </entity>
@@ -25,9 +25,9 @@
         <relationship name="optionalIngredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="recipes" inverseEntity="Ingredient"/>
     </entity>
     <elements>
-        <element name="RecipeData" positionX="-126.01953125" positionY="-43.99609375" width="128" height="193"/>
-        <element name="Ingredient" positionX="137.03515625" positionY="211.8984375" width="128" height="73"/>
-        <element name="HealthLabel" positionX="166.8515625" positionY="100.8046875" width="128" height="73"/>
         <element name="Caution" positionX="141.21875" positionY="13.1640625" width="128" height="73"/>
+        <element name="HealthLabel" positionX="166.8515625" positionY="100.8046875" width="128" height="73"/>
+        <element name="Ingredient" positionX="137.03515625" positionY="211.8984375" width="128" height="73"/>
+        <element name="RecipeData" positionX="-126.01953125" positionY="-43.99609375" width="128" height="193"/>
     </elements>
 </model>
