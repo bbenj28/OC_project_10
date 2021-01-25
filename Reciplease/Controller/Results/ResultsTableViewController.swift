@@ -7,8 +7,17 @@
 
 import UIKit
 
-class ResultsTableViewController: UITableViewController {
+class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
+    
+    // MARK: - Properties
+    
+    /// Recipe getter.
+    var recipeGetter: RecipeGetter?
+    
+    /// Ingredients choosen by the user in the search page.
     var choosenIngredients: [String] = []
+    
+    /// Loaded recipes.
     var recipes: [Recipe] = []
     var selectedRecipe: Recipe?
     var isSearching: Bool = false {
@@ -16,37 +25,37 @@ class ResultsTableViewController: UITableViewController {
             indicator.isHidden = !isSearching
         }
     }
-    var useFakeSession: Bool = false
     let indicator = RecipeActivityIndicator()
-    var service: RecipeService {
-        return useFakeSession ? RecipeService(session: FakeResponse.correctResponseWithData("RecipeJson").fakeSession) : RecipeService()
-    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        showActivityIndicator()
+        loadRecipes()
+    }
+    private func showActivityIndicator() {
         tableView.tableFooterView = UIView()
         indicator.frame.size = CGSize(width: 150, height: 150)
         indicator.animate()
         indicator.center = CGPoint(x: view.frame.width / 2, y: view.frame.height / 2)
         view.addSubview(indicator)
-        
-        if choosenIngredients.count > 0 || useFakeSession {
-            isSearching = true
-            tableView.reloadData()
-            service.searchRecipe(for: choosenIngredients) { (result) in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let recipes):
-                        self.recipes = recipes
-                        self.tableView.reloadData()
-                        self.isSearching = false
-                    case .failure(let error):
-                        self.isSearching = false
-                        self.showAlert(error: error)
-                        self.recipes = []
-                    }
+    }
+    private func loadRecipes() {
+        isSearching = true
+        tableView.reloadData()
+        recipeGetter?.getRecipes(ingredients: choosenIngredients, completionHandler: { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let recipes):
+                    self.recipes = recipes
+                    self.tableView.reloadData()
+                    self.isSearching = false
+                case .failure(let error):
+                    self.isSearching = false
+                    self.showAlert(error: error)
+                    self.recipes = []
                 }
             }
-        }
+        })
     }
 
     // MARK: - Table view data source
@@ -61,14 +70,14 @@ class ResultsTableViewController: UITableViewController {
         return recipes.count
     }
     
-//    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        let label = UILabel()
-//        label.text = isSearching ? "searching ... please wait" : choosenIngredients.count == 0 ? "you have no ingredient in the list" : recipes.count == 0 ? "no results" : ""
-//        label.font = UIFont(name: "Chalkduster", size: 17)
-//        label.textAlignment = .center
-//        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-//        return label
-//    }
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = isSearching ? "" : recipes.count == 0 ? "oops, no recipe has been found..." : ""
+        label.font = UIFont(name: "Chalkduster", size: 17)
+        label.textAlignment = .center
+        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        return label
+    }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

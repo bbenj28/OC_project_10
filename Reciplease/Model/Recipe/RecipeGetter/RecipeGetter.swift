@@ -13,10 +13,10 @@ class RecipeGetter {
     }
     let service: RecipeService
     let dataManager: RecipeDataManager
-    var method: Method = .manager
+    var method: Method = .service
     init(coreDataStack: CoreDataStack = CoreDataStack(), session: RecipeSession = RecipeSession()) {
         self.service = RecipeService(session: session)
-        self.dataManager = RecipeDataManager(coreDataStack)
+        self.dataManager = RecipeDataManager(coreDataStack: coreDataStack)
     }
     
     func getRecipes(ingredients: [String]? = nil, completionHandler: @escaping (Result<[Recipe], Error>) -> Void) {

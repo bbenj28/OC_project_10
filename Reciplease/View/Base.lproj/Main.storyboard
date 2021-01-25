@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Home View Controller-->
         <scene sceneID="EbZ-De-GUb">
             <objects>
-                <tabBarController id="22R-eS-SQs" sceneMemberID="viewController">
+                <tabBarController id="22R-eS-SQs" customClass="HomeViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jWp-lk-PK6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -32,7 +32,7 @@
         <!--Search-->
         <scene sceneID="Aim-aC-sV8">
             <objects>
-                <navigationController id="hzU-9r-Ymr" sceneMemberID="viewController">
+                <navigationController id="hzU-9r-Ymr" customClass="SearchNavigationViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Search" id="UCm-5j-4ef">
                         <imageReference key="image" image="magnifyingglass" symbolScale="large"/>
                     </tabBarItem>
@@ -95,7 +95,7 @@
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="addIngredient:" destination="Fja-20-hQU" eventType="touchUpInside" id="Xe9-v9-r80"/>
+                                                    <action selector="addIngredient:" destination="Fja-20-hQU" eventType="touchUpInside" id="nnI-sg-5mR"/>
                                                 </connections>
                                             </button>
                                         </subviews>

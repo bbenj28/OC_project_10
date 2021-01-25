@@ -58,8 +58,8 @@ class RecipeDataManager {
         return result
     }
     
-    init(_ stack: CoreDataStack = CoreDataStack()) {
-        self.stack = stack
+    init(coreDataStack: CoreDataStack = CoreDataStack()) {
+        self.stack = coreDataStack
     }
     func addToFavorites(_ recipe: Recipe, completionHandler: () -> Void) {
         let savedRecipe = RecipeData(context: stack.viewContext)
