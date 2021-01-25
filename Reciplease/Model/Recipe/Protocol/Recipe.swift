@@ -18,6 +18,7 @@ protocol Recipe {
     var ingredients: [String] { get }
     var healthLabels: [String] { get }
     var cautions: [String] { get }
+    var pictureData: Data? { get set }
 }
 protocol RecipePart {
     var name: String? { get set }

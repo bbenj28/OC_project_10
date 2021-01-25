@@ -18,6 +18,7 @@
         <attribute name="optionalTitle" optional="YES" attributeType="String"/>
         <attribute name="optionalUrl" optional="YES" attributeType="String"/>
         <attribute name="optionalYield" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="pictureData" optional="YES" attributeType="Binary"/>
         <attribute name="totalTime" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="totalWeight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="optionalCautions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Caution" inverseName="recipes" inverseEntity="Caution"/>
@@ -28,6 +29,6 @@
         <element name="Caution" positionX="141.21875" positionY="13.1640625" width="128" height="73"/>
         <element name="HealthLabel" positionX="166.8515625" positionY="100.8046875" width="128" height="73"/>
         <element name="Ingredient" positionX="137.03515625" positionY="211.8984375" width="128" height="73"/>
-        <element name="RecipeData" positionX="-126.01953125" positionY="-43.99609375" width="128" height="193"/>
+        <element name="RecipeData" positionX="-126.01953125" positionY="-43.99609375" width="128" height="208"/>
     </elements>
 </model>

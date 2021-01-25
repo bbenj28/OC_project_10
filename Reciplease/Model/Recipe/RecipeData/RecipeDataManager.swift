@@ -70,6 +70,7 @@ class RecipeDataManager {
         savedRecipe.calories = recipe.calories
         savedRecipe.totalWeight = recipe.totalWeight
         savedRecipe.totalTime = recipe.totalTime
+        savedRecipe.pictureData = recipe.pictureData
         addRecipeParts(from: recipe, to: savedRecipe)
         stack.saveContext()
     }

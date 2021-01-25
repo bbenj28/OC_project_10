@@ -10,7 +10,7 @@ import SafariServices
 
 class RecipeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    var recipe: RecipeService.RecipeDetails?
+    var recipe: Recipe?
     var lineTypes: [LineType] = [.title, .picture]
     var numberOfLines: Int = 0
     var isFavourite: Bool = false {
@@ -23,7 +23,7 @@ class RecipeViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
-        if let recipe = recipe?.0 {
+        if let recipe = recipe {
             if recipe.ingredients.count > 0 { lineTypes.append(.ingredients) }
             if recipe.calories > 0 { lineTypes.append(.calories) }
             if recipe.totalWeight > 0 { lineTypes.append(.weight) }
@@ -44,7 +44,7 @@ class RecipeViewController: UIViewController {
         isFavourite.toggle()
     }
     @IBAction func getDirections(_ sender: Any) {
-        if let recipe = recipe?.0, let url = URL(string: recipe.url) {
+        if let recipe = recipe, let url = URL(string: recipe.url) {
             let config = SFSafariViewController.Configuration()
             config.entersReaderIfAvailable = true
             let vc = SFSafariViewController(url: url, configuration: config)
@@ -70,10 +70,10 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
                 return "DetailCell"
             }
         }
-        func getTitle(_ recipe: RecipeService.RecipeDetails) -> String {
+        func getTitle(_ recipe: Recipe) -> String {
             switch self {
             case .title:
-                return recipe.0.title
+                return recipe.title
             case .ingredients:
                 return "Ingredients:"
             case .health:
@@ -88,18 +88,18 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
                 return ""
             }
         }
-        func getDetails(_ recipe: RecipeService.RecipeDetails) -> String {
+        func getDetails(_ recipe: Recipe) -> String {
             switch self {
             case .ingredients:
-                return mapDetails(recipe.0.ingredients)
+                return mapDetails(recipe.ingredients)
             case .health:
-                return mapDetails(recipe.0.healthLabels)
+                return mapDetails(recipe.healthLabels)
             case .cautions:
-                return mapDetails(recipe.0.cautions)
+                return mapDetails(recipe.cautions)
             case .calories:
-                return formatNumber(NSNumber(value: recipe.0.calories))
+                return formatNumber(NSNumber(value: recipe.calories))
             case .weight:
-                return formatNumber(NSNumber(value: recipe.0.totalWeight))
+                return formatNumber(NSNumber(value: recipe.totalWeight))
             default:
                 return ""
             }
@@ -134,7 +134,7 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = lineType.getTitle(recipe)
         cell.detailTextLabel?.text = lineType.getDetails(recipe)
         guard let pictureCell = cell as? PictureCellTableViewCell else { return cell }
-        pictureCell.setCell(details: recipe.0, imageData: recipe.1)
+        pictureCell.setCell(recipe: recipe)
         return pictureCell
     }
 

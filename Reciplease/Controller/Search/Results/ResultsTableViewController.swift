@@ -9,8 +9,8 @@ import UIKit
 
 class ResultsTableViewController: UITableViewController {
     var choosenIngredients: [String] = []
-    var recipes: [RecipeService.RecipeDetails] = []
-    var selectedRecipe: RecipeService.RecipeDetails?
+    var recipes: [Recipe] = []
+    var selectedRecipe: Recipe?
     var isSearching: Bool = false {
         didSet {
             indicator.isHidden = !isSearching
@@ -75,7 +75,7 @@ class ResultsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath)
         guard let resultCell = cell as? ResultTableViewCell else { return cell }
         let result = recipes[indexPath.row]
-        resultCell.setCell(recipe: result.0, imageData: result.1)
+        resultCell.setCell(recipe: result)
         return resultCell
     }
     

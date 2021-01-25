@@ -25,11 +25,11 @@ class PictureCellTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setCell(details: Recipe, imageData: Data?) {
-        personsLabel.text = "\(details.yield)"
-        timeStack.isHidden = details.totalTime == 0
-        timeLabel.text = "\(Int(details.totalTime)) min."
-        guard let data = imageData, let image = UIImage(data: data) else {
+    func setCell(recipe: Recipe) {
+        personsLabel.text = "\(recipe.yield)"
+        timeStack.isHidden = recipe.totalTime == 0
+        timeLabel.text = "\(Int(recipe.totalTime)) min."
+        guard let data = recipe.pictureData, let image = UIImage(data: data) else {
             pictureView.image = UIImage(named: "default2")
             return
         }

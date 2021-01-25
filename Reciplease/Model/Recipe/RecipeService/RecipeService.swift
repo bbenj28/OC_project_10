@@ -8,7 +8,6 @@
 import Foundation
 import Alamofire
 class RecipeService {
-    typealias RecipeDetails = (Recipe, PictureData)
     typealias PictureData = Data?
     let decoder = JSONStructureDecoder()
     let session: AlamofireSession
@@ -16,13 +15,13 @@ class RecipeService {
         self.session = session
     }
     
-    func searchRecipe(for ingredients: [String], completionHandler: @escaping (Result<[RecipeDetails], Error>) -> Void) {
+    func searchRecipe(for ingredients: [String], completionHandler: @escaping (Result<[Recipe], Error>) -> Void) {
         // get recipes from a network call
         getRecipes(for: ingredients) { (result) in
             switch result {
             case .success(let response):
                 // in case of success, prepare the recipes to return
-                var finalRecipes: [RecipeDetails] = []
+                var finalRecipes: [RecipeDetailsJSONStructure] = []
                 guard response.count > 0 else {
                     // no result case : return empty array
                     completionHandler(.success(finalRecipes))
@@ -32,9 +31,10 @@ class RecipeService {
                 let hits = response.hits
                 // get picture and recipe from each hit
                 for index in 0...hits.count - 1 {
-                    let recipe = hits[index].recipe
+                    var recipe = hits[index].recipe
                     self.getPictureData(recipe.imageURL) { (pictureData) in
-                        finalRecipes.append((recipe, pictureData))
+                        recipe.pictureData = pictureData
+                        finalRecipes.append(recipe)
                         if index == hits.count - 1 {
                             completionHandler(.success(finalRecipes))
                         }

@@ -40,6 +40,7 @@ struct RecipeDetailsJSONStructure: Recipe {
     var ingredients: [String]
     var healthLabels: [String]
     var cautions: [String]
+    var pictureData: Data?
 }
 extension RecipeDetailsJSONStructure: Decodable {
     enum CodingKeys: String, CodingKey {
