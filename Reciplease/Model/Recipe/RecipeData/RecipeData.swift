@@ -25,15 +25,15 @@ open class RecipeData: NSManagedObject, Recipe {
     }
     var ingredients: [String] {
         guard let ingredients = optionalIngredients?.allObjects as? [Ingredient] else { return [] }
-        return ingredients.map({ "\($0)" })
+        return ingredients.map({ "\($0.unwrappedName)" })
     }
     var healthLabels: [String] {
         guard let ingredients = optionalHealthLabels?.allObjects as? [HealthLabel] else { return [] }
-        return ingredients.map({ "\($0)" })
+        return ingredients.map({ "\($0.unwrappedName)" })
     }
     var cautions: [String] {
         guard let ingredients = optionalCautions?.allObjects as? [Caution] else { return [] }
-        return ingredients.map({ "\($0)" })
+        return ingredients.map({ "\($0.unwrappedName)" })
     }
     
 }

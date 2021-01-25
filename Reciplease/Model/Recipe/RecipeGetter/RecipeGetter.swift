@@ -10,6 +10,14 @@ import Foundation
 class RecipeGetter {
     enum Method {
         case service, manager
+        var title: String {
+            switch self {
+            case .service:
+                return "Results"
+            case .manager:
+                return "Favorite"
+            }
+        }
     }
     let service: RecipeService
     let dataManager: RecipeDataManager
@@ -27,5 +35,15 @@ class RecipeGetter {
         case .manager:
             completionHandler(.success(dataManager.recipes))
         }
+    }
+    func addToFavorites(_ recipe: Recipe, completionHandler: () -> Void) {
+        dataManager.addToFavorites(recipe, completionHandler: completionHandler)
+    }
+    func removeFromFavorites(_ recipe: Recipe, completionHandler: (Bool) -> Void) {
+        dataManager.removeFromFavorites(recipe, completionHandler: completionHandler)
+    }
+    func checkIfIsFavorite(_ recipe: RecipeDetailsJSONStructure, completionHandler: (Bool) -> Void) {
+        let recipeData = dataManager.checkIfIsFavoriteAndReturnData(recipe: recipe)
+        completionHandler(recipeData != nil)
     }
 }

@@ -24,6 +24,21 @@ protocol RecipePart {
     var name: String? { get set }
     var recipes: NSSet? { get set }
 }
-open class Ingredient: NSManagedObject, RecipePart { }
-open class HealthLabel: NSManagedObject, RecipePart { }
-open class Caution: NSManagedObject, RecipePart { }
+open class Ingredient: NSManagedObject, RecipePart {
+    var unwrappedName: String {
+        guard let name = name else { return "" }
+        return name
+    }
+}
+open class HealthLabel: NSManagedObject, RecipePart {
+    var unwrappedName: String {
+        guard let name = name else { return "" }
+        return name
+    }
+}
+open class Caution: NSManagedObject, RecipePart {
+    var unwrappedName: String {
+        guard let name = name else { return "" }
+        return name
+    }
+}

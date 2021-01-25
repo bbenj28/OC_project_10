@@ -8,7 +8,9 @@
 import UIKit
 import SafariServices
 
-class RecipeViewController: UIViewController {
+class RecipeViewController: UIViewController, RecipeGetterProtocol {
+    var recipeGetter: RecipeGetter?
+    
     @IBOutlet weak var tableView: UITableView!
     var recipe: Recipe?
     var lineTypes: [LineType] = [.title, .picture]
@@ -30,6 +32,13 @@ class RecipeViewController: UIViewController {
             if recipe.healthLabels.count > 0 { lineTypes.append(.health) }
             if recipe.cautions.count > 0 { lineTypes.append(.cautions) }
         }
+        if let recipe = recipe as? RecipeDetailsJSONStructure {
+            recipeGetter?.checkIfIsFavorite(recipe, completionHandler: { (isFavourite) in
+                self.isFavourite = isFavourite
+            })
+        } else {
+            isFavourite = true
+        }
         setFavouriteButton()
         
     }
@@ -37,11 +46,29 @@ class RecipeViewController: UIViewController {
         let imageName = isFavourite ? "star.added" : "star.add"
         guard let image = UIImage(named: imageName) else { return }
         let button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(favouriteButtonHasBeenHitten))
+        button.tintColor = isFavourite ? #colorLiteral(red: 1, green: 0.9374062272, blue: 0.3152640763, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         navigationItem.rightBarButtonItems = [button]
     }
     @objc
     private func favouriteButtonHasBeenHitten() {
-        isFavourite.toggle()
+        isFavourite ? removeFromFavourites() : addToFavourites()
+    }
+    private func addToFavourites() {
+        guard let recipe = recipe else { return }
+        recipeGetter?.addToFavorites(recipe, completionHandler: {
+            self.isFavourite.toggle()
+            self.showAlert(title: "Added !", message: "This recipe is now one of your favorites.")
+        })
+    }
+    private func removeFromFavourites() {
+        guard let recipe = recipe else { return }
+        recipeGetter?.removeFromFavorites(recipe, completionHandler: { (hasToCloseTable) in
+            //showAlert(title: "Removed", message: "This recipe has been removed from your favorites.")
+            self.isFavourite.toggle()
+            if hasToCloseTable {
+                self.dismiss(animated: true, completion: nil)
+            }
+        })
     }
     @IBAction func getDirections(_ sender: Any) {
         if let recipe = recipe, let url = URL(string: recipe.url) {

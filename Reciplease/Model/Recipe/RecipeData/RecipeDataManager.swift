@@ -13,11 +13,11 @@ class RecipeDataManager {
         var key: String {
             switch self {
             case .none:
-                return "title"
+                return "optionalTitle"
             case .health:
-                return "healthLabels"
+                return "optionalHealthLabels"
             case .caution:
-                return "cautions"
+                return "optionalCautions"
             }
         }
         var name: String {
@@ -73,6 +73,7 @@ class RecipeDataManager {
         savedRecipe.pictureData = recipe.pictureData
         addRecipeParts(from: recipe, to: savedRecipe)
         stack.saveContext()
+        completionHandler()
     }
     private func addRecipeParts(from recipe: Recipe, to savedRecipe: RecipeData) {
         for index in 1...3 {
@@ -133,11 +134,11 @@ class RecipeDataManager {
         if let recipe = recipe as? RecipeData {
             deleteRecipe(recipe, hasToCloseTable: true, completionHandler: completionHandler)
         } else if let recipe = recipe as? RecipeDetailsJSONStructure {
-            guard let recipe = searchForRecipeData(recipe: recipe) else { return }
+            guard let recipe = checkIfIsFavoriteAndReturnData(recipe: recipe) else { return }
             deleteRecipe(recipe, hasToCloseTable: false, completionHandler: completionHandler)
         }
     }
-    private func searchForRecipeData(recipe recipeToSearch: RecipeDetailsJSONStructure) -> RecipeData? {
+    func checkIfIsFavoriteAndReturnData(recipe recipeToSearch: RecipeDetailsJSONStructure) -> RecipeData? {
         if recipes.count > 0 {
             for recipe in recipes {
                 if recipe.title == recipeToSearch.title {
