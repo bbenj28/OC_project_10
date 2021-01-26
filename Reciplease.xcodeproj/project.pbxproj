@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		030684E525C02B50001D6539 /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030684E425C02B50001D6539 /* CollectionTableViewCell.swift */; };
+		030684E925C02CC3001D6539 /* PictoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030684E825C02CC3001D6539 /* PictoCollectionViewCell.swift */; };
 		033F775A25B98A9C009DD04F /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033F775925B98A9C009DD04F /* RecipeViewController.swift */; };
 		033F775E25B9917B009DD04F /* PictureCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033F775D25B9917B009DD04F /* PictureCellTableViewCell.swift */; };
 		033F776225B991E7009DD04F /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033F776125B991E7009DD04F /* Recipe.swift */; };
@@ -54,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		030684E425C02B50001D6539 /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
+		030684E825C02CC3001D6539 /* PictoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictoCollectionViewCell.swift; sourceTree = "<group>"; };
 		033F775925B98A9C009DD04F /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		033F775D25B9917B009DD04F /* PictureCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCellTableViewCell.swift; sourceTree = "<group>"; };
 		033F776125B991E7009DD04F /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 			children = (
 				033F775925B98A9C009DD04F /* RecipeViewController.swift */,
 				033F775D25B9917B009DD04F /* PictureCellTableViewCell.swift */,
+				030684E425C02B50001D6539 /* CollectionTableViewCell.swift */,
+				030684E825C02CC3001D6539 /* PictoCollectionViewCell.swift */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
@@ -537,6 +543,7 @@
 				03CE0E6925B873720097BEA6 /* RecipeSession.swift in Sources */,
 				03CE0E2325B807E80097BEA6 /* JSONStructureDecoder.swift in Sources */,
 				03AFE29925B73826009B8904 /* CoreDataStack.swift in Sources */,
+				030684E525C02B50001D6539 /* CollectionTableViewCell.swift in Sources */,
 				03D2546425BC61A700265511 /* RecipeGetter.swift in Sources */,
 				03CE0E6525B873610097BEA6 /* AlamofireSession.swift in Sources */,
 				03CE0E2F25B8121D0097BEA6 /* UIViewController+Alert.swift in Sources */,
@@ -560,6 +567,7 @@
 				03AFE25225B73285009B8904 /* AppDelegate.swift in Sources */,
 				03DB291A25BB268D002F8CA5 /* RecipeData.swift in Sources */,
 				03AFE25425B73285009B8904 /* SceneDelegate.swift in Sources */,
+				030684E925C02CC3001D6539 /* PictoCollectionViewCell.swift in Sources */,
 				033F776225B991E7009DD04F /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

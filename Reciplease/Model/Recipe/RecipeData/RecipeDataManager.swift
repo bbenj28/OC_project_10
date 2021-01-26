@@ -8,34 +8,10 @@
 import Foundation
 import CoreData
 class RecipeDataManager {
-    enum SortType {
-        case none, health, caution
-        var key: String {
-            switch self {
-            case .none:
-                return "optionalTitle"
-            case .health:
-                return "optionalHealthLabels"
-            case .caution:
-                return "optionalCautions"
-            }
-        }
-        var name: String {
-            switch self {
-            case .none:
-                return "none"
-            case .health:
-                return "health indications"
-            case .caution:
-                return "content"
-            }
-        }
-    }
     let stack: CoreDataStack
-    var sortType: SortType = .none
     var recipes: [RecipeData] {
         let request: NSFetchRequest<RecipeData> = RecipeData.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: sortType.key, ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key: "optionalTitle", ascending: true)]
         guard let result = try? stack.viewContext.fetch(request) else { return [] }
         return result
     }

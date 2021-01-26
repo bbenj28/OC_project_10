@@ -13,7 +13,7 @@ class RecipeViewController: UIViewController, RecipeGetterProtocol {
     
     @IBOutlet weak var tableView: UITableView!
     var recipe: Recipe?
-    var lineTypes: [LineType] = [.title, .picture]
+    var lineTypes: [LineType] = [.title, .collection, .picture]
     var numberOfLines: Int = 0
     var isFavourite: Bool = false {
         didSet {
@@ -84,11 +84,13 @@ class RecipeViewController: UIViewController, RecipeGetterProtocol {
 extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
     
     enum LineType {
-        case title, picture, ingredients, health, cautions, calories, weight
+        case title, collection, picture, ingredients, health, cautions, calories, weight
         var cellIdentifier: String {
             switch self {
             case .title:
                 return "TitleCell"
+            case .collection:
+                return "CollectionCell"
             case .picture:
                 return "PictureCell"
             case .ingredients, .health, .cautions:
@@ -160,9 +162,15 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
         guard let recipe = recipe else { return cell }
         cell.textLabel?.text = lineType.getTitle(recipe)
         cell.detailTextLabel?.text = lineType.getDetails(recipe)
-        guard let pictureCell = cell as? PictureCellTableViewCell else { return cell }
-        pictureCell.setCell(recipe: recipe)
-        return pictureCell
+        if let pictureCell = cell as? PictureCellTableViewCell {
+            pictureCell.setCell(recipe: recipe)
+            return pictureCell
+        } else if let collectionCell = cell as? CollectionTableViewCell {
+            collectionCell.setCell(recipe)
+            return collectionCell
+        }
+        
+        return cell
     }
 
     

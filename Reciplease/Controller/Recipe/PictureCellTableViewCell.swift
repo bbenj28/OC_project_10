@@ -9,9 +9,6 @@ import UIKit
 
 class PictureCellTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var timeStack: UIStackView!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var personsLabel: UILabel!
     @IBOutlet weak var pictureView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,9 +23,6 @@ class PictureCellTableViewCell: UITableViewCell {
     }
     
     func setCell(recipe: Recipe) {
-        personsLabel.text = "\(recipe.yield)"
-        timeStack.isHidden = recipe.totalTime == 0
-        timeLabel.text = "\(Int(recipe.totalTime)) min."
         guard let data = recipe.pictureData, let image = UIImage(data: data) else {
             pictureView.image = UIImage(named: "default2")
             return
