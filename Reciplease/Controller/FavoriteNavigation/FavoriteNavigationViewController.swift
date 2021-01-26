@@ -10,9 +10,8 @@ import UIKit
 class FavoriteNavigationViewController: UINavigationController, RecipeGetterProtocol {
     
     var recipeGetter: RecipeGetter?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if var controller = topViewController as? RecipeGetterProtocol {
             recipeGetter?.method = .manager
             controller.recipeGetter = recipeGetter
