@@ -18,6 +18,7 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
         }
     }
     
+    
     // MARK: - Outlets
     
     @IBOutlet weak var searchButton: UIButton!
@@ -29,10 +30,15 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
+        ingredientTextField.delegate = self
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(removeKeyboard))
+        view.addGestureRecognizer(gesture)
+        
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         searchButton.isHidden = ingredients.count == 0
     }
     
@@ -102,7 +108,7 @@ extension SearchViewController:  UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let label = UILabel()
-        label.text = ingredients.count == 0 ?"you have no ingredient so far" : ""
+        label.text = ingredients.count == 0 ?"no ingredient so far" : ""
         label.font = UIFont(name: "Chalkduster", size: 17)
         label.textAlignment = .center
         label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -115,5 +121,22 @@ extension SearchViewController:  UITableViewDataSource, UITableViewDelegate {
             ingredients.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+}
+
+extension SearchViewController: UITextFieldDelegate {
+    // MARK: - Textfield
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let text = textField.text, !text.isEmpty else {
+            textField.resignFirstResponder()
+            return true
+        }
+        addIngredient(textField)
+        return true
+    }
+    @objc
+    private func removeKeyboard() {
+        ingredientTextField.resignFirstResponder()
     }
 }
