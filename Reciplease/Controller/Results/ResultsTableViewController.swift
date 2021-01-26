@@ -37,7 +37,6 @@ class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = recipeGetter?.method.title
-        showActivityIndicator()
         loadRecipes()
     }
     private func showActivityIndicator() {
@@ -48,6 +47,7 @@ class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
         view.addSubview(indicator)
     }
     private func loadRecipes() {
+        showActivityIndicator()
         isSearching = true
         tableView.reloadData()
         recipeGetter?.getRecipes(ingredients: choosenIngredients, completionHandler: { (result) in
@@ -69,6 +69,7 @@ class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
+
     
 
     // MARK: - Table view data source

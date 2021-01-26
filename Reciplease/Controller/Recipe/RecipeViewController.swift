@@ -63,11 +63,12 @@ class RecipeViewController: UIViewController, RecipeGetterProtocol {
     private func removeFromFavourites() {
         guard let recipe = recipe else { return }
         recipeGetter?.removeFromFavorites(recipe, completionHandler: { (hasToCloseTable) in
-            //showAlert(title: "Removed", message: "This recipe has been removed from your favorites.")
-            self.isFavourite.toggle()
-            if hasToCloseTable {
-                self.dismiss(animated: true, completion: nil)
-            }
+            showAlert(title: "Removed", message: "This recipe has been removed from your favorites.", okHandler:  { (_) in
+                self.isFavourite.toggle()
+                if hasToCloseTable {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            })
         })
     }
     @IBAction func getDirections(_ sender: Any) {

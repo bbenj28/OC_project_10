@@ -23,7 +23,7 @@ extension UIViewController {
     /// - parameter yesAction: Action to do when the yes button is hitten. To use this parameter, the yesNoActions parameter has to return true (default: nil).
     /// - parameter noAction: Action to do when the no button is hitten. To use this parameter, the yesNoActions parameter has to return true (default: nil).
     /// - parameter completion: Actions to do after alert's disappearance (default: nil).
-    func showAlert(error: Error? = nil, title: String? = nil, message: String? = nil, style: UIAlertController.Style = .alert, yesNoActions: Bool = false, yesAction: AlertAction = nil, noAction: AlertAction = nil, completion: OptionalCompletion = nil) {
+    func showAlert(error: Error? = nil, title: String? = nil, message: String? = nil, style: UIAlertController.Style = .alert, yesNoActions: Bool = false, yesAction: AlertAction = nil, noAction: AlertAction = nil, completion: OptionalCompletion = nil, okHandler: AlertAction = nil) {
         // prepare properties to display
         let alertTitle: String
         let alertMessage: String
@@ -57,7 +57,7 @@ extension UIViewController {
                 let noAction = UIAlertAction(title: "Non", style: .default, handler: noAction)
                 alertActions = [yesAction, noAction]
             } else {
-                let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                let action = UIAlertAction(title: "Ok", style: .default, handler: okHandler)
                 alertActions = [action]
             }
         }
