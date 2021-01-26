@@ -223,11 +223,11 @@
 			children = (
 				03487DA325BEDE0100EA4B16 /* Home */,
 				03487DB025BF00ED00EA4B16 /* SearchNavigation */,
+				03487DB925BF04E800EA4B16 /* FavoriteNavigation */,
 				03CE0E3225B81E430097BEA6 /* Search */,
 				03CE0E5225B83E330097BEA6 /* Results */,
 				03FB123925B9D8D200E9AD0C /* RecipeActivityIndicator */,
 				033F775825B98A7D009DD04F /* Recipe */,
-				03487DB925BF04E800EA4B16 /* FavoriteNavigation */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

@@ -9,17 +9,30 @@ import UIKit
 import SafariServices
 
 class RecipeViewController: UIViewController, RecipeGetterProtocol {
-    var recipeGetter: RecipeGetter?
     
-    @IBOutlet weak var tableView: UITableView!
+    // MARK: - Properties
+    
+    /// Recipe getter used to save recipe.
+    var recipeGetter: RecipeGetter?
+    /// Displayed recipe.
     var recipe: Recipe?
+    /// Typelines to display.
     var lineTypes: [LineType] = [.title, .collection, .picture]
+    /// Number of lines.
     var numberOfLines: Int = 0
-    var isFavourite: Bool = false {
+    /// Is this recipe a favorite one.
+    var isFavorite: Bool = false {
         didSet {
-            setFavouriteButton()
+            setFavoriteButton()
         }
     }
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: - View did load
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -34,43 +47,47 @@ class RecipeViewController: UIViewController, RecipeGetterProtocol {
         }
         if let recipe = recipe as? RecipeDetailsJSONStructure {
             recipeGetter?.checkIfIsFavorite(recipe, completionHandler: { (isFavourite) in
-                self.isFavourite = isFavourite
+                self.isFavorite = isFavourite
             })
         } else {
-            isFavourite = true
+            isFavorite = true
         }
-        setFavouriteButton()
-        
+        setFavoriteButton()
     }
-    private func setFavouriteButton() {
-        let imageName = isFavourite ? "star.added" : "star.add"
+    /// Change favorite button regarding isFavorite property value.
+    private func setFavoriteButton() {
+        let imageName = isFavorite ? "star.added" : "star.add"
         guard let image = UIImage(named: imageName) else { return }
-        let button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(favouriteButtonHasBeenHitten))
-        button.tintColor = isFavourite ? #colorLiteral(red: 1, green: 0.9374062272, blue: 0.3152640763, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        let button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(favoriteButtonHasBeenHitten))
+        button.tintColor = isFavorite ? #colorLiteral(red: 1, green: 0.9374062272, blue: 0.3152640763, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         navigationItem.rightBarButtonItems = [button]
     }
+    /// Actions to do when favorite button has been hitten.
     @objc
-    private func favouriteButtonHasBeenHitten() {
-        isFavourite ? removeFromFavourites() : addToFavourites()
+    private func favoriteButtonHasBeenHitten() {
+        isFavorite ? removeFromFavorites() : addToFavorites()
     }
-    private func addToFavourites() {
+    /// Add a recipe to favorites.
+    private func addToFavorites() {
         guard let recipe = recipe else { return }
         recipeGetter?.addToFavorites(recipe, completionHandler: {
-            self.isFavourite.toggle()
+            self.isFavorite.toggle()
             self.showAlert(title: "Added !", message: "This recipe is now one of your favorites.")
         })
     }
-    private func removeFromFavourites() {
+    /// Remove a recipe from favorite.
+    private func removeFromFavorites() {
         guard let recipe = recipe else { return }
         recipeGetter?.removeFromFavorites(recipe, completionHandler: { (hasToCloseTable) in
             showAlert(title: "Removed", message: "This recipe has been removed from your favorites.", okHandler:  { (_) in
-                self.isFavourite.toggle()
+                self.isFavorite.toggle()
                 if hasToCloseTable {
                     self.navigationController?.popViewController(animated: true)
                 }
             })
         })
     }
+    /// Open a safari page containing the recipe's directions.
     @IBAction func getDirections(_ sender: Any) {
         if let recipe = recipe, let url = URL(string: recipe.url) {
             let config = SFSafariViewController.Configuration()
@@ -79,13 +96,16 @@ class RecipeViewController: UIViewController, RecipeGetterProtocol {
             present(vc, animated: true)
         }
     }
-    
-    
 }
+
 extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
     
+    // MARK: Table's linetypes
+    
+    /// Enumeration containing the differents linetypes of the tableview.
     enum LineType {
         case title, collection, picture, ingredients, health, cautions, calories, weight
+        /// Cell's identifier for a linetype.
         var cellIdentifier: String {
             switch self {
             case .title:
@@ -100,6 +120,7 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
                 return "DetailCell"
             }
         }
+        /// Title to display for a linetype.
         func getTitle(_ recipe: Recipe) -> String {
             switch self {
             case .title:
@@ -118,6 +139,7 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
                 return ""
             }
         }
+        /// Details to display for a linetype.
         func getDetails(_ recipe: Recipe) -> String {
             switch self {
             case .ingredients:
@@ -134,9 +156,11 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
                 return ""
             }
         }
+        /// Used by getDetails to concatenate informations.
         private func mapDetails(_ details: [String]) -> String {
             return details.map({ "- \($0)" }).joined(separator: "\n")
         }
+        /// Used by getDetails to formatting a number.
         private func formatNumber(_ number: NSNumber) -> String {
             let formatter = NumberFormatter()
             formatter.maximumFractionDigits = 2
@@ -146,17 +170,14 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 
+    // MARK: - Tableview datasource
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lineTypes.count
     }
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let lineType = lineTypes[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: lineType.cellIdentifier, for: indexPath)
@@ -173,6 +194,4 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-
-    
 }

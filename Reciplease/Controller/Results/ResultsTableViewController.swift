@@ -13,12 +13,11 @@ class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
     
     /// Recipe getter.
     var recipeGetter: RecipeGetter?
-    
     /// Ingredients choosen by the user in the search page.
     var choosenIngredients: [String] = []
-    
     /// Loaded recipes.
     var recipes: [Recipe] = []
+    /// Loaded recipes without removed recipes.
     var recipesToDisplay: [Recipe] {
         var recipesToDisplay: [Recipe] = []
         for recipe in recipes {
@@ -26,26 +25,25 @@ class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
         }
         return recipesToDisplay
     }
+    /// Recipe selected by user.
     var selectedRecipe: Recipe?
+    /// Is this controller actually searching for recipes.
     var isSearching: Bool = false {
         didSet {
             indicator.isHidden = !isSearching
         }
     }
+    /// Activity indicator used when searching recipes.
     let indicator = RecipeActivityIndicator()
 
+    // MARK: - Viewdidload
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = recipeGetter?.method.title
         loadRecipes()
     }
-    private func showActivityIndicator() {
-        tableView.tableFooterView = UIView()
-        indicator.frame.size = CGSize(width: 150, height: 150)
-        indicator.animate()
-        indicator.center = CGPoint(x: view.frame.width / 2, y: view.frame.height / 2)
-        view.addSubview(indicator)
-    }
+    /// Load recipes.
     private func loadRecipes() {
         showActivityIndicator()
         isSearching = true
@@ -65,25 +63,32 @@ class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
             }
         })
     }
+    private func showActivityIndicator() {
+        tableView.tableFooterView = UIView()
+        indicator.frame.size = CGSize(width: 150, height: 150)
+        indicator.animate()
+        indicator.center = CGPoint(x: view.frame.width / 2, y: view.frame.height / 2)
+        view.addSubview(indicator)
+    }
+    
+    // MARK: - View will appear
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
+}
 
-    
+extension ResultsTableViewController {
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return recipesToDisplay.count
     }
-    
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let label = UILabel()
         label.text = isSearching ? "" : recipesToDisplay.count == 0 ? "oops, no recipe has been found..." : ""
@@ -92,27 +97,20 @@ class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
         label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         return label
     }
-
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath)
-        guard let resultCell = cell as? ResultTableViewCell else { return cell }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as? ResultTableViewCell else { return UITableViewCell() }
         let result = recipesToDisplay[indexPath.row]
-        resultCell.setCell(recipe: result)
-        return resultCell
+        cell.setCell(recipe: result)
+        return cell
     }
-    
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRecipe = recipesToDisplay[indexPath.row]
         performSegue(withIdentifier: "ResultsToRecipeSegue", sender: self)
     }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? RecipeViewController, let recipe = selectedRecipe {
             controller.recipe = recipe
             controller.recipeGetter = recipeGetter
         }
     }
-
 }
