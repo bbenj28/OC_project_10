@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SafariServices
 
 class RecipeViewController: UIViewController, RecipeGetterProtocol {
     
@@ -70,10 +69,9 @@ class RecipeViewController: UIViewController, RecipeGetterProtocol {
     /// Add a recipe to favorites.
     private func addToFavorites() {
         guard let recipe = recipe else { return }
-        recipeGetter?.addToFavorites(recipe, completionHandler: {
-            self.isFavorite.toggle()
-            self.showAlert(title: "Added !", message: "This recipe is now one of your favorites.")
-        })
+        recipeGetter?.addToFavorites(recipe)
+        self.isFavorite.toggle()
+        self.showAlert(title: "Added !", message: "This recipe is now one of your favorites.")
     }
     /// Remove a recipe from favorite.
     private func removeFromFavorites() {
@@ -90,10 +88,7 @@ class RecipeViewController: UIViewController, RecipeGetterProtocol {
     /// Open a safari page containing the recipe's directions.
     @IBAction func getDirections(_ sender: Any) {
         if let recipe = recipe, let url = URL(string: recipe.url) {
-            let config = SFSafariViewController.Configuration()
-            config.entersReaderIfAvailable = true
-            let vc = SFSafariViewController(url: url, configuration: config)
-            present(vc, animated: true)
+            UIApplication.shared.open(url, options: [:])
         }
     }
 }
@@ -172,9 +167,6 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
 
     // MARK: - Tableview datasource
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lineTypes.count
     }
@@ -185,7 +177,7 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = lineType.getTitle(recipe)
         cell.detailTextLabel?.text = lineType.getDetails(recipe)
         if let pictureCell = cell as? PictureCellTableViewCell {
-            pictureCell.setCell(recipe: recipe)
+            pictureCell.recipe = recipe
             return pictureCell
         } else if let collectionCell = cell as? CollectionTableViewCell {
             collectionCell.setCell(recipe)

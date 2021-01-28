@@ -25,18 +25,19 @@ class ResultTableViewCell: UITableViewCell {
         resultPictureView.layer.cornerRadius = resultView.layer.cornerRadius
         resultPictureView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
     }
-
-    func setCell(recipe: Recipe) {
-        resultTitleLabel.text = recipe.title
-        personsLabel.text = "\(recipe.yield)"
-        timeLabel.text = "\(Int(recipe.totalTime)) min."
-        timeStack.isHidden = recipe.totalTime == 0
-        ingredientsLabel.text = recipe.ingredients.joined(separator: ", ")
-        guard let data = recipe.pictureData, let image = UIImage(data: data) else {
-            resultPictureView.image = UIImage(named: "default1")
-            return
+    var recipe: Recipe? {
+        didSet {
+            guard let recipe = recipe else { return }
+            resultTitleLabel.text = recipe.title
+            personsLabel.text = "\(recipe.yield)"
+            timeLabel.text = "\(Int(recipe.totalTime)) min."
+            timeStack.isHidden = recipe.totalTime == 0
+            ingredientsLabel.text = recipe.ingredients.joined(separator: ", ")
+            guard let data = recipe.pictureData, let image = UIImage(data: data) else {
+                resultPictureView.image = UIImage(named: "default1")
+                return
+            }
+            resultPictureView.image = image
         }
-        resultPictureView.image = image
     }
-
 }

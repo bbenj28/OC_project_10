@@ -33,6 +33,10 @@ class RecipeActivityIndicator: UIImageView {
     var step: Int = 1 {
         didSet {
             image = UIImage(named: "wait\(step)")
+            frame.size = CGSize(width: 150, height: 150)
+            guard let width = superview?.frame.width, let height = superview?.frame.height, let size = superview?.frame.width else { return }
+            frame.size = CGSize(width: size / 4, height: size / 4)
+            frame.origin = CGPoint(x: width / 2 - size / 8, y: height / 2 - size / 8)
             layer.cornerRadius = frame.height / 2
             clipsToBounds = true
         }

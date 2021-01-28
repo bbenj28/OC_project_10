@@ -36,8 +36,8 @@ class RecipeGetter {
             completionHandler(.success(dataManager.recipes))
         }
     }
-    func addToFavorites(_ recipe: Recipe, completionHandler: () -> Void) {
-        dataManager.addToFavorites(recipe, completionHandler: completionHandler)
+    func addToFavorites(_ recipe: Recipe) {
+        dataManager.addToFavorites(recipe)
     }
     func removeFromFavorites(_ recipe: Recipe, completionHandler: (Bool) -> Void) {
         dataManager.removeFromFavorites(recipe, completionHandler: completionHandler)

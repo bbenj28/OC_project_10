@@ -37,7 +37,7 @@ class RecipeDataManager {
     init(coreDataStack: CoreDataStack = CoreDataStack()) {
         self.stack = coreDataStack
     }
-    func addToFavorites(_ recipe: Recipe, completionHandler: () -> Void) {
+    func addToFavorites(_ recipe: Recipe) {
         let savedRecipe = RecipeData(context: stack.viewContext)
         savedRecipe.optionalTitle = recipe.title
         savedRecipe.optionalUrl = recipe.url
@@ -49,7 +49,6 @@ class RecipeDataManager {
         savedRecipe.pictureData = recipe.pictureData
         addRecipeParts(from: recipe, to: savedRecipe)
         stack.saveContext()
-        completionHandler()
     }
     private func addRecipeParts(from recipe: Recipe, to savedRecipe: RecipeData) {
         for index in 1...3 {
@@ -94,6 +93,7 @@ class RecipeDataManager {
         return tArray
     }
     private func checkExistingEntity<T: RecipePart>(_ name: String) -> T? {
+        // PREDICATE
         let entities: [[RecipePart]] = [ingredients, healthLabels, cautions]
         for entity in entities {
             if let _ = entity as? [T] {
@@ -110,11 +110,13 @@ class RecipeDataManager {
         if let recipe = recipe as? RecipeData {
             deleteRecipe(recipe, hasToCloseTable: true, completionHandler: completionHandler)
         } else if let recipe = recipe as? RecipeDetailsJSONStructure {
+            // PREDICATE
             guard let recipe = checkIfIsFavoriteAndReturnData(recipe: recipe) else { return }
             deleteRecipe(recipe, hasToCloseTable: false, completionHandler: completionHandler)
         }
     }
     func checkIfIsFavoriteAndReturnData(recipe recipeToSearch: RecipeDetailsJSONStructure) -> RecipeData? {
+        // PREDICATE
         if recipes.count > 0 {
             for recipe in recipes {
                 if recipe.title == recipeToSearch.title {

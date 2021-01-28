@@ -19,9 +19,27 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
             searchButton.isHidden = ingredients.count == 0
         }
     }
+    var recipes: [Recipe] = []
+    var activityIndicator: RecipeActivityIndicator? {
+        didSet {
+            activityIndicator?.removeFromSuperview()
+            guard let indicator = activityIndicator else { return }
+            view.addSubview(indicator)
+        }
+    }
+    var isSearching: Bool = false {
+        didSet {
+            isSearching ? exit(view: allStackView, direction: .left) : returnIdentity(allStackView)
+            !isSearching ? activityIndicator?.stopAnimating() : nil
+            activityIndicator?.isHidden = !isSearching
+            activityIndicator = isSearching ? RecipeActivityIndicator() : nil
+            isSearching ? activityIndicator?.animate() : nil
+        }
+    }
     
     // MARK: - Outlets
     
+    @IBOutlet weak var allStackView: UIStackView!
     /// Button used to launch a research.
     @IBOutlet weak var searchButton: UIButton!
     /// Textfield used to enter ingredients.
@@ -69,13 +87,32 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
             showAlert(title: "No ingredients", message: "You have to write at least one ingredient.", style: .alert, yesNoActions: false)
             return
         }
-        performSegue(withIdentifier: "ResultsSegue", sender: self)
+        isSearching = true
+        recipeGetter?.getRecipes(ingredients: ingredients, completionHandler: { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let recipes):
+                    if recipes.count == 0 {
+                        self.showAlert(title: "No recipes", message: "No recipes has been found with the choosen ingredients.")
+                        self.isSearching = false
+                        return
+                    }
+                    self.recipes = recipes
+                    self.isSearching = false
+                    self.performSegue(withIdentifier: "ResultsSegue", sender: self)
+                case .failure(let error):
+                    self.isSearching = false
+                    self.showAlert(error: error)
+                }
+            }
+        })
+        
     }
     /// Prepare segue to transmit informations to the results controller.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ResultsSegue", let controller = segue.destination as? ResultsTableViewController {
-            controller.choosenIngredients = ingredients
             controller.recipeGetter = recipeGetter
+            controller.recipes = recipes
         }
     }
 }
@@ -102,9 +139,6 @@ extension SearchViewController:  UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - Ingredients data source
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredients.count
     }

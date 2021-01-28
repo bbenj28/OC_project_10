@@ -16,6 +16,7 @@
 		03487DAD25BEFBF800EA4B16 /* RecipeGetterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03487DAC25BEFBF800EA4B16 /* RecipeGetterProtocol.swift */; };
 		03487DB225BF011000EA4B16 /* SearchNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03487DB125BF011000EA4B16 /* SearchNavigationViewController.swift */; };
 		03487DBB25BF052D00EA4B16 /* FavoriteNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03487DBA25BF052D00EA4B16 /* FavoriteNavigationViewController.swift */; };
+		035AF33725C2A6F000353CF7 /* UIViewController+animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF33625C2A6F000353CF7 /* UIViewController+animations.swift */; };
 		03AFE25225B73285009B8904 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFE25125B73285009B8904 /* AppDelegate.swift */; };
 		03AFE25425B73285009B8904 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFE25325B73285009B8904 /* SceneDelegate.swift */; };
 		03AFE25925B73285009B8904 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03AFE25725B73285009B8904 /* Main.storyboard */; };
@@ -65,6 +66,7 @@
 		03487DAC25BEFBF800EA4B16 /* RecipeGetterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeGetterProtocol.swift; sourceTree = "<group>"; };
 		03487DB125BF011000EA4B16 /* SearchNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavigationViewController.swift; sourceTree = "<group>"; };
 		03487DBA25BF052D00EA4B16 /* FavoriteNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNavigationViewController.swift; sourceTree = "<group>"; };
+		035AF33625C2A6F000353CF7 /* UIViewController+animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+animations.swift"; sourceTree = "<group>"; };
 		03AFE24E25B73285009B8904 /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03AFE25125B73285009B8904 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03AFE25325B73285009B8904 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			children = (
 				03CE0E2A25B811CC0097BEA6 /* Error+userMessage.swift */,
 				03CE0E2E25B8121D0097BEA6 /* UIViewController+Alert.swift */,
+				035AF33625C2A6F000353CF7 /* UIViewController+animations.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				03487DAD25BEFBF800EA4B16 /* RecipeGetterProtocol.swift in Sources */,
 				03AFE2BC25B740D1009B8904 /* RecipeService.swift in Sources */,
 				03CE0E2725B808320097BEA6 /* ApplicationErrors.swift in Sources */,
+				035AF33725C2A6F000353CF7 /* UIViewController+animations.swift in Sources */,
 				033F775E25B9917B009DD04F /* PictureCellTableViewCell.swift in Sources */,
 				03CE0E2B25B811CC0097BEA6 /* Error+userMessage.swift in Sources */,
 				03FB123B25B9D8F400E9AD0C /* RecipeActivityIndicator.swift in Sources */,

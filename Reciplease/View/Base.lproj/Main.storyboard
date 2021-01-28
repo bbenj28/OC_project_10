@@ -192,6 +192,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="qR6-3x-EFo"/>
                     <connections>
+                        <outlet property="allStackView" destination="STZ-G7-oFz" id="V6e-C6-Ocg"/>
                         <outlet property="ingredientTextField" destination="Eib-KT-2AW" id="seG-7e-ROY"/>
                         <outlet property="searchButton" destination="BO3-JK-Pof" id="gBY-8B-4eV"/>
                         <outlet property="tableView" destination="lcU-b4-fNQ" id="MsF-sS-Rhi"/>
@@ -609,7 +610,7 @@ label</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="24j-s6-lpx"/>
+        <segue reference="KQv-Kj-0s4"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="checkmark" width="15" height="15"/>
