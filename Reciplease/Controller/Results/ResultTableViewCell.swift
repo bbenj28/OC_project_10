@@ -32,7 +32,7 @@ class ResultTableViewCell: UITableViewCell {
             personsLabel.text = "\(recipe.yield)"
             timeLabel.text = "\(Int(recipe.totalTime)) min."
             timeStack.isHidden = recipe.totalTime == 0
-            ingredientsLabel.text = recipe.ingredients
+            ingredientsLabel.text = recipe.ingredientsOnALine
             guard let data = recipe.pictureData, let image = UIImage(data: data) else {
                 resultPictureView.image = UIImage(named: "default1")
                 return

@@ -49,6 +49,9 @@ struct RecipeDetailsJSONStructure: Recipe {
         guard healthLabelsArray.count > 0 else { return "" }
         return healthLabelsArray.map({ "- \($0)" }).joined(separator: "\n")
     }
+    var ingredientsOnALine: String {
+        return ingredients.split(separator: "\n").joined(separator: " ")
+    }
 }
 extension RecipeDetailsJSONStructure: Decodable {
     enum CodingKeys: String, CodingKey {

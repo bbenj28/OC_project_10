@@ -69,101 +69,126 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="STZ-G7-oFz">
-                                <rect key="frame" x="20" y="119" width="280" height="400"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="eZ0-x4-lt6">
+                                <rect key="frame" x="0.0" y="99" width="320" height="420"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's in your fridge ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYF-1T-7Mn">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="40"/>
-                                        <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0mY-7D-HUZ">
-                                        <rect key="frame" x="0.0" y="50" width="280" height="28"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eH1-w8-QYs">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="358"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lemon, cheese, sausages ..." textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Eib-KT-2AW">
-                                                <rect key="frame" x="0.0" y="0.0" width="247" height="28"/>
-                                                <color key="backgroundColor" red="0.67046716370558368" green="0.67046716370558368" blue="0.67046716370558368" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="textColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHi-KS-rJj">
-                                                <rect key="frame" x="252" y="0.0" width="28" height="28"/>
-                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal">
-                                                    <imageReference key="image" image="plus" symbolScale="large"/>
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="addIngredient:" destination="Fja-20-hQU" eventType="touchUpInside" id="nnI-sg-5mR"/>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="STZ-G7-oFz">
+                                                <rect key="frame" x="10" y="0.0" width="300" height="358"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's in your fridge ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYF-1T-7Mn">
+                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="36"/>
+                                                        <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0mY-7D-HUZ">
+                                                        <rect key="frame" x="0.0" y="46" width="300" height="25"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lemon, cheese, sausages ..." textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Eib-KT-2AW">
+                                                                <rect key="frame" x="0.0" y="0.0" width="265" height="25"/>
+                                                                <color key="backgroundColor" red="0.67046716370558368" green="0.67046716370558368" blue="0.67046716370558368" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHi-KS-rJj">
+                                                                <rect key="frame" x="270" y="0.0" width="30" height="25"/>
+                                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <state key="normal">
+                                                                    <imageReference key="image" image="plus" symbolScale="large"/>
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="addIngredient:" destination="Fja-20-hQU" eventType="touchUpInside" id="nnI-sg-5mR"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="pHi-KS-rJj" firstAttribute="width" secondItem="0mY-7D-HUZ" secondAttribute="width" multiplier="0.1" id="14Q-6h-G37"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bg-Xz-5pq">
+                                                        <rect key="frame" x="0.0" y="81" width="300" height="25"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your ingredients :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBT-o2-6bP">
+                                                                <rect key="frame" x="0.0" y="0.0" width="270" height="25"/>
+                                                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
+                                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDC-6y-Md7">
+                                                                <rect key="frame" x="270" y="0.0" width="30" height="25"/>
+                                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <state key="normal">
+                                                                    <imageReference key="image" image="trash" symbolScale="large"/>
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="26"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="clearIngredients:" destination="Fja-20-hQU" eventType="touchUpInside" id="Vpw-nT-3PF"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="SDC-6y-Md7" firstAttribute="width" secondItem="8bg-Xz-5pq" secondAttribute="width" multiplier="0.1" id="eEc-03-uZj"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lcU-b4-fNQ">
+                                                        <rect key="frame" x="0.0" y="116" width="300" height="242"/>
+                                                        <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <prototypes>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientCell" textLabel="pNr-5x-LH7" rowHeight="40" style="IBUITableViewCellStyleDefault" id="J5b-vc-cEx">
+                                                                <rect key="frame" x="0.0" y="28" width="300" height="40"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J5b-vc-cEx" id="2Zf-4T-Aht">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="40"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pNr-5x-LH7">
+                                                                            <rect key="frame" x="16" y="0.0" width="268" height="40"/>
+                                                                            <autoresizingMask key="autoresizingMask"/>
+                                                                            <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="20"/>
+                                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </tableViewCellContentView>
+                                                                <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </tableViewCell>
+                                                        </prototypes>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="Fja-20-hQU" id="oH9-ep-uzD"/>
+                                                            <outlet property="delegate" destination="Fja-20-hQU" id="eA7-s0-bh3"/>
+                                                        </connections>
+                                                    </tableView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="VYF-1T-7Mn" firstAttribute="height" secondItem="STZ-G7-oFz" secondAttribute="height" multiplier="0.1" id="4am-j5-EwC"/>
+                                                    <constraint firstItem="8bg-Xz-5pq" firstAttribute="height" secondItem="0mY-7D-HUZ" secondAttribute="height" id="dPD-N0-53c"/>
+                                                    <constraint firstItem="0mY-7D-HUZ" firstAttribute="height" secondItem="STZ-G7-oFz" secondAttribute="height" multiplier="0.07" id="yiv-47-vQ7"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
+                                        <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="pHi-KS-rJj" firstAttribute="width" secondItem="0mY-7D-HUZ" secondAttribute="width" multiplier="0.1" id="14Q-6h-G37"/>
+                                            <constraint firstAttribute="trailing" secondItem="STZ-G7-oFz" secondAttribute="trailing" constant="10" id="UVv-l3-yqQ"/>
+                                            <constraint firstItem="STZ-G7-oFz" firstAttribute="leading" secondItem="eH1-w8-QYs" secondAttribute="leading" constant="10" id="fPg-UI-5dZ"/>
+                                            <constraint firstItem="STZ-G7-oFz" firstAttribute="top" secondItem="eH1-w8-QYs" secondAttribute="top" id="k5O-jg-XlQ"/>
+                                            <constraint firstAttribute="bottom" secondItem="STZ-G7-oFz" secondAttribute="bottom" id="vTd-kK-xz6"/>
                                         </constraints>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bg-Xz-5pq">
-                                        <rect key="frame" x="0.0" y="88" width="280" height="28"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your ingredients :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBT-o2-6bP">
-                                                <rect key="frame" x="0.0" y="0.0" width="252" height="28"/>
-                                                <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDC-6y-Md7">
-                                                <rect key="frame" x="252" y="0.0" width="28" height="28"/>
-                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal">
-                                                    <imageReference key="image" image="trash" symbolScale="large"/>
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="26"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="clearIngredients:" destination="Fja-20-hQU" eventType="touchUpInside" id="Vpw-nT-3PF"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="SDC-6y-Md7" firstAttribute="width" secondItem="8bg-Xz-5pq" secondAttribute="width" multiplier="0.1" id="eEc-03-uZj"/>
-                                        </constraints>
-                                    </stackView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lcU-b4-fNQ">
-                                        <rect key="frame" x="0.0" y="126" width="280" height="224"/>
-                                        <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientCell" textLabel="pNr-5x-LH7" rowHeight="40" style="IBUITableViewCellStyleDefault" id="J5b-vc-cEx">
-                                                <rect key="frame" x="0.0" y="28" width="280" height="40"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J5b-vc-cEx" id="2Zf-4T-Aht">
-                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="40"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pNr-5x-LH7">
-                                                            <rect key="frame" x="16" y="0.0" width="248" height="40"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="20"/>
-                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </tableViewCellContentView>
-                                                <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </tableViewCell>
-                                        </prototypes>
-                                        <connections>
-                                            <outlet property="dataSource" destination="Fja-20-hQU" id="oH9-ep-uzD"/>
-                                            <outlet property="delegate" destination="Fja-20-hQU" id="eA7-s0-bh3"/>
-                                        </connections>
-                                    </tableView>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BO3-JK-Pof">
-                                        <rect key="frame" x="0.0" y="360" width="280" height="40"/>
+                                        <rect key="frame" x="0.0" y="363" width="320" height="57"/>
                                         <color key="backgroundColor" red="0.67046716370000004" green="0.67046716370000004" blue="0.67046716370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="57" id="ahX-9z-HRt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="23"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="   search for recipes" image="checkmark">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
@@ -173,26 +198,20 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="VYF-1T-7Mn" firstAttribute="height" secondItem="STZ-G7-oFz" secondAttribute="height" multiplier="0.1" id="4am-j5-EwC"/>
-                                    <constraint firstItem="BO3-JK-Pof" firstAttribute="height" secondItem="STZ-G7-oFz" secondAttribute="height" multiplier="0.1" id="cYt-x9-QUc"/>
-                                    <constraint firstItem="8bg-Xz-5pq" firstAttribute="height" secondItem="0mY-7D-HUZ" secondAttribute="height" id="dPD-N0-53c"/>
-                                    <constraint firstItem="0mY-7D-HUZ" firstAttribute="height" secondItem="STZ-G7-oFz" secondAttribute="height" multiplier="0.07" id="yiv-47-vQ7"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pb6-68-v31"/>
                         <color key="backgroundColor" red="0.15979933375634514" green="0.15979933375634514" blue="0.15979933375634514" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="pb6-68-v31" firstAttribute="trailing" secondItem="STZ-G7-oFz" secondAttribute="trailing" constant="20" id="AYp-MU-Wu8"/>
-                            <constraint firstItem="STZ-G7-oFz" firstAttribute="leading" secondItem="pb6-68-v31" secondAttribute="leading" constant="20" id="GSg-Pe-pQL"/>
-                            <constraint firstItem="STZ-G7-oFz" firstAttribute="top" secondItem="pb6-68-v31" secondAttribute="top" constant="20" id="lRO-sf-8w2"/>
-                            <constraint firstItem="pb6-68-v31" firstAttribute="bottom" secondItem="STZ-G7-oFz" secondAttribute="bottom" id="shH-M8-AWb"/>
+                            <constraint firstItem="eZ0-x4-lt6" firstAttribute="top" secondItem="pb6-68-v31" secondAttribute="top" id="N4f-d4-U5v"/>
+                            <constraint firstItem="eZ0-x4-lt6" firstAttribute="bottom" secondItem="pb6-68-v31" secondAttribute="bottom" id="gMn-7z-PdG"/>
+                            <constraint firstItem="eZ0-x4-lt6" firstAttribute="leading" secondItem="pb6-68-v31" secondAttribute="leading" id="nrP-UU-C0C"/>
+                            <constraint firstItem="eZ0-x4-lt6" firstAttribute="trailing" secondItem="pb6-68-v31" secondAttribute="trailing" id="xY6-ex-xDR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="qR6-3x-EFo"/>
                     <connections>
-                        <outlet property="allStackView" destination="STZ-G7-oFz" id="V6e-C6-Ocg"/>
+                        <outlet property="allStackView" destination="eZ0-x4-lt6" id="is7-Ho-16Y"/>
                         <outlet property="ingredientTextField" destination="Eib-KT-2AW" id="seG-7e-ROY"/>
                         <outlet property="searchButton" destination="BO3-JK-Pof" id="gBY-8B-4eV"/>
                         <outlet property="tableView" destination="lcU-b4-fNQ" id="MsF-sS-Rhi"/>

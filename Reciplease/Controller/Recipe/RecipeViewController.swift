@@ -25,7 +25,7 @@ class RecipeViewController: UIViewController, RecipeGetterProtocol {
             if !isFavorite && tabBarController?.selectedIndex == 1 {
                 navigationController?.popViewController(animated: true)
             }
-            setFavoriteButton()
+            setFavoriteButton(true)
         }
     }
     
@@ -47,18 +47,19 @@ class RecipeViewController: UIViewController, RecipeGetterProtocol {
             if recipe.healthLabels.count > 0 { lineTypes.append(.health) }
             if recipe.cautions.count > 0 { lineTypes.append(.cautions) }
         }
-        setFavoriteButton()
+        setFavoriteButton(false)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ckeckIfIsFavorite()
     }
     /// Change favorite button regarding isFavorite property value.
-    private func setFavoriteButton() {
+    private func setFavoriteButton(_ isEnabled: Bool) {
         let imageName = isFavorite ? "star.added" : "star.add"
         guard let image = UIImage(named: imageName) else { return }
         let button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(favoriteButtonHasBeenHitten))
         button.tintColor = isFavorite ? #colorLiteral(red: 1, green: 0.9374062272, blue: 0.3152640763, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        button.isEnabled = isEnabled
         navigationItem.rightBarButtonItems = [button]
     }
     private func ckeckIfIsFavorite() {

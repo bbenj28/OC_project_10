@@ -19,4 +19,5 @@ protocol Recipe {
     var healthLabels: String { get }
     var cautions: String { get }
     var pictureData: Data? { get set }
+    var ingredientsOnALine: String { get }
 }
