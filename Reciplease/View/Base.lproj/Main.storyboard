@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,10 +18,10 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jWp-lk-PK6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="selectedImageTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="Back"/>
+                        <color key="tintColor" name="Text"/>
+                        <color key="barTintColor" name="Back"/>
+                        <color key="selectedImageTintColor" name="Text"/>
                     </tabBar>
                     <connections>
                         <segue destination="hzU-9r-Ymr" kind="relationship" relationship="viewControllers" id="WAv-cW-zNX"/>
@@ -41,12 +42,12 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Cv5-1D-knQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="Back"/>
+                        <color key="tintColor" name="Text"/>
+                        <color key="barTintColor" name="Back"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" name="Text"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="40"/>
@@ -81,7 +82,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's in your fridge ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYF-1T-7Mn">
                                                         <rect key="frame" x="0.0" y="0.0" width="300" height="36"/>
                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" name="Text"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0mY-7D-HUZ">
@@ -89,16 +90,17 @@
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lemon, cheese, sausages ..." textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Eib-KT-2AW">
                                                                 <rect key="frame" x="0.0" y="0.0" width="265" height="25"/>
-                                                                <color key="backgroundColor" red="0.67046716370558368" green="0.67046716370558368" blue="0.67046716370558368" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <color key="textColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="backgroundColor" name="MiddleBack"/>
+                                                                <color key="tintColor" name="Text"/>
+                                                                <color key="textColor" name="Back"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHi-KS-rJj">
                                                                 <rect key="frame" x="270" y="0.0" width="30" height="25"/>
-                                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="tintColor" name="Text"/>
                                                                 <state key="normal">
+                                                                    <color key="titleColor" name="Text"/>
                                                                     <imageReference key="image" image="plus" symbolScale="large"/>
                                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
                                                                 </state>
@@ -117,13 +119,14 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your ingredients :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBT-o2-6bP">
                                                                 <rect key="frame" x="0.0" y="0.0" width="270" height="25"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
-                                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" name="Text"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDC-6y-Md7">
                                                                 <rect key="frame" x="270" y="0.0" width="30" height="25"/>
                                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <state key="normal">
+                                                                    <color key="titleColor" name="Text"/>
                                                                     <imageReference key="image" image="trash" symbolScale="large"/>
                                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="26"/>
                                                                 </state>
@@ -138,7 +141,7 @@
                                                     </stackView>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lcU-b4-fNQ">
                                                         <rect key="frame" x="0.0" y="116" width="300" height="242"/>
-                                                        <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" name="Back"/>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientCell" textLabel="pNr-5x-LH7" rowHeight="40" style="IBUITableViewCellStyleDefault" id="J5b-vc-cEx">
                                                                 <rect key="frame" x="0.0" y="28" width="300" height="40"/>
@@ -150,15 +153,15 @@
                                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pNr-5x-LH7">
                                                                             <rect key="frame" x="16" y="0.0" width="268" height="40"/>
                                                                             <autoresizingMask key="autoresizingMask"/>
-                                                                            <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <color key="backgroundColor" name="Back"/>
                                                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="20"/>
-                                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <color key="textColor" name="Text"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
-                                                                    <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="backgroundColor" name="Back"/>
                                                                 </tableViewCellContentView>
-                                                                <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="backgroundColor" name="Back"/>
                                                             </tableViewCell>
                                                         </prototypes>
                                                         <connections>
@@ -174,7 +177,7 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" name="Back"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="STZ-G7-oFz" secondAttribute="trailing" constant="10" id="UVv-l3-yqQ"/>
                                             <constraint firstItem="STZ-G7-oFz" firstAttribute="leading" secondItem="eH1-w8-QYs" secondAttribute="leading" constant="10" id="fPg-UI-5dZ"/>
@@ -184,13 +187,14 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BO3-JK-Pof">
                                         <rect key="frame" x="0.0" y="363" width="320" height="57"/>
-                                        <color key="backgroundColor" red="0.67046716370000004" green="0.67046716370000004" blue="0.67046716370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" name="MiddleBack"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="57" id="ahX-9z-HRt"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="23"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="   search for recipes" image="checkmark">
+                                            <color key="titleColor" name="Text"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
                                         </state>
                                         <connections>
@@ -201,7 +205,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pb6-68-v31"/>
-                        <color key="backgroundColor" red="0.15979933375634514" green="0.15979933375634514" blue="0.15979933375634514" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="Back"/>
                         <constraints>
                             <constraint firstItem="eZ0-x4-lt6" firstAttribute="top" secondItem="pb6-68-v31" secondAttribute="top" id="N4f-d4-U5v"/>
                             <constraint firstItem="eZ0-x4-lt6" firstAttribute="bottom" secondItem="pb6-68-v31" secondAttribute="bottom" id="gMn-7z-PdG"/>
@@ -232,12 +236,12 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="MDd-96-d8o">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="Back"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" name="Back"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" name="Text"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="40"/>
@@ -259,7 +263,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="250" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="t9C-gZ-3vE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="Back"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultCell" rowHeight="250" id="avn-K4-bVr" customClass="ResultTableViewCell" customModule="Reciplease" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="250"/>
@@ -279,7 +283,7 @@
                                                             <string key="text">Label
 labem</string>
                                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" name="Back"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5d0-HW-XRf">
@@ -287,7 +291,7 @@ labem</string>
                                                             <string key="text">Label
 label</string>
                                                             <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="14"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" name="Back"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1ho-YI-6Ww">
@@ -304,12 +308,12 @@ label</string>
                                                                             <subviews>
                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="Lqs-bc-qGo">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="31.5" height="71"/>
-                                                                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <color key="tintColor" name="Text"/>
                                                                                 </imageView>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uk7-2J-Xtt">
                                                                                     <rect key="frame" x="34.5" y="0.0" width="70.5" height="71"/>
                                                                                     <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="25"/>
-                                                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <color key="textColor" name="Text"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
@@ -322,12 +326,12 @@ label</string>
                                                                             <subviews>
                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timer" translatesAutoresizingMaskIntoConstraints="NO" id="uV0-3v-D7y">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="31.5" height="71.5"/>
-                                                                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <color key="tintColor" name="Text"/>
                                                                                 </imageView>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999 min." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDf-dj-Dqa">
                                                                                     <rect key="frame" x="34.5" y="0.0" width="70.5" height="71.5"/>
                                                                                     <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="20"/>
-                                                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <color key="textColor" name="Text"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
@@ -350,7 +354,7 @@ label</string>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.67046716370000004" green="0.67046716370000004" blue="0.67046716370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" name="MiddleBack"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="QbC-Yo-RfC" secondAttribute="trailing" id="H83-en-TgO"/>
                                                 <constraint firstAttribute="bottom" secondItem="QbC-Yo-RfC" secondAttribute="bottom" id="MIr-4u-TIw"/>
@@ -359,7 +363,7 @@ label</string>
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" name="Back"/>
                                     <constraints>
                                         <constraint firstItem="oho-sj-8tn" firstAttribute="height" secondItem="bm8-k7-SF6" secondAttribute="height" multiplier="0.95" id="bDl-Wu-5cG"/>
                                         <constraint firstItem="oho-sj-8tn" firstAttribute="centerY" secondItem="bm8-k7-SF6" secondAttribute="centerY" id="oUx-7O-MOk"/>
@@ -367,7 +371,7 @@ label</string>
                                         <constraint firstItem="oho-sj-8tn" firstAttribute="centerX" secondItem="bm8-k7-SF6" secondAttribute="centerX" id="wej-ru-6TV"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="Back"/>
                                 <connections>
                                     <outlet property="ingredientsLabel" destination="5d0-HW-XRf" id="5J4-xZ-csj"/>
                                     <outlet property="personsLabel" destination="Uk7-2J-Xtt" id="L2X-vt-vP1"/>
@@ -406,7 +410,7 @@ label</string>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6ka-OS-s0J">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="418"/>
-                                        <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" name="Back"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleCell" textLabel="rTy-Lh-WpO" style="IBUITableViewCellStyleDefault" id="lk5-VX-nt6">
                                                 <rect key="frame" x="0.0" y="28" width="320" height="76.5"/>
@@ -419,12 +423,12 @@ label</string>
                                                             <rect key="frame" x="16" y="0.0" width="288" height="76.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="30"/>
-                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" name="Text"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </tableViewCellContentView>
-                                                <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" name="Back"/>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CollectionCell" rowHeight="50" id="wVs-js-WGO" customClass="CollectionTableViewCell" customModule="Reciplease" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="104.5" width="320" height="50"/>
@@ -435,7 +439,7 @@ label</string>
                                                     <subviews>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nqi-gC-ePI">
                                                             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-                                                            <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" name="Back"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="50" id="Ajq-89-B8f"/>
                                                             </constraints>
@@ -458,7 +462,7 @@ label</string>
                                                                                 <subviews>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="RfT-l4-8RY">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                        <color key="tintColor" name="Text"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" constant="50" id="7Zv-6T-kF6"/>
                                                                                             <constraint firstAttribute="height" constant="50" id="MrO-2N-s0F"/>
@@ -467,7 +471,7 @@ label</string>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOo-VN-Cyu">
                                                                                         <rect key="frame" x="50" y="0.0" width="50" height="50"/>
                                                                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
-                                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                        <color key="textColor" name="Text"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                 </subviews>
@@ -478,7 +482,7 @@ label</string>
                                                                                 </constraints>
                                                                             </stackView>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="backgroundColor" name="Back"/>
                                                                         <constraints>
                                                                             <constraint firstItem="LjY-XW-Qtq" firstAttribute="top" secondItem="aAj-Ia-vqj" secondAttribute="top" id="0qh-33-VDN"/>
                                                                             <constraint firstItem="LjY-XW-Qtq" firstAttribute="leading" secondItem="aAj-Ia-vqj" secondAttribute="leading" id="6vY-y8-cy0"/>
@@ -486,7 +490,7 @@ label</string>
                                                                             <constraint firstAttribute="trailing" secondItem="LjY-XW-Qtq" secondAttribute="trailing" id="q7R-pn-Pxt"/>
                                                                         </constraints>
                                                                     </collectionViewCellContentView>
-                                                                    <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="backgroundColor" name="Back"/>
                                                                     <size key="customSize" width="100" height="50"/>
                                                                     <connections>
                                                                         <outlet property="label" destination="MOo-VN-Cyu" id="Wq3-G9-VIW"/>
@@ -503,7 +507,7 @@ label</string>
                                                         <constraint firstItem="nqi-gC-ePI" firstAttribute="leading" secondItem="TJF-7z-j9I" secondAttribute="leading" id="enS-Yo-yFV"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
-                                                <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" name="Back"/>
                                                 <connections>
                                                     <outlet property="collection" destination="nqi-gC-ePI" id="yXr-q5-Kbm"/>
                                                 </connections>
@@ -535,7 +539,7 @@ label</string>
                                                         <constraint firstItem="ggu-uW-d8C" firstAttribute="top" secondItem="1WF-fb-9o7" secondAttribute="top" id="zlX-ZD-dgF"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
-                                                <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" name="Back"/>
                                                 <connections>
                                                     <outlet property="pictureView" destination="yiU-jS-wt1" id="yB4-xj-LC6"/>
                                                 </connections>
@@ -551,19 +555,19 @@ label</string>
                                                             <rect key="frame" x="16" y="9.5" width="53" height="25.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="20"/>
-                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" name="Text"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gY3-wg-B1u">
                                                             <rect key="frame" x="16" y="38.5" width="45.5" height="19"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
-                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" name="Text"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </tableViewCellContentView>
-                                                <color key="backgroundColor" red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" name="Back"/>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailCell" textLabel="s7d-Dl-vIG" detailTextLabel="SnJ-wK-e7F" style="IBUITableViewCellStyleValue1" id="oOO-Sk-CeN">
                                                 <rect key="frame" x="0.0" y="345" width="320" height="51.5"/>
@@ -576,31 +580,31 @@ label</string>
                                                             <rect key="frame" x="16" y="13" width="53" height="25.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="20"/>
-                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" name="Text"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SnJ-wK-e7F">
                                                             <rect key="frame" x="258.5" y="19" width="45.5" height="19"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
-                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="textColor" name="Text"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </tableViewCellContentView>
-                                                <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" name="Back"/>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FX-jP-lUD">
                                         <rect key="frame" x="0.0" y="418" width="320" height="57"/>
-                                        <color key="backgroundColor" red="0.67046716370000004" green="0.67046716370000004" blue="0.67046716370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" name="MiddleBack"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="57" id="lPu-TL-Rgc"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="23"/>
                                         <state key="normal" title="Get directions">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" name="Text"/>
                                         </state>
                                         <connections>
                                             <action selector="getDirections:" destination="dMu-gx-JxV" eventType="touchUpInside" id="2l7-EM-Owh"/>
@@ -610,7 +614,7 @@ label</string>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="z7V-jC-iUr"/>
-                        <color key="backgroundColor" red="0.16078431369999999" green="0.16078431369999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="Back"/>
                         <constraints>
                             <constraint firstItem="tjU-8D-BwC" firstAttribute="trailing" secondItem="z7V-jC-iUr" secondAttribute="trailing" id="Asu-1R-nGv"/>
                             <constraint firstItem="tjU-8D-BwC" firstAttribute="top" secondItem="z7V-jC-iUr" secondAttribute="top" id="NY7-lI-qZ7"/>
@@ -639,5 +643,14 @@ label</string>
         <image name="star.added" width="13" height="13"/>
         <image name="timer" width="13" height="13"/>
         <image name="trash" width="13" height="13"/>
+        <namedColor name="Back">
+            <color red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MiddleBack">
+            <color red="0.67046716370000004" green="0.67046716370000004" blue="0.67046716370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Text">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
