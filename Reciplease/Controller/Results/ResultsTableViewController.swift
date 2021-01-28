@@ -30,7 +30,22 @@ class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // set title depending on the method used by the recipe getter
         navigationItem.title = recipeGetter?.method.title
+    }
+    
+    
+    // MARK: - View did appear
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // load recipes depending on the method used by the recipe getter
+        switch recipeGetter?.method {
+        case .manager:
+            loadRecipes()
+        default:
+            break
+        }
     }
     /// Load recipes.
     private func loadRecipes() {
@@ -45,17 +60,6 @@ class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
                 }
                 self.tableView.reloadData()
             }
-        }
-    }
-    
-    // MARK: - View did appear
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        switch recipeGetter?.method {
-        case .manager:
-            loadRecipes()
-        default:
-            break
         }
     }
 }

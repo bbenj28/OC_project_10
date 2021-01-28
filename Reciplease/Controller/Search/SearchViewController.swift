@@ -19,7 +19,9 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
             searchButton.isHidden = ingredients.count == 0
         }
     }
+    /// Loaded recipes to transmit to results controller.
     var recipes: [Recipe] = []
+    /// Activity indicator used during loading.
     var activityIndicator: RecipeActivityIndicator? {
         didSet {
             activityIndicator?.removeFromSuperview()
@@ -27,6 +29,7 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
             view.addSubview(indicator)
         }
     }
+    /// Property used to know if the controller is searching, and if an activity indicator has to be shown.
     var isSearching: Bool = false {
         didSet {
             isSearching ? exit(view: allStackView, direction: .left) : returnIdentity(allStackView)
@@ -39,6 +42,7 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
     
     // MARK: - Outlets
     
+    /// Stackview containing search form.
     @IBOutlet weak var allStackView: UIStackView!
     /// Button used to launch a research.
     @IBOutlet weak var searchButton: UIButton!
@@ -69,9 +73,14 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
     /// Add ingredient choosen by user.
     @IBAction func addIngredient(_ sender: Any) {
         guard let name = ingredientTextField.text, !name.isEmpty else { return }
-        if didAddIngredient(name) {
-            ingredientTextField.text = ""
+        for ingredient in ingredients {
+            if ingredient == name {
+                return
+            }
         }
+        ingredients.insert(name, at: 0)
+        tableView.reloadData()
+        ingredientTextField.text = ""
     }
     /// Clear all ingredients from tableview.
     @IBAction func clearIngredients(_ sender: Any) {
@@ -87,6 +96,10 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
             showAlert(title: "No ingredients", message: "You have to write at least one ingredient.", style: .alert, yesNoActions: false)
             return
         }
+        getRecipes()
+    }
+    /// Get recipes with a network call using recipe getter.
+    private func getRecipes() {
         isSearching = true
         recipeGetter?.getRecipes(ingredients: ingredients, completionHandler: { (result) in
             DispatchQueue.main.async {
@@ -106,7 +119,6 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
                 }
             }
         })
-        
     }
     /// Prepare segue to transmit informations to the results controller.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -118,26 +130,8 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
 }
 
 extension SearchViewController:  UITableViewDataSource, UITableViewDelegate {
-    
-    // MARK: - Ingredients
-    
-    /**
-     Checks if an ingredient already exists, and eventually adds it in the list.
-     - parameter name: Ingredient's name to add.
-     - returns: *True* if the ingredient has been added.
-     */
-    func didAddIngredient(_ name: String) -> Bool {
-        for ingredient in ingredients {
-            if ingredient == name {
-                return false
-            }
-        }
-        ingredients.insert(name, at: 0)
-        tableView.reloadData()
-        return true
-    }
-    
-    // MARK: - Ingredients data source
+
+    // MARK: - Ingredients tableview
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredients.count
@@ -151,6 +145,7 @@ extension SearchViewController:  UITableViewDataSource, UITableViewDelegate {
         return ingredients.count > 0 ? 0 : tableView.frame.height
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        // if no ingredients have been added yet, display instructions to add ingredients
         let stackview = UIStackView()
         stackview.axis = .vertical
         stackview.distribution = .fill
@@ -165,7 +160,7 @@ extension SearchViewController:  UITableViewDataSource, UITableViewDelegate {
         labelInstructions.font = UIFont(name: "Palatino", size: 15)
         labelInstructions.textAlignment = .center
         labelInstructions.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        labelInstructions.text = "\nto add ingredients :\n- enter its name in the textfield;\n- hit return on the keyboard\nor the plus button.\n\nwhen it's done:\n- hit return or anywhere on the screen\nto close keyboard;\nhit search button."
+        labelInstructions.text = "\nto add ingredients :\n- enter its name in the textfield;\n- hit return on the keyboard\nor the plus button.\n\nwhen it's done:\n- hit return or anywhere on the screen\nto close keyboard;\n- hit search button."
         
         stackview.addArrangedSubview(label)
         stackview.addArrangedSubview(labelInstructions)
