@@ -39,11 +39,10 @@ class RecipeGetter {
     func addToFavorites(_ recipe: Recipe) {
         dataManager.addToFavorites(recipe)
     }
-    func removeFromFavorites(_ recipe: Recipe, completionHandler: (Bool) -> Void) {
-        dataManager.removeFromFavorites(recipe, completionHandler: completionHandler)
+    func removeFromFavorites(_ recipe: Recipe) {
+        dataManager.removeFromFavorites(recipe)
     }
-    func checkIfIsFavorite(_ recipe: RecipeDetailsJSONStructure, completionHandler: (Bool) -> Void) {
-        let recipeData = dataManager.checkIfIsFavoriteAndReturnData(recipe: recipe)
-        completionHandler(recipeData != nil)
+    func checkIfIsFavorite(_ recipe: Recipe, completionHandler: (Bool) -> Void) {
+        dataManager.checkIfIsFavorite(recipe: recipe, completionHandler: completionHandler)
     }
 }

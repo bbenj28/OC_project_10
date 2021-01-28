@@ -76,13 +76,12 @@ class RecipeViewController: UIViewController, RecipeGetterProtocol {
     /// Remove a recipe from favorite.
     private func removeFromFavorites() {
         guard let recipe = recipe else { return }
-        recipeGetter?.removeFromFavorites(recipe, completionHandler: { (hasToCloseTable) in
-            showAlert(title: "Removed", message: "This recipe has been removed from your favorites.", okHandler:  { (_) in
-                self.isFavorite.toggle()
-                if hasToCloseTable {
-                    self.navigationController?.popViewController(animated: true)
-                }
-            })
+        recipeGetter?.removeFromFavorites(recipe)
+        showAlert(title: "Removed", message: "This recipe has been removed from your favorites.", okHandler:  { (_) in
+            self.isFavorite.toggle()
+            if self.tabBarController?.selectedIndex == 1 {
+                self.navigationController?.popViewController(animated: true)
+            }
         })
     }
     /// Open a safari page containing the recipe's directions.
@@ -140,9 +139,9 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
             case .ingredients:
                 return recipe.ingredients
             case .health:
-                return mapDetails(recipe.healthLabels)
+                return recipe.healthLabels
             case .cautions:
-                return mapDetails(recipe.cautions)
+                return recipe.cautions
             case .calories:
                 return formatNumber(NSNumber(value: recipe.calories))
             case .weight:

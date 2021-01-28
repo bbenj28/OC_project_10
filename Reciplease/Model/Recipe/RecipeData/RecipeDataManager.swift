@@ -15,18 +15,6 @@ class RecipeDataManager {
         guard let result = try? stack.viewContext.fetch(request) else { return [] }
         return result
     }
-    var healthLabels: [HealthLabel] {
-        let request: NSFetchRequest<HealthLabel> = HealthLabel.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        guard let result = try? stack.viewContext.fetch(request) else { return [] }
-        return result
-    }
-    var cautions: [Caution] {
-        let request: NSFetchRequest<Caution> = Caution.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        guard let result = try? stack.viewContext.fetch(request) else { return [] }
-        return result
-    }
     
     init(coreDataStack: CoreDataStack = CoreDataStack()) {
         self.stack = coreDataStack
@@ -42,80 +30,29 @@ class RecipeDataManager {
         savedRecipe.totalTime = recipe.totalTime
         savedRecipe.pictureData = recipe.pictureData
         savedRecipe.optionalIngredients = recipe.ingredients
-        addRecipeParts(from: recipe, to: savedRecipe)
+        savedRecipe.optionalCautions = recipe.cautions
+        savedRecipe.optionalHealthLabels = recipe.healthLabels
         stack.saveContext()
     }
-    private func addRecipeParts(from recipe: Recipe, to savedRecipe: RecipeData) {
-        for index in 1...2 {
-            switch index {
-            case 1:
-                let array: [HealthLabel] = getRecipeParts(recipe.healthLabels)
-                let set = NSSet(array: array)
-                savedRecipe.optionalHealthLabels = set
-            case 2:
-                let array: [Caution] = getRecipeParts(recipe.cautions)
-                let set = NSSet(array: array)
-                savedRecipe.optionalCautions = set
-            default:
-                break
-            }
+
+    func checkIfIsFavorite(recipe: Recipe, completionHandler: (Bool) -> Void) {
+        guard let _ = getWithPredicate(recipe.title) else {
+            completionHandler(false)
+            return
         }
+        completionHandler(true)
     }
-    private func getRecipeParts<T: RecipePart>(_ recipeArray: [String]) -> [T] {
-        var tArray: [T] = []
-        for singleName in recipeArray {
-            if let singleT: T = checkExistingEntity(singleName) {
-                tArray.append(singleT)
-            } else {
-                if var singleT = HealthLabel(context: stack.viewContext) as? T {
-                    singleT.name = singleName
-                    tArray.append(singleT)
-                }
-                if var singleT = Caution(context: stack.viewContext) as? T {
-                    singleT.name = singleName
-                    tArray.append(singleT)
-                }
-            }
-        }
-        return tArray
-    }
-    private func checkExistingEntity<T: RecipePart>(_ name: String) -> T? {
-        // PREDICATE
-        let entities: [[RecipePart]] = [healthLabels, cautions]
-        for entity in entities {
-            if let _ = entity as? [T] {
-                for single in entity {
-                    if let singleName = single.name, singleName == name, let existingEntity = single as? T {
-                        return existingEntity
-                    }
-                }
-            }
-        }
-        return nil
-    }
-    func removeFromFavorites(_ recipe: Recipe, completionHandler: (Bool) -> Void) {
-        if let recipe = recipe as? RecipeData {
-            deleteRecipe(recipe, hasToCloseTable: true, completionHandler: completionHandler)
-        } else if let recipe = recipe as? RecipeDetailsJSONStructure {
-            // PREDICATE
-            guard let recipe = checkIfIsFavoriteAndReturnData(recipe: recipe) else { return }
-            deleteRecipe(recipe, hasToCloseTable: false, completionHandler: completionHandler)
-        }
-    }
-    func checkIfIsFavoriteAndReturnData(recipe recipeToSearch: RecipeDetailsJSONStructure) -> RecipeData? {
-        // PREDICATE
-        if recipes.count > 0 {
-            for recipe in recipes {
-                if recipe.title == recipeToSearch.title {
-                    return recipe
-                }
-            }
-        }
-        return nil
-    }
-    private func deleteRecipe(_ recipe: RecipeData, hasToCloseTable: Bool, completionHandler: (Bool) -> Void) {
+    func removeFromFavorites(_ recipe: Recipe) {
+        guard let recipe = getWithPredicate(recipe.title) else { return }
         stack.viewContext.delete(recipe)
         stack.saveContext()
-        completionHandler(hasToCloseTable)
+    }
+    private func getWithPredicate(_ recipeTitle: String) -> RecipeData? {
+        let request: NSFetchRequest<RecipeData> = RecipeData.fetchRequest()
+        let predicate = NSPredicate(format: "optionalTitle == %@", recipeTitle)
+        request.predicate = predicate
+        guard let recipes = try? stack.viewContext.fetch(request), recipes.count > 0 else { return nil }
+        return recipes[0]
     }
 }
+
