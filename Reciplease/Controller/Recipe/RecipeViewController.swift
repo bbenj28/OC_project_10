@@ -22,6 +22,9 @@ class RecipeViewController: UIViewController, RecipeGetterProtocol {
     /// Is this recipe a favorite one.
     var isFavorite: Bool = false {
         didSet {
+            if !isFavorite && tabBarController?.selectedIndex == 1 {
+                navigationController?.popViewController(animated: true)
+            }
             setFavoriteButton()
         }
     }
@@ -44,14 +47,11 @@ class RecipeViewController: UIViewController, RecipeGetterProtocol {
             if recipe.healthLabels.count > 0 { lineTypes.append(.health) }
             if recipe.cautions.count > 0 { lineTypes.append(.cautions) }
         }
-        if let recipe = recipe as? RecipeDetailsJSONStructure {
-            recipeGetter?.checkIfIsFavorite(recipe, completionHandler: { (isFavourite) in
-                self.isFavorite = isFavourite
-            })
-        } else {
-            isFavorite = true
-        }
         setFavoriteButton()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ckeckIfIsFavorite()
     }
     /// Change favorite button regarding isFavorite property value.
     private func setFavoriteButton() {
@@ -60,6 +60,12 @@ class RecipeViewController: UIViewController, RecipeGetterProtocol {
         let button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(favoriteButtonHasBeenHitten))
         button.tintColor = isFavorite ? #colorLiteral(red: 1, green: 0.9374062272, blue: 0.3152640763, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         navigationItem.rightBarButtonItems = [button]
+    }
+    private func ckeckIfIsFavorite() {
+        guard let recipe = recipe else { return }
+        recipeGetter?.checkIfIsFavorite(recipe, completionHandler: { (isFavorite) in
+            self.isFavorite = isFavorite
+        })
     }
     /// Actions to do when favorite button has been hitten.
     @objc
@@ -79,9 +85,6 @@ class RecipeViewController: UIViewController, RecipeGetterProtocol {
         recipeGetter?.removeFromFavorites(recipe)
         showAlert(title: "Removed", message: "This recipe has been removed from your favorites.", okHandler:  { (_) in
             self.isFavorite.toggle()
-            if self.tabBarController?.selectedIndex == 1 {
-                self.navigationController?.popViewController(animated: true)
-            }
         })
     }
     /// Open a safari page containing the recipe's directions.
