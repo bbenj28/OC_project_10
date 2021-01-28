@@ -37,10 +37,14 @@ struct RecipeDetailsJSONStructure: Recipe {
     var calories: Float
     var totalWeight: Float
     var totalTime: Float
-    var ingredients: [String]
+    var ingredientsArray: [String]
     var healthLabels: [String]
     var cautions: [String]
     var pictureData: Data?
+    var ingredients: String {
+        guard ingredientsArray.count > 0 else { return "" }
+        return ingredientsArray.map({ "- \($0)" }).joined(separator: "\n")
+    }
 }
 extension RecipeDetailsJSONStructure: Decodable {
     enum CodingKeys: String, CodingKey {
@@ -50,7 +54,7 @@ extension RecipeDetailsJSONStructure: Decodable {
         case yield = "yield"
         case calories = "calories"
         case totalWeight = "totalWeight"
-        case ingredients = "ingredientLines"
+        case ingredientsArray = "ingredientLines"
         case totalTime = "totalTime"
         case healthLabels = "healthLabels"
         case cautions = "cautions"

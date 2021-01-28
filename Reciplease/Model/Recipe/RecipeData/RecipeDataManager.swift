@@ -15,12 +15,6 @@ class RecipeDataManager {
         guard let result = try? stack.viewContext.fetch(request) else { return [] }
         return result
     }
-    var ingredients: [Ingredient] {
-        let request: NSFetchRequest<Ingredient> = Ingredient.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        guard let result = try? stack.viewContext.fetch(request) else { return [] }
-        return result
-    }
     var healthLabels: [HealthLabel] {
         let request: NSFetchRequest<HealthLabel> = HealthLabel.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
@@ -47,21 +41,18 @@ class RecipeDataManager {
         savedRecipe.totalWeight = recipe.totalWeight
         savedRecipe.totalTime = recipe.totalTime
         savedRecipe.pictureData = recipe.pictureData
+        savedRecipe.optionalIngredients = recipe.ingredients
         addRecipeParts(from: recipe, to: savedRecipe)
         stack.saveContext()
     }
     private func addRecipeParts(from recipe: Recipe, to savedRecipe: RecipeData) {
-        for index in 1...3 {
+        for index in 1...2 {
             switch index {
             case 1:
-                let array: [Ingredient] = getRecipeParts(recipe.ingredients)
-                let set = NSSet(array: array)
-                savedRecipe.optionalIngredients = set
-            case 2:
                 let array: [HealthLabel] = getRecipeParts(recipe.healthLabels)
                 let set = NSSet(array: array)
                 savedRecipe.optionalHealthLabels = set
-            case 3:
+            case 2:
                 let array: [Caution] = getRecipeParts(recipe.cautions)
                 let set = NSSet(array: array)
                 savedRecipe.optionalCautions = set
@@ -76,10 +67,6 @@ class RecipeDataManager {
             if let singleT: T = checkExistingEntity(singleName) {
                 tArray.append(singleT)
             } else {
-                if var singleT = Ingredient(context: stack.viewContext) as? T {
-                    singleT.name = singleName
-                    tArray.append(singleT)
-                }
                 if var singleT = HealthLabel(context: stack.viewContext) as? T {
                     singleT.name = singleName
                     tArray.append(singleT)
@@ -94,7 +81,7 @@ class RecipeDataManager {
     }
     private func checkExistingEntity<T: RecipePart>(_ name: String) -> T? {
         // PREDICATE
-        let entities: [[RecipePart]] = [ingredients, healthLabels, cautions]
+        let entities: [[RecipePart]] = [healthLabels, cautions]
         for entity in entities {
             if let _ = entity as? [T] {
                 for single in entity {

@@ -23,9 +23,9 @@ open class RecipeData: NSManagedObject, Recipe {
     var yield: Int {
         return Int(optionalYield)
     }
-    var ingredients: [String] {
-        guard let ingredients = optionalIngredients?.allObjects as? [Ingredient] else { return [] }
-        return ingredients.map({ "\($0.unwrappedName)" })
+    var ingredients: String {
+        guard let ingredients = optionalIngredients else { return "" }
+        return ingredients
     }
     var healthLabels: [String] {
         guard let ingredients = optionalHealthLabels?.allObjects as? [HealthLabel] else { return [] }

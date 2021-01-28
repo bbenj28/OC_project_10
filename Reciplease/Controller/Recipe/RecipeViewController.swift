@@ -138,7 +138,7 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
         func getDetails(_ recipe: Recipe) -> String {
             switch self {
             case .ingredients:
-                return mapDetails(recipe.ingredients)
+                return recipe.ingredients
             case .health:
                 return mapDetails(recipe.healthLabels)
             case .cautions:
