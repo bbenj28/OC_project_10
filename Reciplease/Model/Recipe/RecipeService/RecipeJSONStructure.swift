@@ -26,6 +26,7 @@ extension HitJSONStructure: Decodable {
     }
 }
 struct RecipeDetailsJSONStructure: Recipe {
+    var uri: String
     var title: String
     var url: String
     var imageURL: String
@@ -55,6 +56,7 @@ struct RecipeDetailsJSONStructure: Recipe {
 }
 extension RecipeDetailsJSONStructure: Decodable {
     enum CodingKeys: String, CodingKey {
+        case uri = "uri"
         case title = "label"
         case url = "url"
         case imageURL = "image"

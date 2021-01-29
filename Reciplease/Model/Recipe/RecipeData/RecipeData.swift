@@ -8,6 +8,10 @@
 import Foundation
 import CoreData
 open class RecipeData: NSManagedObject, Recipe {
+    var uri: String {
+        guard let uri = optionalUri else { return "" }
+        return uri
+    }
     var title: String {
         guard let title = optionalTitle else { return "" }
         return title

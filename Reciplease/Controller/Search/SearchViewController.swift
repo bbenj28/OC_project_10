@@ -141,38 +141,24 @@ extension SearchViewController:  UITableViewDataSource, UITableViewDelegate {
             cell.textLabel?.text = "- \(ingredients[indexPath.row])"
         return cell
     }
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return ingredients.count > 0 ? 0 : tableView.frame.height
-    }
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        // if no ingredients have been added yet, display instructions to add ingredients
-        let stackview = UIStackView()
-        stackview.axis = .vertical
-        stackview.distribution = .fill
-        stackview.isHidden = ingredients.count > 0
-        let label = UILabel()
-        label.text = "no ingredient so far"
-        label.font = UIFont(name: "Chalkduster", size: 17)
-        label.textAlignment = .center
-        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        let labelInstructions = UILabel()
-        labelInstructions.numberOfLines = 0
-        labelInstructions.font = UIFont(name: "Palatino", size: 15)
-        labelInstructions.textAlignment = .center
-        labelInstructions.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        labelInstructions.text = "\nto add ingredients :\n- enter its name in the textfield;\n- hit return on the keyboard\nor the plus button.\n\nwhen it's done:\n- hit return or anywhere on the screen\nto close keyboard;\n- hit search button."
-        
-        stackview.addArrangedSubview(label)
-        stackview.addArrangedSubview(labelInstructions)
-        let constraint = NSLayoutConstraint(item: label, attribute: .height, relatedBy: .equal, toItem: stackview, attribute: .height, multiplier: 0.2, constant: 0)
-        stackview.addConstraint(constraint)
-        return stackview
-    }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             ingredients.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+    
+    // MARK: - Add ingredients instructions
+    
+    /// Tableview's footer used to display instructions when tableview is empty.
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        // if no ingredients have been added yet, display instructions to add ingredients
+        let view = getInstructionsView(title: "no ingredients so far", instructions: ["> to add ingredients:", "  - enter its name in the textfield;", "  - hit return on the keyboard", "  or the plus button", "", "", "> when it's done:", "  - hit return or anywhere on the screen", "  to close keyboard;", "  - hit search button."], isHidden: ingredients.count > 0)
+        return view
+    }
+    /// Tableview's sections footer's height depending on tableview's emptyness.
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return ingredients.count > 0 ? 0 : tableView.frame.height
     }
 }
 

@@ -7,6 +7,7 @@
         <attribute name="optionalImageUrl" optional="YES" attributeType="String"/>
         <attribute name="optionalIngredients" optional="YES" attributeType="String"/>
         <attribute name="optionalTitle" optional="YES" attributeType="String"/>
+        <attribute name="optionalUri" optional="YES" attributeType="String"/>
         <attribute name="optionalUrl" optional="YES" attributeType="String"/>
         <attribute name="optionalYield" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="pictureData" optional="YES" attributeType="Binary"/>
@@ -14,6 +15,6 @@
         <attribute name="totalWeight" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="RecipeData" positionX="-126.01953125" positionY="-43.99609375" width="128" height="208"/>
+        <element name="RecipeData" positionX="-126.01953125" positionY="-43.99609375" width="128" height="223"/>
     </elements>
 </model>

@@ -77,14 +77,6 @@ extension ResultsTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recipesToDisplay.count
     }
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let label = UILabel()
-        label.text = recipesToDisplay.count == 0 ? "oops, no recipe has been found..." : ""
-        label.font = UIFont(name: "Chalkduster", size: 17)
-        label.textAlignment = .center
-        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        return label
-    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as? ResultTableViewCell, let showRecipesIngredients = showRecipesIngredients else { return UITableViewCell() }
         let recipe = recipesToDisplay[indexPath.row]
@@ -103,6 +95,19 @@ extension ResultsTableViewController {
             controller.recipe = recipe
             controller.recipeGetter = recipeGetter
         }
+    }
+    
+    // MARK: - Add favorites instructions
+    
+    /// Tableview's footer used to display instructions when tableview is empty.
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        // no recipes means no favorites: show instructions to add favorites
+        let view = getInstructionsView(title: "no favorites so far", instructions: ["> to add favorites:", "  - do a research;", "  - open a recipe;", "  - hit star button on the top right."], isHidden: recipes.count > 0)
+        return view
+    }
+    /// Tableview's sections footer's height depending on tableview's emptyness.
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return recipes.count > 0 ? 0 : tableView.frame.height
     }
 }
 extension ResultsTableViewController: ToggleIngredientsDelegate {

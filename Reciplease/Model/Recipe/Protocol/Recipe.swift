@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 protocol Recipe {
+    var uri: String { get }
     var title: String { get }
     var url: String { get }
     var imageURL: String { get }

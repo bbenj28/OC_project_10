@@ -21,6 +21,7 @@ class RecipeDataManager {
     }
     func addToFavorites(_ recipe: Recipe) {
         let savedRecipe = RecipeData(context: stack.viewContext)
+        savedRecipe.optionalUri = recipe.uri
         savedRecipe.optionalTitle = recipe.title
         savedRecipe.optionalUrl = recipe.url
         savedRecipe.optionalImageUrl = recipe.imageURL
@@ -36,20 +37,20 @@ class RecipeDataManager {
     }
 
     func checkIfIsFavorite(recipe: Recipe, completionHandler: (Bool) -> Void) {
-        guard let _ = getWithPredicate(recipe.title) else {
+        guard let _ = getWithPredicate(recipe.uri) else {
             completionHandler(false)
             return
         }
         completionHandler(true)
     }
     func removeFromFavorites(_ recipe: Recipe) {
-        guard let recipe = getWithPredicate(recipe.title) else { return }
+        guard let recipe = getWithPredicate(recipe.uri) else { return }
         stack.viewContext.delete(recipe)
         stack.saveContext()
     }
-    private func getWithPredicate(_ recipeTitle: String) -> RecipeData? {
+    private func getWithPredicate(_ recipeUri: String) -> RecipeData? {
         let request: NSFetchRequest<RecipeData> = RecipeData.fetchRequest()
-        let predicate = NSPredicate(format: "optionalTitle == %@", recipeTitle)
+        let predicate = NSPredicate(format: "optionalUri == %@", recipeUri)
         request.predicate = predicate
         guard let recipes = try? stack.viewContext.fetch(request), recipes.count > 0 else { return nil }
         return recipes[0]
