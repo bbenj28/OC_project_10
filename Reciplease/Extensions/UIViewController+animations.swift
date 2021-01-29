@@ -13,9 +13,9 @@ extension UIViewController {
         var translationX: CGFloat {
             switch self {
             case .left:
-                return -UIScreen.main.bounds.width
+                return -UIScreen.main.bounds.width * 2
             case .right:
-                return UIScreen.main.bounds.width
+                return UIScreen.main.bounds.width * 2
             default:
                 return 0
             }
@@ -23,9 +23,9 @@ extension UIViewController {
         var translationY: CGFloat {
             switch self {
             case .up:
-                return -UIScreen.main.bounds.height
+                return -UIScreen.main.bounds.height * 2
             case .down:
-                return UIScreen.main.bounds.height
+                return UIScreen.main.bounds.height * 2
             default:
                 return 0
             }
@@ -43,6 +43,6 @@ extension UIViewController {
         }
     }
     private func animate(view: UIView, animations: @escaping () -> Void) {
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, animations: animations, completion: nil)
+        UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, animations: animations, completion: nil)
     }
 }
