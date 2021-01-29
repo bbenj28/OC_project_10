@@ -29,8 +29,10 @@ class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
     }
     /// Recipe selected by user.
     var selectedRecipe: Recipe?
-    
+    /// Used to know if ingredients have to be displayed in cells.
     var showRecipesIngredients: [Bool]?
+    /// Used to know if favorite recipes are going to be loaded.
+    var isSearching: Bool = true
 
     // MARK: - Viewdidload
     
@@ -39,7 +41,6 @@ class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
         // set title depending on the method used by the recipe getter
         navigationItem.title = recipeGetter?.method.title
     }
-    
     
     // MARK: - View did appear
     
@@ -50,11 +51,12 @@ class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
         case .manager:
             loadRecipes()
         default:
-            break
+            isSearching = false
         }
     }
     /// Load recipes.
     private func loadRecipes() {
+        isSearching = true
         recipeGetter?.getRecipes() { (result) in
             DispatchQueue.main.async {
                 switch result {
@@ -65,6 +67,7 @@ class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
                     self.recipes = []
                 }
                 self.tableView.reloadData()
+                self.isSearching = false
             }
         }
     }
@@ -102,8 +105,7 @@ extension ResultsTableViewController {
     /// Tableview's footer used to display instructions when tableview is empty.
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         // no recipes means no favorites: show instructions to add favorites
-        let view = getInstructionsView(title: "no favorites so far", instructions: ["> to add favorites:", "  - do a research;", "  - open a recipe;", "  - hit star button on the top right."], isHidden: recipes.count > 0)
-        return view
+        return isSearching ? UIView() : getInstructionsView(title: "no favorites so far", instructions: ["> to add favorites:", "  - do a research;", "  - open a recipe;", "  - hit star button on the top right."], isHidden: recipes.count > 0)
     }
     /// Tableview's sections footer's height depending on tableview's emptyness.
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -111,6 +113,11 @@ extension ResultsTableViewController {
     }
 }
 extension ResultsTableViewController: ToggleIngredientsDelegate {
+    
+    // MARK: - Toggle ingredients delegate
+    
+    /// Method called when user hit the *show ingredients* button.
+    /// - parameter index: index in the showRecipesIngredients property.
     func toggleIngredients(index: Int) {
         guard let value = showRecipesIngredients?[index] else { return }
         showRecipesIngredients?.remove(at: index)

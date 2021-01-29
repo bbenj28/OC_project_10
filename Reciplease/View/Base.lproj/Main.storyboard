@@ -86,18 +86,18 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0mY-7D-HUZ">
-                                                        <rect key="frame" x="0.0" y="46" width="300" height="25"/>
+                                                        <rect key="frame" x="0.0" y="46" width="300" height="22"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lemon, cheese, sausages ..." textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Eib-KT-2AW">
-                                                                <rect key="frame" x="0.0" y="0.0" width="265" height="25"/>
-                                                                <color key="backgroundColor" name="MiddleBack"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="265" height="22"/>
+                                                                <color key="backgroundColor" name="TextFieldBack"/>
                                                                 <color key="tintColor" name="Text"/>
                                                                 <color key="textColor" name="Back"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHi-KS-rJj">
-                                                                <rect key="frame" x="270" y="0.0" width="30" height="25"/>
+                                                                <rect key="frame" x="270" y="0.0" width="30" height="22"/>
                                                                 <color key="tintColor" name="Text"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" name="Text"/>
@@ -114,16 +114,16 @@
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bg-Xz-5pq">
-                                                        <rect key="frame" x="0.0" y="81" width="300" height="25"/>
+                                                        <rect key="frame" x="0.0" y="78" width="300" height="22"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your ingredients :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBT-o2-6bP">
-                                                                <rect key="frame" x="0.0" y="0.0" width="270" height="25"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="270" height="22"/>
                                                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="22"/>
                                                                 <color key="textColor" name="Text"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDC-6y-Md7">
-                                                                <rect key="frame" x="270" y="0.0" width="30" height="25"/>
+                                                                <rect key="frame" x="270" y="0.0" width="30" height="22"/>
                                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" name="Text"/>
@@ -140,7 +140,7 @@
                                                         </constraints>
                                                     </stackView>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lcU-b4-fNQ">
-                                                        <rect key="frame" x="0.0" y="116" width="300" height="242"/>
+                                                        <rect key="frame" x="0.0" y="110" width="300" height="248"/>
                                                         <color key="backgroundColor" name="Back"/>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientCell" textLabel="pNr-5x-LH7" rowHeight="40" style="IBUITableViewCellStyleDefault" id="J5b-vc-cEx">
@@ -173,7 +173,6 @@
                                                 <constraints>
                                                     <constraint firstItem="VYF-1T-7Mn" firstAttribute="height" secondItem="STZ-G7-oFz" secondAttribute="height" multiplier="0.1" id="4am-j5-EwC"/>
                                                     <constraint firstItem="8bg-Xz-5pq" firstAttribute="height" secondItem="0mY-7D-HUZ" secondAttribute="height" id="dPD-N0-53c"/>
-                                                    <constraint firstItem="0mY-7D-HUZ" firstAttribute="height" secondItem="STZ-G7-oFz" secondAttribute="height" multiplier="0.07" id="yiv-47-vQ7"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
@@ -219,6 +218,7 @@
                         <outlet property="ingredientTextField" destination="Eib-KT-2AW" id="seG-7e-ROY"/>
                         <outlet property="searchButton" destination="BO3-JK-Pof" id="gBY-8B-4eV"/>
                         <outlet property="tableView" destination="lcU-b4-fNQ" id="MsF-sS-Rhi"/>
+                        <outlet property="trashButton" destination="SDC-6y-Md7" id="kmJ-BH-c4y"/>
                         <segue destination="u1M-1P-ydb" kind="show" identifier="ResultsSegue" id="KQv-Kj-0s4"/>
                     </connections>
                 </viewController>
@@ -278,7 +278,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cED-SJ-O1D">
                                                     <rect key="frame" x="1" y="1" width="308" height="251"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eux-Su-DuF">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eux-Su-DuF">
                                                             <rect key="frame" x="0.0" y="0.0" width="308" height="70"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="70" id="eiz-8J-sIb"/>
@@ -346,7 +346,7 @@ Label</string>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="14"/>
                                                             <state key="normal" title="+ show ingredients +">
-                                                                <color key="titleColor" name="Star"/>
+                                                                <color key="titleColor" name="MiddleBack"/>
                                                             </state>
                                                             <connections>
                                                                 <action selector="toggleIngredients:" destination="avn-K4-bVr" eventType="touchUpInside" id="VoE-xT-pS8"/>
@@ -662,11 +662,11 @@ Label</string>
         <namedColor name="MiddleBack">
             <color red="0.67000001668930054" green="0.67000001668930054" blue="0.67000001668930054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="Star">
-            <color red="1" green="0.93699997663497925" blue="0.31499999761581421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="Text">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TextFieldBack">
+            <color red="0.67046716370000004" green="0.67046716370000004" blue="0.67046716370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

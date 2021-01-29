@@ -17,6 +17,7 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
     var ingredients: [String] = [] {
         didSet {
             searchButton.isHidden = ingredients.count == 0
+            trashButton.isEnabled = ingredients.count > 0
         }
     }
     /// Loaded recipes to transmit to results controller.
@@ -39,6 +40,8 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
             isSearching ? activityIndicator?.animate() : nil
         }
     }
+    /// Gesture used to close keyboard.
+    private var gesture: UITapGestureRecognizer?
     
     // MARK: - Outlets
     
@@ -50,22 +53,44 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
     @IBOutlet weak var ingredientTextField: UITextField!
     /// Tableview used to display choosen ingredients.
     @IBOutlet weak var tableView: UITableView!
+    /// Button used to clear ingredients.
+    @IBOutlet weak var trashButton: UIButton!
     
-    // MARK: - ViewDidLoad and willAppear
+    // MARK: - ViewDidLoad, willAppear and disappear
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // clear ingredients
+        ingredients = []
         // tableview footer
         tableView.tableFooterView = UIView()
         // textfield
         ingredientTextField.delegate = self
+        let button = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(removeKeyboard))
+        button.tintColor = UIColor(named: "DoneButton")
+        let item = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let toolbar = UIToolbar()
+        toolbar.items = [item, button]
+        toolbar.sizeToFit()
+        ingredientTextField.inputAccessoryView = toolbar
         // gesture to dismiss keyboard
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(removeKeyboard))
+        gesture = UITapGestureRecognizer(target: self, action: #selector(removeKeyboard))
+        guard let gesture = gesture else { return }
         view.addGestureRecognizer(gesture)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // set search button
         searchButton.isHidden = ingredients.count == 0
+        // add gesture to close keyboard
+        guard let gesture = gesture else { return }
+        navigationController?.view.addGestureRecognizer(gesture)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // remove gesture to close keyboard
+        guard let gesture = gesture else { return }
+        navigationController?.view.removeGestureRecognizer(gesture)
     }
     
     // MARK: - Ingredient modification
@@ -79,8 +104,8 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
             }
         }
         ingredients.insert(name, at: 0)
-        tableView.reloadData()
         ingredientTextField.text = ""
+        tableView.reloadData()
     }
     /// Clear all ingredients from tableview.
     @IBAction func clearIngredients(_ sender: Any) {
@@ -153,8 +178,7 @@ extension SearchViewController:  UITableViewDataSource, UITableViewDelegate {
     /// Tableview's footer used to display instructions when tableview is empty.
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         // if no ingredients have been added yet, display instructions to add ingredients
-        let view = getInstructionsView(title: "no ingredients so far", instructions: ["> to add ingredients:", "  - enter its name in the textfield;", "  - hit return on the keyboard", "  or the plus button", "", "", "> when it's done:", "  - hit return or anywhere on the screen", "  to close keyboard;", "  - hit search button."], isHidden: ingredients.count > 0)
-        return view
+        return getInstructionsView(title: "no ingredients so far", instructions: ["> to add ingredients:", "- enter its name in the textfield;", "- hit return on the keyboard or the plus button.", "", "", "> when it's done:", "- hit done or anywhere on the screen to close keyboard;", "- hit search button."], isHidden: ingredients.count > 0)
     }
     /// Tableview's sections footer's height depending on tableview's emptyness.
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
