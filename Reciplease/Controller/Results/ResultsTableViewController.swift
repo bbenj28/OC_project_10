@@ -14,7 +14,11 @@ class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
     /// Recipe getter.
     var recipeGetter: RecipeGetter?
     /// Loaded recipes.
-    var recipes: [Recipe] = []
+    var recipes: [Recipe] = [] {
+        didSet {
+            showRecipesIngredients = Array(repeating: false, count: recipes.count)
+        }
+    }
     /// Loaded recipes without removed recipes.
     var recipesToDisplay: [Recipe] {
         var recipesToDisplay: [Recipe] = []
@@ -25,6 +29,8 @@ class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
     }
     /// Recipe selected by user.
     var selectedRecipe: Recipe?
+    
+    var showRecipesIngredients: [Bool]?
 
     // MARK: - Viewdidload
     
@@ -80,9 +86,12 @@ extension ResultsTableViewController {
         return label
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as? ResultTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as? ResultTableViewCell, let showRecipesIngredients = showRecipesIngredients else { return UITableViewCell() }
         let recipe = recipesToDisplay[indexPath.row]
         cell.recipe = recipe
+        cell.delegate = self
+        cell.index = indexPath.row
+        cell.ingredientsAreShown = showRecipesIngredients[indexPath.row]
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -94,5 +103,13 @@ extension ResultsTableViewController {
             controller.recipe = recipe
             controller.recipeGetter = recipeGetter
         }
+    }
+}
+extension ResultsTableViewController: ToggleIngredientsDelegate {
+    func toggleIngredients(index: Int) {
+        guard let value = showRecipesIngredients?[index] else { return }
+        showRecipesIngredients?.remove(at: index)
+        showRecipesIngredients?.insert(!value, at: index)
+        tableView.reloadData()
     }
 }

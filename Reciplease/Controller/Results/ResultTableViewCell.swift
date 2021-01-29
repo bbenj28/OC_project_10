@@ -8,7 +8,8 @@
 import UIKit
 
 class ResultTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var ingredientsButton: UIButton!
     @IBOutlet weak var timeStack: UIStackView!
     @IBOutlet weak var ingredientsLabel: UILabel!
     @IBOutlet weak var resultView: UIView!
@@ -16,6 +17,32 @@ class ResultTableViewCell: UITableViewCell {
     @IBOutlet weak var resultPictureView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var personsLabel: UILabel!
+    
+    var recipe: Recipe? {
+        didSet {
+            guard let recipe = recipe else { return }
+            resultTitleLabel.text = recipe.title
+            personsLabel.text = "\(recipe.yield)"
+            timeLabel.text = "\(Int(recipe.totalTime)) min."
+            timeStack.isHidden = recipe.totalTime == 0
+            ingredientsLabel.text = "\(recipe.ingredients)\n"
+            guard let data = recipe.pictureData, let image = UIImage(data: data) else {
+                resultPictureView.image = UIImage(named: "default1")
+                return
+            }
+            resultPictureView.image = image
+            ingredientsAreShown = false
+        }
+    }
+    var ingredientsAreShown: Bool? {
+        didSet {
+            guard let ingredientsAreShown = ingredientsAreShown else { return }
+            ingredientsButton.setTitle(ingredientsAreShown ? "- hide ingredients -" : "+ show ingredients +", for: .normal)
+            ingredientsLabel.isHidden = !ingredientsAreShown
+        }
+    }
+    var index: Int?
+    var delegate: ToggleIngredientsDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         resultView.layer.cornerRadius = 20
@@ -25,19 +52,11 @@ class ResultTableViewCell: UITableViewCell {
         resultPictureView.layer.cornerRadius = resultView.layer.cornerRadius
         resultPictureView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
     }
-    var recipe: Recipe? {
-        didSet {
-            guard let recipe = recipe else { return }
-            resultTitleLabel.text = recipe.title
-            personsLabel.text = "\(recipe.yield)"
-            timeLabel.text = "\(Int(recipe.totalTime)) min."
-            timeStack.isHidden = recipe.totalTime == 0
-            ingredientsLabel.text = recipe.ingredientsOnALine
-            guard let data = recipe.pictureData, let image = UIImage(data: data) else {
-                resultPictureView.image = UIImage(named: "default1")
-                return
-            }
-            resultPictureView.image = image
-        }
+    @IBAction func toggleIngredients(_ sender: Any) {
+        guard let index = index, let delegate = delegate else { return }
+        delegate.toggleIngredients(index: index)
     }
+}
+protocol ToggleIngredientsDelegate {
+    func toggleIngredients(index: Int)
 }
