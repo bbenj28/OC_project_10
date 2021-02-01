@@ -77,16 +77,16 @@ class RecipeViewController: UIViewController, RecipeGetterProtocol {
     private func addToFavorites() {
         guard let recipe = recipe else { return }
         recipeGetter?.addToFavorites(recipe)
-        self.isFavorite.toggle()
-        self.showAlert(title: "Added !", message: "This recipe is now one of your favorites.")
+        isFavorite.toggle()
+        showAlert(title: "Added !", message: "This recipe is now one of your favorites.")
     }
     /// Remove a recipe from favorite.
     private func removeFromFavorites() {
         guard let recipe = recipe else { return }
         recipeGetter?.removeFromFavorites(recipe)
-        showAlert(title: "Removed", message: "This recipe has been removed from your favorites.", okHandler:  { (_) in
-            self.isFavorite.toggle()
-        })
+        showAlert(title: "Removed", message: "This recipe has been removed from your favorites.", okHandler:  weakify({ (strongSelf, _) in
+            strongSelf.isFavorite.toggle()
+        }))
     }
     /// Open a safari page containing the recipe's directions.
     @IBAction func getDirections(_ sender: Any) {

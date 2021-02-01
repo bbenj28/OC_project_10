@@ -17,6 +17,7 @@
 		03487DAD25BEFBF800EA4B16 /* RecipeGetterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03487DAC25BEFBF800EA4B16 /* RecipeGetterProtocol.swift */; };
 		03487DB225BF011000EA4B16 /* SearchNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03487DB125BF011000EA4B16 /* SearchNavigationViewController.swift */; };
 		03487DBB25BF052D00EA4B16 /* FavoriteNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03487DBA25BF052D00EA4B16 /* FavoriteNavigationViewController.swift */; };
+		0357F11C25C8430500282A67 /* Weakifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0357F11B25C8430500282A67 /* Weakifiable.swift */; };
 		035AF33725C2A6F000353CF7 /* UIViewController+animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF33625C2A6F000353CF7 /* UIViewController+animations.swift */; };
 		03AFE25225B73285009B8904 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFE25125B73285009B8904 /* AppDelegate.swift */; };
 		03AFE25425B73285009B8904 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFE25325B73285009B8904 /* SceneDelegate.swift */; };
@@ -68,6 +69,7 @@
 		03487DAC25BEFBF800EA4B16 /* RecipeGetterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeGetterProtocol.swift; sourceTree = "<group>"; };
 		03487DB125BF011000EA4B16 /* SearchNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavigationViewController.swift; sourceTree = "<group>"; };
 		03487DBA25BF052D00EA4B16 /* FavoriteNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNavigationViewController.swift; sourceTree = "<group>"; };
+		0357F11B25C8430500282A67 /* Weakifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weakifiable.swift; sourceTree = "<group>"; };
 		035AF33625C2A6F000353CF7 /* UIViewController+animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+animations.swift"; sourceTree = "<group>"; };
 		03AFE24E25B73285009B8904 /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03AFE25125B73285009B8904 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -205,9 +207,9 @@
 		03AFE28925B7348F009B8904 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				03AFE2A025B739B9009B8904 /* General */,
 				03C5755025BB55DB0031C075 /* Recipe */,
 				03CE0E6325B872F40097BEA6 /* AlamoSession */,
-				03AFE2A025B739B9009B8904 /* General */,
 				03AFE28E25B734B8009B8904 /* CoreData */,
 			);
 			path = Model;
@@ -270,6 +272,7 @@
 		03AFE2A025B739B9009B8904 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				0357F11B25C8430500282A67 /* Weakifiable.swift */,
 				03AFE2A525B739EE009B8904 /* APIKeys.swift */,
 				03CE0E2225B807E80097BEA6 /* JSONStructureDecoder.swift */,
 				03CE0E2625B808320097BEA6 /* ApplicationErrors.swift */,
@@ -546,6 +549,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0357F11C25C8430500282A67 /* Weakifiable.swift in Sources */,
 				03CE0E6925B873720097BEA6 /* RecipeSession.swift in Sources */,
 				03CE0E2325B807E80097BEA6 /* JSONStructureDecoder.swift in Sources */,
 				03AFE29925B73826009B8904 /* CoreDataStack.swift in Sources */,

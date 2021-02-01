@@ -63,19 +63,19 @@ class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
     /// Load recipes.
     private func loadRecipes() {
         isSearching = true
-        recipeGetter?.getRecipes() { (result) in
+        recipeGetter?.getRecipes(completionHandler: weakify({ (strongSelf, result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let recipes):
-                    self.recipes = recipes
+                    strongSelf.recipes = recipes
                 case .failure(let error):
-                    self.showAlert(error: error)
-                    self.recipes = []
+                    strongSelf.showAlert(error: error)
+                    strongSelf.recipes = []
                 }
-                self.tableView.reloadData()
-                self.isSearching = false
+                strongSelf.tableView.reloadData()
+                strongSelf.isSearching = false
             }
-        }
+        }))
     }
 }
 

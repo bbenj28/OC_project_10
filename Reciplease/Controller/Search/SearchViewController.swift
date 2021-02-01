@@ -117,24 +117,24 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
     /// Get recipes with a network call using recipe getter.
     private func getRecipes() {
         isSearching = true
-        recipeGetter?.getRecipes(ingredients: ingredients, completionHandler: { (result) in
+        recipeGetter?.getRecipes(ingredients: ingredients, completionHandler: weakify({ (strongSelf, result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let recipes):
                     if recipes.count == 0 {
-                        self.showAlert(title: "No recipes", message: "No recipes has been found with the choosen ingredients.")
-                        self.isSearching = false
+                        strongSelf.showAlert(title: "No recipes", message: "No recipes has been found with the choosen ingredients.")
+                        strongSelf.isSearching = false
                         return
                     }
-                    self.recipes = recipes
-                    self.isSearching = false
-                    self.performSegue(withIdentifier: "ResultsSegue", sender: self)
+                    strongSelf.recipes = recipes
+                    strongSelf.isSearching = false
+                    strongSelf.performSegue(withIdentifier: "ResultsSegue", sender: self)
                 case .failure(let error):
-                    self.isSearching = false
-                    self.showAlert(error: error)
+                    strongSelf.isSearching = false
+                    strongSelf.showAlert(error: error)
                 }
             }
-        })
+        }))
     }
     /// Prepare segue to transmit informations to the results controller.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
