@@ -8,46 +8,73 @@
 import UIKit
 
 class RecipeActivityIndicator: UIImageView {
-    enum Operation {
+    
+    // MARK: - Operation
+    
+    /// Operation to do to substitute pictures.
+    private enum Operation {
         case add, substract
+        /// Value to increase to step to modify picture, depending on operation's type.
+        var valueToIncrease: Int { self == .add ? 1 : -1 }
+        /// Max value of step depending on operation's type.
+        var maxValue: Int { self == .add ? 5 : 1 }
+        /// Change value of the step depending on operation's type.
         mutating func changeValue(_ step: Int) -> Int {
-            switch self {
-            case .add:
-                if step + 1 == 6 {
-                    self = .substract
-                    return 4
-                } else {
-                    return step + 1
-                }
-            case .substract:
-                if step - 1 == 0 {
-                    self = .add
-                    return 2
-                } else {
-                    return step - 1
-                }
-            }
+            step == maxValue ? changeSelf() : nil
+            return step + valueToIncrease
+        }
+        mutating private func changeSelf() {
+            self = self == .add ? .substract : .add
         }
     }
-    var operation: Operation = .add
-    var step: Int = 1 {
+    
+    // MARK: - Properties
+    
+    /// Current operation used to change step's value.
+    private var operation: Operation = .add
+    /// Property used to substitute pictures.
+    private var step: Int = 1 {
         didSet {
-            image = UIImage(named: "wait\(step)")
-            frame.size = CGSize(width: 150, height: 150)
-            guard let width = superview?.frame.width, let height = superview?.frame.height, let size = superview?.frame.width else { return }
-            frame.size = CGSize(width: size / 4, height: size / 4)
-            frame.origin = CGPoint(x: width / 2 - size / 8, y: height / 2 - size / 8)
-            layer.cornerRadius = frame.height / 2
-            clipsToBounds = true
+            setImage()
         }
     }
-    var timer: Timer?
+    /// Timer used to animate pictures.
+    private var timer: Timer?
+    
+    // MARK: - Init
+    
+    /// Init activity indicator.
+    /// - parameter superview: View in which the indicator has to be inserted.
+    init(superview: UIView) {
+        super.init(image: UIImage(named: "wait1"))
+        isHidden = true
+        superview.addSubview(self)
+        let width = superview.frame.width
+        let height = superview.frame.height
+        frame.size = CGSize(width: width / 4, height: width / 4)
+        frame.origin = CGPoint(x: width / 2 - width / 8, y: height / 2 - width / 8)
+        setImage()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Animation
+    
+    /// Method used to
     func animate() {
+        isHidden = false
         timer = Timer.scheduledTimer(timeInterval: 1/10, target: self, selector: #selector(changePicture), userInfo: nil, repeats: true)
     }
     override func stopAnimating() {
+        isHidden = true
         timer?.invalidate()
         timer = nil
+    }
+    private func setImage() {
+        image = UIImage(named: "wait\(step)")
+        layer.cornerRadius = frame.height / 2
+        clipsToBounds = true
     }
     @objc
     private func changePicture() { step = operation.changeValue(step) }

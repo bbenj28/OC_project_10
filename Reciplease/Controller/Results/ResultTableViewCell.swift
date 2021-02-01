@@ -9,22 +9,17 @@ import UIKit
 
 class ResultTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var ingredientsButton: UIButton!
-    @IBOutlet weak var timeStack: UIStackView!
-    @IBOutlet weak var ingredientsLabel: UILabel!
-    @IBOutlet weak var resultView: UIView!
-    @IBOutlet weak var resultTitleLabel: UILabel!
-    @IBOutlet weak var resultPictureView: UIImageView!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var personsLabel: UILabel!
+    // MARK: - Properties
     
+    /// Recipe to display in the cell.
     var recipe: Recipe? {
         didSet {
             guard let recipe = recipe else { return }
             resultTitleLabel.text = recipe.title
             personsLabel.text = "\(recipe.yield)"
-            timeLabel.text = "\(Int(recipe.totalTime)) min."
-            timeStack.isHidden = recipe.totalTime == 0
+            timeLabel.text = recipe.totalTime > 0 ? "\(Int(recipe.totalTime)) min." : "no\ninfos"
+            timeLabel.textColor = recipe.totalTime > 0 ? UIColor(named: "MiddleBack") : UIColor(named: "LightBack")
+            timeStack.tintColor = timeLabel.textColor
             ingredientsLabel.text = "\(recipe.ingredients)\n"
             guard let data = recipe.pictureData, let image = UIImage(data: data) else {
                 resultPictureView.image = UIImage(named: "default1")
@@ -34,6 +29,7 @@ class ResultTableViewCell: UITableViewCell {
             ingredientsAreShown = false
         }
     }
+    /// Used to show ingredients on demand.
     var ingredientsAreShown: Bool? {
         didSet {
             guard let ingredientsAreShown = ingredientsAreShown else { return }
@@ -41,22 +37,49 @@ class ResultTableViewCell: UITableViewCell {
             ingredientsLabel.isHidden = !ingredientsAreShown
         }
     }
+    /// Index of this cell in the controller.
     var index: Int?
+    /// Delegate used to toggle ingredients on demand.
     var delegate: ToggleIngredientsDelegate?
+    
+    // MARK: - Outlets
+    
+    /// Toggle ingredients button.
+    @IBOutlet weak private var ingredientsButton: UIButton!
+    /// Stack view containing time informations.
+    @IBOutlet weak private var timeStack: UIStackView!
+    /// Label containing ingredients list.
+    @IBOutlet weak private var ingredientsLabel: UILabel!
+    /// View containing all informations in the cell.
+    @IBOutlet weak private var resultView: UIView!
+    /// Label displaying the recipe's title.
+    @IBOutlet weak private var resultTitleLabel: UILabel!
+    /// View containing recipe's picture.
+    @IBOutlet weak private var resultPictureView: UIImageView!
+    /// Label displaying time's indications.
+    @IBOutlet weak private var timeLabel: UILabel!
+    /// Label displaying yield's indications.
+    @IBOutlet weak private var personsLabel: UILabel!
+    
+    // MARK: - Awake from nib
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         resultView.layer.cornerRadius = 20
-        //resultView.layer.shadowRadius = 10
-        //resultView.layer.shadowColor = #colorLiteral(red: 0.6704671637, green: 0.6704671637, blue: 0.6704671637, alpha: 1)
-        //resultView.layer.shadowOpacity = 0.5
         resultPictureView.layer.cornerRadius = resultView.layer.cornerRadius
         resultPictureView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
     }
-    @IBAction func toggleIngredients(_ sender: Any) {
+    
+    // MARK: - Toggle ingredients
+    
+    @IBAction private func toggleIngredients(_ sender: Any) {
         guard let index = index, let delegate = delegate else { return }
         delegate.toggleIngredients(index: index)
     }
 }
+
+// MARK: - Toggle ingredients delegate
+
 protocol ToggleIngredientsDelegate {
     func toggleIngredients(index: Int)
 }

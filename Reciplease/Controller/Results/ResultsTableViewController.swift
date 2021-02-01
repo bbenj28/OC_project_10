@@ -20,7 +20,7 @@ class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
         }
     }
     /// Loaded recipes without removed recipes.
-    var recipesToDisplay: [Recipe] {
+    private var recipesToDisplay: [Recipe] {
         var recipesToDisplay: [Recipe] = []
         for recipe in recipes {
             if recipe.title != "" { recipesToDisplay.append(recipe) }
@@ -28,11 +28,17 @@ class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
         return recipesToDisplay
     }
     /// Recipe selected by user.
-    var selectedRecipe: Recipe?
+    private var selectedRecipe: Recipe?
     /// Used to know if ingredients have to be displayed in cells.
-    var showRecipesIngredients: [Bool]?
+    private var showRecipesIngredients: [Bool]?
     /// Used to know if favorite recipes are going to be loaded.
-    var isSearching: Bool = true
+    private var isSearching: Bool = true {
+        didSet {
+            isSearching ? activityIndicator.animate() : activityIndicator.stopAnimating()
+        }
+    }
+    /// Activity indicator to display while loading favorites.
+    lazy private var activityIndicator = RecipeActivityIndicator(superview: view)
 
     // MARK: - Viewdidload
     
@@ -105,6 +111,7 @@ extension ResultsTableViewController {
     /// Tableview's footer used to display instructions when tableview is empty.
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         // no recipes means no favorites: show instructions to add favorites
+        isSearching ? activityIndicator.animate() : activityIndicator.stopAnimating()
         return isSearching ? UIView() : getInstructionsView(title: "no favorites so far", instructions: ["> to add favorites:", "  - do a research;", "  - open a recipe;", "  - hit star button on the top right."], isHidden: recipes.count > 0)
     }
     /// Tableview's sections footer's height depending on tableview's emptyness.

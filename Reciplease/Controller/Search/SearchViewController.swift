@@ -14,30 +14,21 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
     /// Property used by other controllers to get recipes.
     var recipeGetter: RecipeGetter?
     /// Ingredients choosen by user.
-    var ingredients: [String] = [] {
+    private var ingredients: [String] = [] {
         didSet {
             searchButton.isHidden = ingredients.count == 0
             trashButton.isEnabled = ingredients.count > 0
         }
     }
     /// Loaded recipes to transmit to results controller.
-    var recipes: [Recipe] = []
+    private var recipes: [Recipe] = []
     /// Activity indicator used during loading.
-    var activityIndicator: RecipeActivityIndicator? {
-        didSet {
-            activityIndicator?.removeFromSuperview()
-            guard let indicator = activityIndicator else { return }
-            view.addSubview(indicator)
-        }
-    }
+    lazy private var activityIndicator = RecipeActivityIndicator(superview: view)
     /// Property used to know if the controller is searching, and if an activity indicator has to be shown.
-    var isSearching: Bool = false {
+    private var isSearching: Bool = false {
         didSet {
             isSearching ? exit(view: allStackView, direction: .left) : returnIdentity(allStackView)
-            !isSearching ? activityIndicator?.stopAnimating() : nil
-            activityIndicator?.isHidden = !isSearching
-            activityIndicator = isSearching ? RecipeActivityIndicator() : nil
-            isSearching ? activityIndicator?.animate() : nil
+            !isSearching ? activityIndicator.stopAnimating() : activityIndicator.animate()
         }
     }
     /// Gesture used to close keyboard.
@@ -46,15 +37,15 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
     // MARK: - Outlets
     
     /// Stackview containing search form.
-    @IBOutlet weak var allStackView: UIStackView!
+    @IBOutlet weak private var allStackView: UIStackView!
     /// Button used to launch a research.
-    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak private var searchButton: UIButton!
     /// Textfield used to enter ingredients.
-    @IBOutlet weak var ingredientTextField: UITextField!
+    @IBOutlet weak private var ingredientTextField: UITextField!
     /// Tableview used to display choosen ingredients.
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak private var tableView: UITableView!
     /// Button used to clear ingredients.
-    @IBOutlet weak var trashButton: UIButton!
+    @IBOutlet weak private var trashButton: UIButton!
     
     // MARK: - ViewDidLoad, willAppear and disappear
     
@@ -96,7 +87,7 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
     // MARK: - Ingredient modification
     
     /// Add ingredient choosen by user.
-    @IBAction func addIngredient(_ sender: Any) {
+    @IBAction private func addIngredient(_ sender: Any) {
         guard let name = ingredientTextField.text, !name.isEmpty else { return }
         for ingredient in ingredients {
             if ingredient == name {
@@ -108,7 +99,7 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
         tableView.reloadData()
     }
     /// Clear all ingredients from tableview.
-    @IBAction func clearIngredients(_ sender: Any) {
+    @IBAction private func clearIngredients(_ sender: Any) {
         ingredients = []
         tableView.reloadData()
     }
@@ -116,7 +107,7 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
     // MARK: - Search
     
     /// Action to do when Search button has been hitten.
-    @IBAction func search(_ sender: Any) {
+    @IBAction private func search(_ sender: Any) {
         guard ingredients.count > 0 else {
             showAlert(title: "No ingredients", message: "You have to write at least one ingredient.", style: .alert, yesNoActions: false)
             return
