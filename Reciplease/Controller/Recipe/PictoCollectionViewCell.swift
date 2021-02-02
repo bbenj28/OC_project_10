@@ -10,11 +10,12 @@ import UIKit
 class PictoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var picto: UIImageView!
-    func setCell(picto: UIImage?, text: String?) {
-        guard let image = picto else { return }
-        self.picto.image = image
-        label.isHidden = text == nil
-        label.text = text
+    /// Informations to display.
+    var informations: (UIImage?, String?) = (nil, nil) {
+        didSet {
+            guard let image = informations.0 else { return }
+            picto.image = image
+            label.text = informations.1
+        }
     }
-    
 }

@@ -7,40 +7,49 @@
 
 import UIKit
 
-class CollectionTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var collection: UICollectionView!
-    var informationsToDisplay: [(UIImage?, String?)] = []
+class CollectionTableViewCell: UITableViewCell, RecipeCell {
+    
+    // MARK: - Properties
+    
+    /// Recipe to display.
+    var recipe: Recipe? = nil {
+        didSet {
+            guard let recipe = recipe else { return }
+            if recipe.yield > 0 {
+                informationsToDisplay.append((UIImage(named: "person"), "\(recipe.yield)"))
+            }
+            if recipe.totalTime > 0 {
+                informationsToDisplay.append((UIImage(named: "timer"), "\(Int(recipe.totalTime)) min."))
+            }
+        }
+    }
+    /// Selected and formated nformations to display.
+    private var informationsToDisplay: [(UIImage?, String?)] = []
+    
+    // MARK: - Outlet
+    
+    /// Collection in which informations have to be displayed.
+    @IBOutlet weak private var collection: UICollectionView!
+    
+    // MARK: - Awake from nib
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         collection.dataSource = self
         collection.delegate = self
     }
-    func setCell(_ recipe: Recipe) {
-        if recipe.yield > 0 {
-            informationsToDisplay.append((UIImage(named: "person"), "\(recipe.yield)"))
-        }
-        if recipe.totalTime > 0 {
-            informationsToDisplay.append((UIImage(named: "timer"), "\(Int(recipe.totalTime))"))
-        }
-    }
 
 }
 extension CollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-
+    
+    // MARK: - Collection data source and delegate
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return informationsToDisplay.count
     }
-
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PictoCell", for: indexPath) as? PictoCollectionViewCell else { return UICollectionViewCell() }
-        cell.setCell(picto: informationsToDisplay[indexPath.row].0, text: informationsToDisplay[indexPath.row].1)
+        cell.informations = informationsToDisplay[indexPath.row]
         return cell
     }
     

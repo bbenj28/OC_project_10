@@ -16,11 +16,11 @@ class RecipeViewController: UIViewController, RecipeGetterProtocol {
     /// Displayed recipe.
     var recipe: Recipe?
     /// Typelines to display.
-    var lineTypes: [LineType] = [.title, .collection, .picture]
+    private var lineTypes: [LineType] = [.title, .collection, .picture]
     /// Number of lines.
-    var numberOfLines: Int = 0
+    private var numberOfLines: Int = 0
     /// Is this recipe a favorite one.
-    var isFavorite: Bool = false {
+    private var isFavorite: Bool = false {
         didSet {
             if !isFavorite && tabBarController?.selectedIndex == 1 {
                 navigationController?.popViewController(animated: true)
@@ -31,7 +31,7 @@ class RecipeViewController: UIViewController, RecipeGetterProtocol {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak private var tableView: UITableView!
     
     // MARK: - View did load
     
@@ -89,7 +89,7 @@ class RecipeViewController: UIViewController, RecipeGetterProtocol {
         }))
     }
     /// Open a safari page containing the recipe's directions.
-    @IBAction func getDirections(_ sender: Any) {
+    @IBAction private func getDirections(_ sender: Any) {
         if let recipe = recipe, let url = URL(string: recipe.url) {
             UIApplication.shared.open(url, options: [:])
         }
@@ -179,14 +179,11 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
         guard let recipe = recipe else { return cell }
         cell.textLabel?.text = lineType.getTitle(recipe)
         cell.detailTextLabel?.text = lineType.getDetails(recipe)
-        if let pictureCell = cell as? PictureCellTableViewCell {
-            pictureCell.recipe = recipe
-            return pictureCell
-        } else if let collectionCell = cell as? CollectionTableViewCell {
-            collectionCell.setCell(recipe)
-            return collectionCell
-        }
-        
+        if var recipeCell = cell as? RecipeCell { recipeCell.recipe = recipe }
         return cell
     }
+
+}
+protocol RecipeCell {
+    var recipe: Recipe? { get set }
 }

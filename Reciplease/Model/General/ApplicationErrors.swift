@@ -35,7 +35,7 @@ enum ApplicationErrors: Error, CustomStringConvertible, Equatable {
 extension ApplicationErrors {
     // MARK: - Code Meaning
     /// Return the meaning of the HTTP code.
-    var codeMeaning: String {
+    private var codeMeaning: String {
         switch self {
         case .ncBadCode(let code):
             var text = "[code: \(code): "

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ResultTableViewCell: UITableViewCell {
+class ResultTableViewCell: UITableViewCell, RecipeCell {
     
     // MARK: - Properties
     

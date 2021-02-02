@@ -82,23 +82,30 @@ class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
 extension ResultsTableViewController {
 
     // MARK: - Table view data source
-
+    
+    // number of rows = recipes count
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recipesToDisplay.count
     }
+    // cell to display in a specific row
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as? ResultTableViewCell, let showRecipesIngredients = showRecipesIngredients else { return UITableViewCell() }
-        let recipe = recipesToDisplay[indexPath.row]
-        cell.recipe = recipe
-        cell.delegate = self
-        cell.index = indexPath.row
-        cell.ingredientsAreShown = showRecipesIngredients[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as? ResultTableViewCell else { return UITableViewCell() }
+        setCell(cell, indexPath.row)
         return cell
     }
+    private func setCell(_ cell: ResultTableViewCell, _ row: Int) {
+        guard let showRecipesIngredients = showRecipesIngredients else { return }
+        cell.recipe = recipesToDisplay[row]
+        cell.delegate = self
+        cell.index = row
+        cell.ingredientsAreShown = showRecipesIngredients[row]
+    }
+    // row selection : set selectedRecipe with the recipe which is displayed by the selected row and present recipe controller
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRecipe = recipesToDisplay[indexPath.row]
         performSegue(withIdentifier: "ResultsToRecipeSegue", sender: self)
     }
+    // prepare for segue : recipe and recipeGetter transmission
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? RecipeViewController, let recipe = selectedRecipe {
             controller.recipe = recipe

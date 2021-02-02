@@ -7,8 +7,11 @@
 
 import UIKit
 
-class PictureCellTableViewCell: UITableViewCell {
+class PictureCellTableViewCell: UITableViewCell, RecipeCell {
     
+    // MARK: - Recipe
+    
+    /// Recipe to display.
     var recipe: Recipe? {
         didSet {
             guard let recipe = recipe, let data = recipe.pictureData, let image = UIImage(data: data) else {
@@ -16,12 +19,12 @@ class PictureCellTableViewCell: UITableViewCell {
                 return
             }
             pictureView.image = image
+            pictureView.layer.cornerRadius = 20
         }
     }
-    @IBOutlet weak var pictureView: UIImageView!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        pictureView.layer.cornerRadius = 20
-        // Initialization code
-    }
+    
+    // MARK: - Outlet
+    
+    @IBOutlet weak private var pictureView: UIImageView!
+
 }
