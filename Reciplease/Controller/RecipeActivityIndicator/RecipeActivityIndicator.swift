@@ -13,7 +13,7 @@ class RecipeActivityIndicator: UIImageView {
     
     /// Operation to do to substitute pictures.
     private enum Operation {
-        case add, substract
+        case add, subtract
         /// Value to increase to step to modify picture, depending on operation's type.
         var valueToIncrease: Int { self == .add ? 1 : -1 }
         /// Max value of step depending on operation's type.
@@ -24,7 +24,7 @@ class RecipeActivityIndicator: UIImageView {
             return step + valueToIncrease
         }
         mutating private func changeSelf() {
-            self = self == .add ? .substract : .add
+            self = self == .add ? .subtract : .add
         }
     }
     
@@ -61,11 +61,12 @@ class RecipeActivityIndicator: UIImageView {
     
     // MARK: - Animation
     
-    /// Method used to
+    /// Method used to animate.
     func animate() {
         isHidden = false
         timer = Timer.scheduledTimer(timeInterval: 1/10, target: self, selector: #selector(changePicture), userInfo: nil, repeats: true)
     }
+    /// Method used to stop animating.
     override func stopAnimating() {
         isHidden = true
         timer?.invalidate()

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 extension UIViewController {
-    func getInstructionsView(title: String, instructions: [String], isHidden: Bool) -> UIView {
+    func getInstructionsView(title: String, instructions: String, isHidden: Bool) -> UIView {
         // main stack view
         let stackview = UIStackView()
         stackview.axis = .vertical
@@ -30,7 +30,7 @@ extension UIViewController {
         labelInstructions.font = UIFont(name: "Palatino", size: 15)
         labelInstructions.textAlignment = .left
         labelInstructions.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        labelInstructions.text = "\n \(instructions.joined(separator: "\n")) \n"
+        labelInstructions.text = "\n \(instructions) \n"
         instructionsStackview.addArrangedSubview(emptyInstructionsView)
         instructionsStackview.addArrangedSubview(labelInstructions)
         let emptyConstraint = NSLayoutConstraint(item: emptyInstructionsView, attribute: .width, relatedBy: .equal, toItem: instructionsStackview, attribute: .width, multiplier: 0.1, constant: 0)

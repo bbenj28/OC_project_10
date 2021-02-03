@@ -119,7 +119,15 @@ extension ResultsTableViewController {
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         // no recipes means no favorites: show instructions to add favorites
         isSearching ? activityIndicator.animate() : activityIndicator.stopAnimating()
-        return isSearching ? UIView() : getInstructionsView(title: "no favorites so far", instructions: ["> to add favorites:", "  - do a research;", "  - open a recipe;", "  - hit star button on the top right."], isHidden: recipes.count > 0)
+        return isSearching ? UIView() : getInstructionsView(
+            title: "no favorites so far",
+            instructions: """
+            > to add favorites:
+            - do a research;
+            - open a recipe;
+            - hit star button on the top right.
+            """,
+            isHidden: recipes.count > 0)
     }
     /// Tableview's sections footer's height depending on tableview's emptyness.
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

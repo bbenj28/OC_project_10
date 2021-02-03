@@ -47,28 +47,33 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
     /// Button used to clear ingredients.
     @IBOutlet weak private var trashButton: UIButton!
     
-    // MARK: - ViewDidLoad, willAppear and disappear
+    // MARK: - ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // clear ingredients
         ingredients = []
-        // tableview footer
         tableView.tableFooterView = UIView()
-        // textfield
+        setTextfield()
+        // set gesture to dismiss keyboard
+        gesture = UITapGestureRecognizer(target: self, action: #selector(removeKeyboard))
+    }
+    private func setTextfield() {
         ingredientTextField.delegate = self
+        let toolbar = setToolBarForTextField()
+        ingredientTextField.inputAccessoryView = toolbar
+    }
+    private func setToolBarForTextField() -> UIToolbar {
         let button = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(removeKeyboard))
         button.tintColor = UIColor(named: "DoneButton")
         let item = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let toolbar = UIToolbar()
         toolbar.items = [item, button]
         toolbar.sizeToFit()
-        ingredientTextField.inputAccessoryView = toolbar
-        // gesture to dismiss keyboard
-        gesture = UITapGestureRecognizer(target: self, action: #selector(removeKeyboard))
-        guard let gesture = gesture else { return }
-        view.addGestureRecognizer(gesture)
+        return toolbar
     }
+    
+    // MARK: - view will appear
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // set search button
@@ -77,12 +82,18 @@ class SearchViewController: UIViewController, RecipeGetterProtocol {
         guard let gesture = gesture else { return }
         navigationController?.view.addGestureRecognizer(gesture)
     }
+    
+    // MARK: - view will disappear
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // remove gesture to close keyboard
         guard let gesture = gesture else { return }
         navigationController?.view.removeGestureRecognizer(gesture)
     }
+}
+
+extension SearchViewController {
     
     // MARK: - Ingredient modification
     
@@ -169,7 +180,18 @@ extension SearchViewController:  UITableViewDataSource, UITableViewDelegate {
     /// Tableview's footer used to display instructions when tableview is empty.
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         // if no ingredients have been added yet, display instructions to add ingredients
-        return getInstructionsView(title: "no ingredients so far", instructions: ["> to add ingredients:", "- enter its name in the textfield;", "- hit return on the keyboard or the plus button.", "", "", "> when it's done:", "- hit done or anywhere on the screen to close keyboard;", "- hit search button."], isHidden: ingredients.count > 0)
+        return getInstructionsView(
+            title: "no ingredients so far",
+            instructions: """
+            > to add ingredients:
+            - enter its name in the textfield;
+            - hit return on the keyboard or the plus button.
+            
+            > when it's done:
+            - hit done or anywhere on the screen to close keyboard;
+            - hit search button.
+            """,
+            isHidden: ingredients.count > 0)
     }
     /// Tableview's sections footer's height depending on tableview's emptyness.
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
