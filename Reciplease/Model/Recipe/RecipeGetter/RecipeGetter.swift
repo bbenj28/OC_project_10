@@ -36,7 +36,7 @@ class RecipeGetter {
     
     // MARK: - Init
     
-    init(coreDataStack: CoreDataStack = CoreDataStack(), session: RecipeSession = RecipeSession()) {
+    init(coreDataStack: CoreDataStack = CoreDataStack(), session: AlamofireSession = RecipeSession()) {
         self.service = RecipeService(session: session)
         self.dataManager = RecipeDataManager(coreDataStack: coreDataStack)
     }
