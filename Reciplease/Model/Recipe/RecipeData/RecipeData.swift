@@ -39,7 +39,4 @@ open class RecipeData: NSManagedObject, Recipe {
         guard let cautions = optionalCautions else { return "" }
         return cautions
     }
-    var ingredientsOnALine: String {
-        return ingredients.split(separator: "\n").joined(separator: " ")
-    }
 }

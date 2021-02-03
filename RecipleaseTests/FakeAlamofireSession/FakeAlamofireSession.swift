@@ -34,7 +34,7 @@ class FakeAlamofireSession: AlamofireSession {
     }
 }
 enum FakeResponse {
-    case correctResponseWithData(String), correctResponseWithoutData, incorrectResponse, error
+    case correctResponseWithData(String), correctResponseWithoutData, incorrectResponse, error, noResponse
     var fakeSession: FakeAlamofireSession {
         switch self {
         case .correctResponseWithData(let dataName):
@@ -55,6 +55,8 @@ enum FakeResponse {
                 url: URL(string: "https://openclassrooms.com")!,
                 statusCode: 500, httpVersion: nil, headerFields: [:])!
             return FakeAlamofireSession(response: response, data: nil, error: nil)
+        case .noResponse:
+            return FakeAlamofireSession(response: nil, data: nil, error: nil)
         case .error:
             class FakeError: Error {}
             let error = FakeError()

@@ -21,6 +21,8 @@
 		035AF33725C2A6F000353CF7 /* UIViewController+animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF33625C2A6F000353CF7 /* UIViewController+animations.swift */; };
 		037E4F4125CA92ED00F5C3AE /* RecipeServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037E4F4025CA92ED00F5C3AE /* RecipeServiceTests.swift */; };
 		037E4F4A25CA938C00F5C3AE /* FakeAlamofireSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037E4F4925CA938C00F5C3AE /* FakeAlamofireSession.swift */; };
+		037E4F5925CAA35A00F5C3AE /* Recipe.json in Resources */ = {isa = PBXBuildFile; fileRef = 03CE0E6C25B87B1E0097BEA6 /* Recipe.json */; };
+		037E4F6725CAFB2F00F5C3AE /* RecipeLess.json in Resources */ = {isa = PBXBuildFile; fileRef = 037E4F6625CAFB2F00F5C3AE /* RecipeLess.json */; };
 		03AFE25225B73285009B8904 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFE25125B73285009B8904 /* AppDelegate.swift */; };
 		03AFE25425B73285009B8904 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AFE25325B73285009B8904 /* SceneDelegate.swift */; };
 		03AFE25925B73285009B8904 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03AFE25725B73285009B8904 /* Main.storyboard */; };
@@ -75,6 +77,7 @@
 		035AF33625C2A6F000353CF7 /* UIViewController+animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+animations.swift"; sourceTree = "<group>"; };
 		037E4F4025CA92ED00F5C3AE /* RecipeServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeServiceTests.swift; sourceTree = "<group>"; };
 		037E4F4925CA938C00F5C3AE /* FakeAlamofireSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAlamofireSession.swift; sourceTree = "<group>"; };
+		037E4F6625CAFB2F00F5C3AE /* RecipeLess.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RecipeLess.json; sourceTree = "<group>"; };
 		03AFE24E25B73285009B8904 /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03AFE25125B73285009B8904 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03AFE25325B73285009B8904 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +183,7 @@
 			children = (
 				037E4F4925CA938C00F5C3AE /* FakeAlamofireSession.swift */,
 				03CE0E6C25B87B1E0097BEA6 /* Recipe.json */,
+				037E4F6625CAFB2F00F5C3AE /* RecipeLess.json */,
 			);
 			path = FakeAlamofireSession;
 			sourceTree = "<group>";
@@ -497,6 +501,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				037E4F6725CAFB2F00F5C3AE /* RecipeLess.json in Resources */,
+				037E4F5925CAA35A00F5C3AE /* Recipe.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,7 +784,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.beb.Reciplease;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -798,7 +804,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.beb.Reciplease;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

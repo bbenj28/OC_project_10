@@ -133,6 +133,15 @@ extension ResultsTableViewController {
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return recipes.count > 0 ? 0 : tableView.frame.height
     }
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let translationMovement = CATransform3DTranslate(CATransform3DIdentity, 0, 50, 0)
+        cell.layer.transform = translationMovement
+        cell.alpha = 0
+        UIView.animate(withDuration: 1) {
+            cell.layer.transform = CATransform3DIdentity
+            cell.alpha = 1
+        }
+    }
 }
 extension ResultsTableViewController: ToggleIngredientsDelegate {
     

@@ -53,18 +53,12 @@ class RecipeService {
         }
     }
     private func getPictureData(_ url: String, completionHandler: (PictureData) -> Void) {
-        if session is RecipeSession {
-            // if a RecipeSession is used, get picture with the url
-            if let url = URL(string: url) {
-                let data = try? Data(contentsOf: url)
-                completionHandler(data)
-            } else {
-                completionHandler(nil)
-            }
-        } else {
-            // otherwise a fakesession is used, so get default picture
+        // if a RecipeSession is used, get picture with the url
+        guard session is RecipeSession, let url = URL(string: url), let data = try? Data(contentsOf: url) else {
             completionHandler(nil)
+            return
         }
+        completionHandler(data)
     }
     
     
