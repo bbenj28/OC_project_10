@@ -8,13 +8,13 @@
 import XCTest
 @testable import Reciplease
 
-class RecipeServiceTests: XCTestCase {
+// MARK: - Service's tests
 
+class RecipeServiceTests: XCTestCase {
     func testGivenResponseOkWithDataHasBeenSettenWhenAsksForRecipesThenRecipesAreReceived() {
         // Given
-        let fakeResponse = FakeResponse.correctResponseWithData("Recipe")
+        let recipeGetter = getRecipeGetter(with: .correctResponseWithData("Recipe"))
         // When
-        let recipeGetter = RecipeGetter(session: fakeResponse.fakeSession)
         let expectation = XCTestExpectation(description: "performs a request")
         recipeGetter.getRecipes(ingredients: ["chicken", "rice"]) { (result) in
             switch result {
@@ -35,9 +35,8 @@ class RecipeServiceTests: XCTestCase {
     }
     func testGivenResponseOkWithDataWithoutRecipesHasBeenSettenWhenAsksForRecipesThenRecipesAreReceivedButWithANullCount() {
         // Given
-        let fakeResponse = FakeResponse.correctResponseWithData("RecipeLess")
+        let recipeGetter = getRecipeGetter(with: .correctResponseWithData("RecipeLess"))
         // When
-        let recipeGetter = RecipeGetter(session: fakeResponse.fakeSession)
         let expectation = XCTestExpectation(description: "performs a request")
         recipeGetter.getRecipes(ingredients: ["chicken", "rice"]) { (result) in
             switch result {
@@ -54,9 +53,8 @@ class RecipeServiceTests: XCTestCase {
     }
     func testGivenResponseOkWithoutDataHasBeenSettenWhenAsksForRecipesThenErrorOccures() {
         // Given
-        let fakeResponse = FakeResponse.correctResponseWithoutData
+        let recipeGetter = getRecipeGetter(with: .correctResponseWithoutData)
         // When
-        let recipeGetter = RecipeGetter(session: fakeResponse.fakeSession)
         let expectation = XCTestExpectation(description: "performs a request")
         recipeGetter.getRecipes(ingredients: ["chicken", "rice"]) { (result) in
             switch result {
@@ -76,9 +74,8 @@ class RecipeServiceTests: XCTestCase {
     }
     func testGivenResponseWithAWrongStatusCodeHasBeenSettenWhenAsksForRecipesThenErrorOccures() {
         // Given
-        let fakeResponse = FakeResponse.incorrectResponse
+        let recipeGetter = getRecipeGetter(with: .incorrectResponse)
         // When
-        let recipeGetter = RecipeGetter(session: fakeResponse.fakeSession)
         let expectation = XCTestExpectation(description: "performs a request")
         recipeGetter.getRecipes(ingredients: ["chicken", "rice"]) { (result) in
             switch result {
@@ -98,9 +95,8 @@ class RecipeServiceTests: XCTestCase {
     }
     func testGivenNoResponseHasBeenSettenWhenAsksForRecipesThenErrorOccures() {
         // Given
-        let fakeResponse = FakeResponse.noResponse
+        let recipeGetter = getRecipeGetter(with: .noResponse)
         // When
-        let recipeGetter = RecipeGetter(session: fakeResponse.fakeSession)
         let expectation = XCTestExpectation(description: "performs a request")
         recipeGetter.getRecipes(ingredients: ["chicken", "rice"]) { (result) in
             switch result {
@@ -121,4 +117,16 @@ class RecipeServiceTests: XCTestCase {
     
     
 
+}
+
+// MARK: - Supporting methods
+
+extension RecipeServiceTests {
+    func getRecipeGetter(with fakeResponse: FakeResponse) -> RecipeGetter {
+        let session = fakeResponse.fakeSession
+        let getter = RecipeGetter(session: session)
+        getter.method = .service
+        print(getter.method.title)
+        return getter
+    }
 }
