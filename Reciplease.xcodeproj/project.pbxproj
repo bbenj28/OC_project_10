@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		03024B0E25CD3C2F00471422 /* Data+initWithStringUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03024B0D25CD3C2F00471422 /* Data+initWithStringUrl.swift */; };
+		03024B1425CD612B00471422 /* RecipeConformityLess.json in Resources */ = {isa = PBXBuildFile; fileRef = 03024B1325CD612B00471422 /* RecipeConformityLess.json */; };
 		030684E525C02B50001D6539 /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030684E425C02B50001D6539 /* CollectionTableViewCell.swift */; };
 		030684E925C02CC3001D6539 /* PictoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030684E825C02CC3001D6539 /* PictoCollectionViewCell.swift */; };
 		032673DC25C40DB90080970A /* UIViewController+tableviewInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032673DB25C40DB90080970A /* UIViewController+tableviewInstructions.swift */; };
@@ -66,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		03024B0D25CD3C2F00471422 /* Data+initWithStringUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+initWithStringUrl.swift"; sourceTree = "<group>"; };
+		03024B1325CD612B00471422 /* RecipeConformityLess.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RecipeConformityLess.json; sourceTree = "<group>"; };
 		030684E425C02B50001D6539 /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
 		030684E825C02CC3001D6539 /* PictoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictoCollectionViewCell.swift; sourceTree = "<group>"; };
 		032673DB25C40DB90080970A /* UIViewController+tableviewInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+tableviewInstructions.swift"; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				037E4F4925CA938C00F5C3AE /* FakeAlamofireSession.swift */,
 				03CE0E6C25B87B1E0097BEA6 /* Recipe.json */,
 				037E4F6625CAFB2F00F5C3AE /* RecipeLess.json */,
+				03024B1325CD612B00471422 /* RecipeConformityLess.json */,
 			);
 			path = FakeAlamofireSession;
 			sourceTree = "<group>";
@@ -325,7 +328,6 @@
 			children = (
 				0357F11B25C8430500282A67 /* Weakifiable.swift */,
 				03AFE2A525B739EE009B8904 /* APIKeys.swift */,
-				03CE0E2225B807E80097BEA6 /* JSONStructureDecoder.swift */,
 				03CE0E2625B808320097BEA6 /* ApplicationErrors.swift */,
 			);
 			path = General;
@@ -334,9 +336,10 @@
 		03AFE2B625B73C8D009B8904 /* RecipeService */ = {
 			isa = PBXGroup;
 			children = (
-				03AFE2B725B73C99009B8904 /* RecipeJSONStructure.swift */,
-				03AFE2BB25B740D1009B8904 /* RecipeService.swift */,
 				03CE0E6825B873720097BEA6 /* RecipeSession.swift */,
+				03AFE2BB25B740D1009B8904 /* RecipeService.swift */,
+				03CE0E2225B807E80097BEA6 /* JSONStructureDecoder.swift */,
+				03AFE2B725B73C99009B8904 /* RecipeJSONStructure.swift */,
 			);
 			path = RecipeService;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				037E4F6725CAFB2F00F5C3AE /* RecipeLess.json in Resources */,
+				03024B1425CD612B00471422 /* RecipeConformityLess.json in Resources */,
 				037E4F5925CAA35A00F5C3AE /* Recipe.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

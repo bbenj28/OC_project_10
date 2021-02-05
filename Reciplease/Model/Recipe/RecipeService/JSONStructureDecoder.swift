@@ -13,6 +13,12 @@ class JSONStructureDecoder {
     /// - parameter response: Response returned by alamofire.
     /// - parameter completionHandler: Closure to perform with this method's result.
     func decode<T: Decodable>(_ response: AFDataResponse<Any>, completionHandler: (Result<T, Error>) -> Void) {
+        // check if an error occured
+        guard response.error == nil else {
+            guard let error = response.error else { return }
+            completionHandler(.failure(error))
+            return
+        }
         // check if a reponses exists
         guard let httpresponse = response.response else {
             completionHandler(.failure(ApplicationErrors.ncNoResponse))

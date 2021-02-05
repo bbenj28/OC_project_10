@@ -17,7 +17,7 @@ class RecipeDataTests: XCTestCase {
         let fakeStack = FakeCoreDataStack()
         recipeGetter = RecipeGetter(coreDataStack: fakeStack)
         recipeGetter?.method = .manager
-        print(recipeGetter?.method.title)
+        print(recipeGetter!.method.title)
         
     }
     override func tearDown() {

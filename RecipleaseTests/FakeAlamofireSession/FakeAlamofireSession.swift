@@ -16,11 +16,11 @@ class FakeAlamofireSession: AlamofireSession {
 
     var response: HTTPURLResponse?
     var data: Data?
-    var error: Error?
+    var error: AFError?
 
     // MARK: - Initializer
 
-    init(response: HTTPURLResponse?, data: Data?, error: Error?) {
+    init(response: HTTPURLResponse?, data: Data?, error: AFError?) {
         self.response = response
         self.data = data
         self.error = error
@@ -29,12 +29,19 @@ class FakeAlamofireSession: AlamofireSession {
     // MARK: - Methods
 
     func request(url: URL, method: HTTPMethod, parameters: Parameters?, completionHandler: @escaping (AFDataResponse<Any>) -> Void) {
-        let dataResponse = AFDataResponse<Any>(request: nil, response: response, data: data, metrics: nil, serializationDuration: 0, result: .success("OK"))
-        completionHandler(dataResponse)
+        if let error = self.error {
+            let dataResponse = AFDataResponse<Any>(request: nil, response: response, data: data, metrics: nil, serializationDuration: 0, result: .failure(error))
+            completionHandler(dataResponse)
+        } else {
+            let dataResponse = AFDataResponse<Any>(request: nil, response: response, data: data, metrics: nil, serializationDuration: 0, result: .success("OK"))
+            
+            completionHandler(dataResponse)
+        }
+        
     }
 }
 enum FakeResponse {
-    case correctResponseWithData(String), correctResponseWithoutData, incorrectResponse, error, noResponse
+    case correctResponseWithData(String), correctResponseWithoutData, incorrectResponse(Int), error, noResponse
     var fakeSession: FakeAlamofireSession {
         switch self {
         case .correctResponseWithData(let dataName):
@@ -50,16 +57,16 @@ enum FakeResponse {
                 url: URL(string: "https://openclassrooms.com")!,
                 statusCode: 200, httpVersion: nil, headerFields: [:])!
             return FakeAlamofireSession(response: response, data: nil, error: nil)
-        case .incorrectResponse:
+        case .incorrectResponse(let code):
             let response = HTTPURLResponse(
                 url: URL(string: "https://openclassrooms.com")!,
-                statusCode: 500, httpVersion: nil, headerFields: [:])!
+                statusCode: code, httpVersion: nil, headerFields: [:])!
             return FakeAlamofireSession(response: response, data: nil, error: nil)
         case .noResponse:
             return FakeAlamofireSession(response: nil, data: nil, error: nil)
         case .error:
-            class FakeError: Error {}
-            let error = FakeError()
+            
+            let error: AFError = AFError.explicitlyCancelled
             return FakeAlamofireSession(response: nil, data: nil, error: error)
         }
     }

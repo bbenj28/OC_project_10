@@ -51,6 +51,29 @@ class RecipeServiceTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 3)
     }
+    func testGivenResponseOkWithDataWithoutConformityHasBeenSettenWhenAsksForRecipesThenErrorsOccures() {
+        // Given
+        let recipeGetter = getRecipeGetter(with: .correctResponseWithData("RecipeConformityLess"))
+        // When
+        let expectation = XCTestExpectation(description: "performs a request")
+        recipeGetter.getRecipes(ingredients: ["chicken", "rice"]) { (result) in
+            switch result {
+            case .success(_):
+                XCTFail()
+            case .failure(let error):
+                // Then
+                guard let error = error as? ApplicationErrors else {
+                    XCTFail()
+                    return
+                }
+                XCTAssert(error == .ncDataConformityLess)
+                print(error)
+                print(error.userMessage)
+                expectation.fulfill()
+            }
+        }
+        wait(for: [expectation], timeout: 3)
+    }
     func testGivenResponseOkWithoutDataHasBeenSettenWhenAsksForRecipesThenErrorOccures() {
         // Given
         let recipeGetter = getRecipeGetter(with: .correctResponseWithoutData)
@@ -67,31 +90,19 @@ class RecipeServiceTests: XCTestCase {
                     return
                 }
                 XCTAssert(error == .ncNoData)
+                print(error)
+                print(error.userMessage)
                 expectation.fulfill()
             }
         }
         wait(for: [expectation], timeout: 3)
     }
     func testGivenResponseWithAWrongStatusCodeHasBeenSettenWhenAsksForRecipesThenErrorOccures() {
-        // Given
-        let recipeGetter = getRecipeGetter(with: .incorrectResponse)
-        // When
-        let expectation = XCTestExpectation(description: "performs a request")
-        recipeGetter.getRecipes(ingredients: ["chicken", "rice"]) { (result) in
-            switch result {
-            case .success(_):
-                XCTFail()
-            case .failure(let error):
-                // Then
-                guard let error = error as? ApplicationErrors else {
-                    XCTFail()
-                    return
-                }
-                XCTAssert(error == .ncBadCode(500))
-                expectation.fulfill()
+        for code in 100...527 {
+            if code != 200 {
+                errorCodesTesting(code)
             }
         }
-        wait(for: [expectation], timeout: 3)
     }
     func testGivenNoResponseHasBeenSettenWhenAsksForRecipesThenErrorOccures() {
         // Given
@@ -109,6 +120,27 @@ class RecipeServiceTests: XCTestCase {
                     return
                 }
                 XCTAssert(error == .ncNoResponse)
+                print(error)
+                print(error.userMessage)
+                expectation.fulfill()
+            }
+        }
+        wait(for: [expectation], timeout: 3)
+    }
+    func testGivenErrorHasBeenSettenWhenAsksForRecipesThenErrorOccures() {
+        // Given
+        let recipeGetter = getRecipeGetter(with: .error)
+        // When
+        let expectation = XCTestExpectation(description: "performs a request")
+        recipeGetter.getRecipes(ingredients: ["chicken", "rice"]) { (result) in
+            switch result {
+            case .success(_):
+                XCTFail()
+            case .failure(let error):
+                // Then
+                XCTAssertNotNil(error)
+                print("ERREUR ////// \(error)")
+                print(error.userMessage)
                 expectation.fulfill()
             }
         }
@@ -128,5 +160,28 @@ extension RecipeServiceTests {
         getter.method = .service
         print(getter.method.title)
         return getter
+    }
+    func errorCodesTesting(_ code: Int) {
+        // Given
+        let recipeGetter = getRecipeGetter(with: .incorrectResponse(code))
+        // When
+        let expectation = XCTestExpectation(description: "performs a request")
+        recipeGetter.getRecipes(ingredients: ["chicken", "rice"]) { (result) in
+            switch result {
+            case .success(_):
+                XCTAssert(code == 200)
+            case .failure(let error):
+                // Then
+                guard let error = error as? ApplicationErrors else {
+                    XCTFail()
+                    return
+                }
+                XCTAssert(error == .ncBadCode(code))
+                print(error)
+                print(error.userMessage)
+                expectation.fulfill()
+            }
+        }
+        wait(for: [expectation], timeout: 3)
     }
 }

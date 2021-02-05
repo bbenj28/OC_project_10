@@ -20,7 +20,7 @@ enum ApplicationErrors: Error, CustomStringConvertible, Equatable {
         switch self {
         // network call
         case .ncNoData:
-            return "La réponse ne retourne aucune data [Model/General/JSONStructureDecoder]."
+            return "La réponse ne retourne aucune data [Model/General/JSONStructureDecoder].\(codeMeaning)"
         case .ncNoResponse:
             return "La réponse retourne nil [Model/General/JSONStructureDecoder]."
         case .ncBadCode(_):
@@ -48,8 +48,6 @@ extension ApplicationErrors {
                 text += "Processing: WebDAV RFC 2518: Traitement en cours (évite que le client dépasse le temps d’attente limite)."
             case 103:
                 text += "Early Hints: RFC 8297 : (Expérimental) Dans l'attente de la réponse définitive, le serveur retourne des liens que le client peut commencer à télécharger."
-            case 200:
-                text += "OK: Requête traitée avec succès. La réponse dépendra de la méthode de requête utilisée."
             case 201:
                 text += "Created: Requête traitée avec succès et création d’un document."
             case 202:
