@@ -13,7 +13,6 @@ enum ApplicationErrors: Error, CustomStringConvertible, Equatable {
     // network call
     case ncNoData, ncNoResponse, ncBadCode(Int), ncDataConformityLess
     
-    
     // MARK: - Descriptions
     
     /// Description to print in the console for developpers to know whats is the problem.

@@ -139,19 +139,19 @@
                                                             <constraint firstItem="SDC-6y-Md7" firstAttribute="width" secondItem="8bg-Xz-5pq" secondAttribute="width" multiplier="0.1" id="eEc-03-uZj"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lcU-b4-fNQ">
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lcU-b4-fNQ">
                                                         <rect key="frame" x="0.0" y="110" width="300" height="248"/>
                                                         <color key="backgroundColor" name="Back"/>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientCell" textLabel="pNr-5x-LH7" rowHeight="40" style="IBUITableViewCellStyleDefault" id="J5b-vc-cEx">
-                                                                <rect key="frame" x="0.0" y="28" width="300" height="40"/>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientCell" textLabel="pNr-5x-LH7" style="IBUITableViewCellStyleDefault" id="J5b-vc-cEx">
+                                                                <rect key="frame" x="0.0" y="28" width="300" height="51.5"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J5b-vc-cEx" id="2Zf-4T-Aht">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="40"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="51.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pNr-5x-LH7">
-                                                                            <rect key="frame" x="16" y="0.0" width="268" height="40"/>
+                                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pNr-5x-LH7">
+                                                                            <rect key="frame" x="16" y="0.0" width="268" height="51.5"/>
                                                                             <autoresizingMask key="autoresizingMask"/>
                                                                             <color key="backgroundColor" name="Back"/>
                                                                             <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="20"/>
@@ -670,7 +670,7 @@ Label</string>
             <color red="0.67000001668930054" green="0.67000001668930054" blue="0.67000001668930054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TextFieldText">
-            <color red="0.1597993338" green="0.1597993338" blue="0.1597993338" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.15999999642372131" green="0.15999999642372131" blue="0.15999999642372131" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

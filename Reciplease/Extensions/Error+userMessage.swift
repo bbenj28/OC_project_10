@@ -13,10 +13,10 @@ extension Error {
             switch error {
             // network call
             case .ncNoData, .ncBadCode(_), .ncNoResponse, .ncDataConformityLess:
-                return "Une erreur de communication internet a été rencontrée."
+                return "An error occurred concerning the network call."
             }
         } else {
-            return "Une erreur s'est produite. L'action demandée n'a pas pu être effectuée."
+            return "An error occurred."
         }
     }
 }
