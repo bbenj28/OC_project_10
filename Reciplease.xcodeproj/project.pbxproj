@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03024B0E25CD3C2F00471422 /* Data+initWithStringUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03024B0D25CD3C2F00471422 /* Data+initWithStringUrl.swift */; };
 		030684E525C02B50001D6539 /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030684E425C02B50001D6539 /* CollectionTableViewCell.swift */; };
 		030684E925C02CC3001D6539 /* PictoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030684E825C02CC3001D6539 /* PictoCollectionViewCell.swift */; };
 		032673DC25C40DB90080970A /* UIViewController+tableviewInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032673DB25C40DB90080970A /* UIViewController+tableviewInstructions.swift */; };
@@ -64,6 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03024B0D25CD3C2F00471422 /* Data+initWithStringUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+initWithStringUrl.swift"; sourceTree = "<group>"; };
 		030684E425C02B50001D6539 /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
 		030684E825C02CC3001D6539 /* PictoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictoCollectionViewCell.swift; sourceTree = "<group>"; };
 		032673DB25C40DB90080970A /* UIViewController+tableviewInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+tableviewInstructions.swift"; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				03CE0E2E25B8121D0097BEA6 /* UIViewController+Alert.swift */,
 				035AF33625C2A6F000353CF7 /* UIViewController+animations.swift */,
 				032673DB25C40DB90080970A /* UIViewController+tableviewInstructions.swift */,
+				03024B0D25CD3C2F00471422 /* Data+initWithStringUrl.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				03CE0E4125B81E810097BEA6 /* SearchViewController.swift in Sources */,
 				03487DB225BF011000EA4B16 /* SearchNavigationViewController.swift in Sources */,
 				03AFE2B825B73C99009B8904 /* RecipeJSONStructure.swift in Sources */,
+				03024B0E25CD3C2F00471422 /* Data+initWithStringUrl.swift in Sources */,
 				03AFE25225B73285009B8904 /* AppDelegate.swift in Sources */,
 				032673DC25C40DB90080970A /* UIViewController+tableviewInstructions.swift in Sources */,
 				03DB291A25BB268D002F8CA5 /* RecipeData.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RecipeGetter {
+final class RecipeGetter {
     
     // MARK: - Methods enum
     
