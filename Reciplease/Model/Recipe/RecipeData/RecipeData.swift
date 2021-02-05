@@ -8,6 +8,11 @@
 import Foundation
 import CoreData
 open class RecipeData: NSManagedObject, Recipe {
+    
+    // MARK: - Properties
+    
+    // Unwrap all entity's properties to conform with Recipe's protocol
+    
     var uri: String {
         guard let uri = optionalUri else { return "" }
         return uri

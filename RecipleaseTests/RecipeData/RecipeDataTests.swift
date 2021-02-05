@@ -10,14 +10,14 @@ import XCTest
 
 class RecipeDataTests: XCTestCase {
     
-    var recipeGetter: RecipeGetter?
-    
-    override func setUp() {
-        recipeGetter = RecipeGetter(coreDataStack: <#T##CoreDataStack#>)
-    }
-    override func tearDown() {
-        <#code#>
-    }
+//    var recipeGetter: RecipeGetter?
+//    
+//    override func setUp() {
+//        recipeGetter = RecipeGetter(coreDataStack: <#T##CoreDataStack#>)
+//    }
+//    override func tearDown() {
+//        <#code#>
+//    }
     
 
 }

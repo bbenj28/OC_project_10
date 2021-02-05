@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+/// Protocol used for RecipeData and RecipeJSONStructure to have the same properties.
 protocol Recipe {
     var uri: String { get }
     var title: String { get }
