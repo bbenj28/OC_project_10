@@ -127,9 +127,9 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
             case .cautions:
                 return "Contains:"
             case .calories:
-                return "Calories:"
+                return "Calories (kcal):"
             case .weight:
-                return "Weight:"
+                return "Weight (g):"
             default:
                 return ""
             }
