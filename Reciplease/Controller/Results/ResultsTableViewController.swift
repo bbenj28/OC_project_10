@@ -39,7 +39,9 @@ class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
     }
     /// Activity indicator to display while loading favorites.
     lazy private var activityIndicator = RecipeActivityIndicator(superview: view)
-
+    /// Used to know whether a single row has to be reloaded or the entire tableview.
+    private var rowReloading = false
+    
     // MARK: - Viewdidload
     
     override func viewDidLoad() {
@@ -62,20 +64,23 @@ class ResultsTableViewController: UITableViewController, RecipeGetterProtocol {
     }
     /// Load recipes.
     private func loadRecipes() {
-        isSearching = true
-        recipeGetter?.getRecipes(completionHandler: weakify({ (strongSelf, result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let recipes):
-                    strongSelf.recipes = recipes
-                case .failure(let error):
-                    strongSelf.showAlert(error: error)
-                    strongSelf.recipes = []
+        guard let recipeGetter = recipeGetter else { return }
+        if recipeGetter.favoritesListDidChange {
+            isSearching = true
+            recipeGetter.getRecipes(completionHandler: weakify({ (strongSelf, result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let recipes):
+                        strongSelf.recipes = recipes
+                    case .failure(let error):
+                        strongSelf.showAlert(error: error)
+                        strongSelf.recipes = []
+                    }
+                    strongSelf.tableView.reloadData()
+                    strongSelf.isSearching = false
                 }
-                strongSelf.tableView.reloadData()
-                strongSelf.isSearching = false
-            }
-        }))
+            }))
+        }
     }
 }
 
@@ -90,15 +95,16 @@ extension ResultsTableViewController {
     // cell to display in a specific row
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as? ResultTableViewCell else { return UITableViewCell() }
-        setCell(cell, indexPath.row)
+        setCell(cell: cell, indexPath: indexPath)
         return cell
     }
-    private func setCell(_ cell: ResultTableViewCell, _ row: Int) {
+    private func setCell(cell: ResultTableViewCell, indexPath: IndexPath) {
         guard let showRecipesIngredients = showRecipesIngredients else { return }
+        let row = indexPath.row
         cell.recipe = recipesToDisplay[row]
         cell.delegate = self
-        cell.index = row
         cell.ingredientsAreShown = showRecipesIngredients[row]
+        cell.indexPath = indexPath
     }
     // row selection : set selectedRecipe with the recipe which is displayed by the selected row and present recipe controller
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -133,14 +139,18 @@ extension ResultsTableViewController {
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return recipes.count > 0 ? 0 : tableView.frame.height
     }
+    /// Animate tableview's row's apperance.
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let translationMovement = CATransform3DTranslate(CATransform3DIdentity, 0, 50, 0)
-        cell.layer.transform = translationMovement
-        cell.alpha = 0
-        UIView.animate(withDuration: 1) {
-            cell.layer.transform = CATransform3DIdentity
-            cell.alpha = 1
+        if !rowReloading {
+            let translationMovement = CATransform3DTranslate(CATransform3DIdentity, 50, 0, 0)
+            cell.layer.transform = translationMovement
+            cell.alpha = 0
+            UIView.animate(withDuration: 1) {
+                cell.layer.transform = CATransform3DIdentity
+                cell.alpha = 1
+            }
         }
+        rowReloading = false
     }
 }
 extension ResultsTableViewController: ToggleIngredientsDelegate {
@@ -149,10 +159,13 @@ extension ResultsTableViewController: ToggleIngredientsDelegate {
     
     /// Method called when user hit the *show ingredients* button.
     /// - parameter index: index in the showRecipesIngredients property.
-    func toggleIngredients(index: Int) {
+    func toggleIngredients(_ indexPath: IndexPath) {
+        let index = indexPath.row
         guard let value = showRecipesIngredients?[index] else { return }
         showRecipesIngredients?.remove(at: index)
         showRecipesIngredients?.insert(!value, at: index)
-        tableView.reloadData()
+        //tableView.reloadData()
+        rowReloading = true
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }

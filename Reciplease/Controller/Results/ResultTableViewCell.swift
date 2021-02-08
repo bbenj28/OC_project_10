@@ -37,10 +37,10 @@ class ResultTableViewCell: UITableViewCell, RecipeCell {
             ingredientsLabel.isHidden = !ingredientsAreShown
         }
     }
-    /// Index of this cell in the controller.
-    var index: Int?
     /// Delegate used to toggle ingredients on demand.
     var delegate: ToggleIngredientsDelegate?
+    /// IndexPath of this cell in the controller.
+    var indexPath: IndexPath?
     
     // MARK: - Outlets
     
@@ -73,13 +73,7 @@ class ResultTableViewCell: UITableViewCell, RecipeCell {
     // MARK: - Toggle ingredients
     
     @IBAction private func toggleIngredients(_ sender: Any) {
-        guard let index = index, let delegate = delegate else { return }
-        delegate.toggleIngredients(index: index)
+        guard let indexPath = indexPath, let delegate = delegate else { return }
+        delegate.toggleIngredients(indexPath)
     }
-}
-
-// MARK: - Toggle ingredients delegate
-
-protocol ToggleIngredientsDelegate {
-    func toggleIngredients(index: Int)
 }

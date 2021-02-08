@@ -28,11 +28,13 @@ final class RecipeGetter {
     // MARK: - Properties
     
     /// Service used to get recipes when service method is selected.
-    let service: RecipeService
+    private let service: RecipeService
     /// Data manager used to get recipes when manager method is selected.
-    let dataManager: RecipeDataManager
+    private let dataManager: RecipeDataManager
     /// Selected method to get recipes.
     var method: Method = .service
+    /// Used by controller to know if the list has been changed.
+    var favoritesListDidChange: Bool = true
     
     // MARK: - Init
     
@@ -54,6 +56,8 @@ final class RecipeGetter {
             service.searchRecipe(for: ingredients, completionHandler: completionHandler)
         case .manager:
             completionHandler(.success(dataManager.recipes))
+            // last version of favorites list has been loaded, so change property to false
+            favoritesListDidChange = false
         }
     }
     
@@ -63,11 +67,15 @@ final class RecipeGetter {
     /// - parameter recipe: The recipe to add.
     func addToFavorites(_ recipe: Recipe) {
         dataManager.addToFavorites(recipe)
+        // favorites list has been changed, so change property to true
+        favoritesListDidChange = true
     }
     /// Remove a recipe from favorites.
     /// - parameter recipe: The recipe to remove.
     func removeFromFavorites(_ recipe: Recipe) {
         dataManager.removeFromFavorites(recipe)
+        // favorites list has been changed, so change property to true
+        favoritesListDidChange = true
     }
     /// Check if a recipe has already been added as favorite.
     /// - parameter recipe: The recipe to check.

@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="default2" translatesAutoresizingMaskIntoConstraints="NO" id="jPV-AT-i0e">
-                                <rect key="frame" x="48" y="224" width="224" height="120"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="default1" translatesAutoresizingMaskIntoConstraints="NO" id="jPV-AT-i0e">
+                                <rect key="frame" x="73.5" y="213" width="173" height="142"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -34,6 +34,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="default2" width="224" height="120"/>
+        <image name="default1" width="173" height="142"/>
     </resources>
 </document>
