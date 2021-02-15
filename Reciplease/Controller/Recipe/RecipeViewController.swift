@@ -151,10 +151,6 @@ extension RecipeViewController: UITableViewDelegate, UITableViewDataSource {
                 return ""
             }
         }
-        /// Used by getDetails to concatenate informations.
-        private func mapDetails(_ details: [String]) -> String {
-            return details.map({ "- \($0)" }).joined(separator: "\n")
-        }
         /// Used by getDetails to formatting a number.
         private func formatNumber(_ number: NSNumber) -> String {
             let formatter = NumberFormatter()
