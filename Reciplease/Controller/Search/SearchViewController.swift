@@ -112,6 +112,7 @@ extension SearchViewController {
     /// Clear all ingredients from tableview.
     @IBAction private func clearIngredients(_ sender: Any) {
         ingredients = []
+        removeKeyboard()
         tableView.reloadData()
     }
     
@@ -127,6 +128,7 @@ extension SearchViewController {
     }
     /// Get recipes with a network call using recipe getter.
     private func getRecipes() {
+        removeKeyboard()
         isSearching = true
         recipeGetter?.getRecipes(ingredients: ingredients, completionHandler: weakify({ (strongSelf, result) in
             DispatchQueue.main.async {
@@ -205,7 +207,6 @@ extension SearchViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let text = textField.text, !text.isEmpty else {
-            textField.resignFirstResponder()
             return true
         }
         addIngredient(textField)
