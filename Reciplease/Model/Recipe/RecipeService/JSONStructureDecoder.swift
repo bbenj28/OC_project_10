@@ -16,7 +16,8 @@ class JSONStructureDecoder {
         // check if an error occured
         guard response.error == nil else {
             guard let error = response.error else { return }
-            completionHandler(.failure(error))
+            print(error)
+            completionHandler(.failure(ApplicationErrors.ncAFError))
             return
         }
         // check if a reponses exists

@@ -36,7 +36,7 @@ extension UIViewController {
             if let title = title {
                 alertTitle = title
             } else {
-                alertTitle = "Erreur"
+                alertTitle = "Error"
             }
             alertMessage = error.userMessage
             alertStyle = .alert

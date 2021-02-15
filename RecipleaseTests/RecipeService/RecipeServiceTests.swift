@@ -92,6 +92,7 @@ class RecipeServiceTests: XCTestCase {
                 XCTAssert(error == .ncNoData)
                 print(error)
                 print(error.userMessage)
+                print(error.codeMeaning)
                 expectation.fulfill()
             }
         }
@@ -156,6 +157,7 @@ class RecipeServiceTests: XCTestCase {
 extension RecipeServiceTests {
     func getRecipeGetter(with fakeResponse: FakeResponse) -> RecipeGetter {
         let session = fakeResponse.fakeSession
+        if let error = session.error { print(error.userMessage) }
         let getter = RecipeGetter(session: session)
         getter.method = .service
         print(getter.method.title)

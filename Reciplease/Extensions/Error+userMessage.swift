@@ -12,8 +12,8 @@ extension Error {
         if let error = self as? ApplicationErrors {
             switch error {
             // network call
-            case .ncNoData, .ncBadCode(_), .ncNoResponse, .ncDataConformityLess:
-                return "An error occurred concerning the network call."
+            case .ncNoData, .ncBadCode(_), .ncNoResponse, .ncDataConformityLess, .ncAFError:
+                return "An error occurred concerning the network call. Please check your connexion."
             }
         } else {
             return "An error occurred."

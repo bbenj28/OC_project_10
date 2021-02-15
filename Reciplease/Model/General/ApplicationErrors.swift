@@ -7,11 +7,11 @@
 
 import Foundation
 enum ApplicationErrors: Error, CustomStringConvertible, Equatable {
-    
+
     // MARK: - Errors
     
     // network call
-    case ncNoData, ncNoResponse, ncBadCode(Int), ncDataConformityLess
+    case ncNoData, ncNoResponse, ncBadCode(Int), ncDataConformityLess, ncAFError
     
     // MARK: - Descriptions
     
@@ -20,13 +20,15 @@ enum ApplicationErrors: Error, CustomStringConvertible, Equatable {
         switch self {
         // network call
         case .ncNoData:
-            return "La réponse ne retourne aucune data [Model/General/JSONStructureDecoder].\(codeMeaning)"
+            return "La réponse ne retourne aucune data [Model/General/JSONStructureDecoder]."
         case .ncNoResponse:
             return "La réponse retourne nil [Model/General/JSONStructureDecoder]."
         case .ncBadCode(_):
             return "La réponse retourne un code HTTP invalide \(codeMeaning) [Model/General/JSONStructureDecoder]."
         case .ncDataConformityLess:
             return "Les data ne sont pas conformes à la JSONStructure  [Model/General/JSONStructureDecoder]."
+        case .ncAFError:
+            return "Erreur retournée par Alamofire [Model/General/JSONStructureDecoder]."
         }
     }
 }
@@ -34,7 +36,7 @@ enum ApplicationErrors: Error, CustomStringConvertible, Equatable {
 extension ApplicationErrors {
     // MARK: - Code Meaning
     /// Return the meaning of the HTTP code.
-    private var codeMeaning: String {
+    var codeMeaning: String {
         switch self {
         case .ncBadCode(let code):
             var text = "[code: \(code): "
